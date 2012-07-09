@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding-top: 60px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #666;
+    background-color: #ededed;
+}
+
+.has-margin {
+    margin-left: 5px;
+}
+
+.navbar .brand {
+    display: block;
+    float: left;
+    padding: 8px 20px 12px;
+    margin-left: -20px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 1;
+    color: #999;
+}
+
+.navbar-fixed-top .brand {
+    cursor: default;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 10px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+
+.navbar .user-info {
+    float: right;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+}
+
+.user-action .ac-list,
+.user-action .ac-list li,
+.in-out,
+.in-out li,
+.week-day,
+.week-day li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.user-action .ac-list li {
+    float: left;
+    padding: 9px 10px 11px;
+    line-height: 19px;
+}
+
+.user-action .ac-list li a {
+    color: #999;
+    text-decoration: none;
+}
+
+.user-action .ac-list li a:hover {
+    color: #fff;
+}
+
+.cal-body {
+    width: 870px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    background-color: #fff;
+}
+
+.cal-header {
+    padding: 20px 20px 10px;
+}
+
+.date-from-to {
+    padding: 5px 15px;
+    line-height: 18px;
+    color: #666;
+}
+
+.in-out {
+    padding-top: 30px;
+}
+
+.in-out li {
+    padding: 5px 0;
+}
+
+.in-out li a {
+    text-decoration: none;
+}
+
+.in-out li p {
+    color: #999;
+}
+
+.loading {
+    display: none;
+    padding-top: 4px;
+}
+
+.week-day {
+    padding: 0 16px 0 77px;
+}
+
+.week-day .pull-left {
+    padding: 4px 0;
+    width: 111px;
+    text-align: center;
+}
+
+.week-main {
+    position: relative;
+    height: 730px;
+    border-top: 1px solid #b4b4b4;
+    border-bottom: 1px solid #b4b4b4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-y: auto;
+}
+
+.col, .col-time {
+    float: left;
+    width: 110px;
+}
+
+.time-line {
+    width: 82px;
+}
+
+.col .time,
+.col-time .time{
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px dotted #ccc;
+    border-right: 1px solid #efefef;
+    color: #999;
+    cursor: pointer;
+}
+
+.col .time:hover {
+    background-color: #fafafa;
+}
+
+.col .time b,
+.col-time .time b{
+    color: #ccccda;
+}
+
+.time-line .time {
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+
+.col .odd,
+.col-time .odd{
+    border-bottom-style: solid;
+    border-bottom-color: #ccc;
+}
+
+.ecola-foot {
+    padding: 10px;
+}
