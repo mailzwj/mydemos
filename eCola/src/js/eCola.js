@@ -60,46 +60,48 @@ $(function(){
         var clicked = false;
         var index_clicked = '';
         var html = '';
+        var index = '';
         weekdays.each(function(i, eles){
-            $(eles).bind("mousedown", function(e){
+            $(eles).mousedown(function(e){
                 var evt = e.target,
                     hours = $(this).children(".time"),
                     index_par = $.inArray(this, weekdays);
+                index = i;
                 clicked = true;
                 index_clicked = $.inArray(evt, hours);
                 var width = $(evt).width() + 1,
                     height = $(evt).height(),
                     left = (index_par * width + fcol.width() + diff.x) + 'px',
-                    top = (index_clicked * (height + 1) + diff.y) + "px";
-                html = $('<div></div>');
-                html.css("position", "absolute")
-                    .css("zIndex", 10)
-                    .css("left", left)
+                    top = (index_clicked * (height + 1) + diff.y ) + "px";
+                html = $('<div class="uplayer"></div>');
+                html.css("left", left)
                     .css("top", top)
                     .css("width", width - diff.x + "px")
-                    .css("height", height + "px")
-                    .css("opacity", 0.7)
-                    .css("backgroundColor", "#ccc");
+                    .css("height", height + "px");
                 wm.append(html);
-            }).bind("mousemove", function(e){
-                if(clicked){
+            }).mousemove(function(e){
+                if(clicked && index == $.inArray(eles, weekdays)){
                     var evt = e.target,
                         hours = $(this).children(".time"),
                         index_sub = $.inArray(evt, hours),
                         cha = index_sub - index_clicked;
-                    var oh = html.height(),
-                        nh = oh + Math.abs(cha) * ($(evt).height() + 1),
-                        top = html.position().top;
-                    index_clicked = index_sub;
+                    var oh = $(html).height(),
+                        nh = oh,
+                        top = parseInt(html.css("top"));
                     if(cha < 0){
-                        top -= $(evt).height() + 1;
+                        top += cha * ($(evt).height() + 1);
+                        nh = oh + Math.abs(cha) * ($(evt).height() + 1);
+                        index_clicked = index_sub;
+                    }else if(cha > 0){
+                        nh = (cha + 1) * ($(evt).height() + 1);
                     }
                     html.css("top", top + "px")
                         .css("height", nh + "px");
                 }
-                $(document).bind("mouseup", function(){
+                $(document).mouseup(function(){
                     clicked = false;
-                })
+                });
+                return false;
             })
         });
     }
