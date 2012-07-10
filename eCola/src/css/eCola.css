@@ -127,6 +127,7 @@ body {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     overflow-y: auto;
+    -moz-user-select: none;/*Firefox下禁止文本选择*/
 }
 
 .col, .col-time {
@@ -181,5 +182,22 @@ body {
     z-index: 10;
     border-radius: 4px;
     background-color: #ccc;
+    color: #fff;
     opacity: 0.7;
+    overflow: hidden;
+}
+
+.fullalpha {
+    background-color: #999;
+    opacity: 1;
+}
+
+.uplayer h5,
+.uplayer div{
+    padding: 3px 5px;
+    color: #fff;
+}
+
+.uplayer div {
+    text-indent: 24px;
 }
