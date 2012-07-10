@@ -40,6 +40,14 @@ $(function(){
         callback && callback();
     }
 
+    function createFormLayer(){
+        var main = $(".week-main:eq(0)");
+        var form = $('<div id="form-layer" class="form-layer"></div>');
+        var finner =  '<b class="form-arrow"><i></i></b><form class="form-horizontal ecalo-form" method="post" action=""><textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea><div class="control-group"><label class="control-label">分类：</label><div class="controls"><select name="ecolacat" id="ecola-cat" class="span2"><option value="0">默认分类</option><option value="1">第一种分类</option><option value="2">第二种分类</option><option value="3">第三种分类</option></select></div></div><div><a class="btn btn-primary ecola-save" href="#">保存</a><a href="#" class="help-inline ecola-cancel">取消</a><a href="#" class="pull-right ecola-del">删除</a></div></form>';
+        form.html(finner);
+        main.append(form);
+    }
+
     function updateWeekHeader(fd, callback){
         var wh = $(".week-day:eq(0)>li"),
             firstDay = new Date(fd).getTime(),
@@ -72,6 +80,23 @@ $(function(){
         return val;
     }
 
+    function rePositionForm(dom){
+        var f = $("#form-layer"),
+            d = $(dom),
+            dl = parseInt(d.css("left")),
+            dt = parseInt(d.css("top")),
+            dw = d.outerWidth(),
+            dh = d.outerHeight(),
+            fw = f.outerWidth(),
+            fh = f.outerHeight(),
+            fl = dl + dw + 20,
+            ft = dt + (dh - fh) / 2;
+        f.css("left", fl + "px")
+            .css("top",ft + "px")
+            .css("display", "block");//由此继续
+        //console.log(fw);
+    }
+
     function initLayer(){
         var wm = $(".week-main").eq(0);
         var weekdays = $(".week-main:eq(0)>.col");
@@ -91,6 +116,7 @@ $(function(){
                 index_clicked = $.inArray(evt, hours);
                 if(html != ''){
                     $(html).remove();
+                    $("#form-layer").css("display", "none");
                 }
                 var s2e = getStartAndEnd(index_clicked, index_clicked),
                     width = $(evt).width() + 1,
@@ -98,7 +124,9 @@ $(function(){
                     left = (index_par * width + fcol.width() + diff.x) + 'px',
                     top = (index_clicked * (height + 1) + diff.y ) + "px";
                 html = $('<div class="uplayer text-overflow"></div>');
-                html.css("left", left)
+                html.attr("id", "")
+                    .attr("cat", "")
+                    .css("left", left)
                     .css("top", top)
                     .css("width", width - diff.x + "px")
                     .css("height", height + "px")
@@ -126,13 +154,16 @@ $(function(){
                     var s2e = getStartAndEnd(index_clicked, et);
                     html.css("top", top + "px")
                         .css("height", nh + "px");
-                    $(html).children("h5").html([s2e.start,s2e.end].join(" ~ "))
+                    $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
                 }
-                $(document).mouseup(function(){
-                    clicked = false;
-                });
                 return false;
-            })
+            });
+        });
+        $(document).mouseup(function(){
+            if(html != "" && clicked){
+                rePositionForm(html);
+            }
+            clicked = false;
         });
     }
 
@@ -154,7 +185,9 @@ $(function(){
             h = Math.abs(et / m30 - st / m30) * size.h;
             pt = (st / m30) * size.h;
             var node = fc.clone();
-            $(node).css("left", pl + "px")
+            $(node).attr("id", obj.id)
+                .attr("cat", obj.cat)
+                .css("left", pl + "px")
                 .css("top", pt + "px")
                 .css("width", (size.w - diff.x) + "px")
                 .css("height", h + "px")
@@ -191,7 +224,10 @@ $(function(){
     }
     $(".week-main").bind("selectstart",function(){return false;});
     updateWeekHeader(g_hash.replace(/-/g, "/"));
-    createWeekTable(g_hash.replace(/-/g, "/"), initLayer);
+    createWeekTable(g_hash.replace(/-/g, "/"), function(){
+        createFormLayer();
+        initLayer();
+    });
     loadData(g_hash.replace(/-/g, "/"));
 
     //console.log(getPreviousWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate()));
