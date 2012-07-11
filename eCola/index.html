@@ -54,8 +54,8 @@
                 <div class="cal-header clearfix">
                     <button class="btn pull-left" id="today"> 今天 </button>
                     <div class="btn-group pull-left has-margin">
-                        <button class="btn"><i class="icon-chevron-left"></i></button>
-                        <button class="btn"><i class="icon-chevron-right"></i></button>
+                        <button class="btn" id="week-prev"><i class="icon-chevron-left"></i></button>
+                        <button class="btn" id="week-next"><i class="icon-chevron-right"></i></button>
                     </div>
                     <div class="pull-left date-from-to">
                         2012年07月02日 ~ 2012年07月08日
@@ -92,6 +92,7 @@
                     <div id="form-layer" class="form-layer">
                         <b class="form-arrow"><i></i></b>
                         <form class="form-horizontal ecalo-form" method="post" action="">
+                            <input type="hidden" name="ecola-id" id="ecola-id" value="">
                             <textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea>
                             <div class="control-group">
                                 <label class="control-label">分类：</label>

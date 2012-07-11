@@ -136,6 +136,10 @@ body {
     width: 110px;
 }
 
+.today {
+    background-color: #efefef;
+}
+
 .time-line {
     width: 82px;
 }

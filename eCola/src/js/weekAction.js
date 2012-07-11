@@ -55,3 +55,19 @@ function getNextWeek(year,month,day){
         eD = sunday.getDate().toString().length == 1 ? "0" + sunday.getDate():sunday.getDate();
     return {"weekStart":sY + "/" + sM + "/" + sD,"weekEnd":eY + "/" + eM + "/" + eD};
 }
+
+function addToday(){
+    var now = new Date();
+    var wd = now.getDay();
+    var nodes = $(".week-main:eq(0) .col");
+    wd = wd == 0 ? 7 : wd;
+    $(nodes[wd - 1]).addClass("today");
+}
+
+function removeToday(){
+    var now = new Date();
+    var wd = now.getDay();
+    var nodes = $(".week-main:eq(0) .col");
+    wd = wd == 0 ? 7 : wd;
+    $(nodes[wd - 1]).removeClass("today");
+}

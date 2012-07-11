@@ -87,7 +87,8 @@ $(function(){
         f.css("left", fl + "px")
             .css("top",ft + "px")
             .css("display", "block");
-        f.find("textarea").eq(0).focus();//由此继续
+        f.find("textarea").eq(0).val(d.children("div").eq(0).html()).focus();//由此继续
+        f.find("input[type='hidden']").eq(0).val(d.attr("id"));
         //console.log(fw);
     }
 
@@ -117,7 +118,7 @@ $(function(){
                     height = $(evt).height(),
                     left = (index_par * width + fcol.width() + diff.x) + 'px',
                     top = (index_clicked * (height + 1) + diff.y ) + "px";
-                html = $('<div class="uplayer text-overflow"></div>');
+                html = $('<div class="uplayer text-empty"></div>');
                 html.attr("id", "")
                     .attr("cat", "")
                     .css("left", left)
@@ -159,10 +160,18 @@ $(function(){
             }
             clicked = false;
         });
+
+        $("#form-layer .ecola-cancel").eq(0).click(function(){
+            var form = $("#form-layer");
+            if(html != ''){
+                $(html).remove();
+            }
+            form.css("display", "none");
+            return false;
+        });
     }
 
-    function pushDataToCol(index, arr, size){
-        //console.log(index);
+    function pushDataToCol(index, arr, size, callback){
         var main = $(".week-main:eq(0)");
         var tc = $(".week-main:eq(0)>.col-time").eq(0);
         var fc = $('<div class="uplayer fullalpha"></div>');
@@ -188,38 +197,110 @@ $(function(){
                 .html("<h5>" + obj.start + " ~ " + obj.end + "</h5><div title='" + obj.content + "'>" + obj.content + "</div>");
             main.append($(node));
         });
+
+        callback && callback();
+    }
+
+    function changeFormAction(){
+        var form = $("#form-layer"),
+            nodes = $(".week-main:eq(0) .fullalpha");
+        nodes.click(function(){
+            if($(".week-main:eq(0) .text-empty").length > 0){
+                $(".week-main:eq(0) .text-empty").remove();
+            }
+            rePositionForm(this);
+        });
     }
 
     function loadData(s){   //周startDate
         var weekdays = $(".week-main:eq(0)>.col");
-        $.getScript("ajax/data.json", function(){
-            //console.log(json);
+        $.getScript("ajax/data.json?s=" + s, function(){
             $(json).each(function(i, val){
                 weekdays.each(function(j, node){
                     if($(node).attr("date") == new Date(val.date).getTime()){
                         var size = {"w":$(node).width(), "h":($(node).children(".time:eq(0)").height() + 1)}
-                        pushDataToCol(j, val.log, size);  //将数据添加入对应列表
+                        pushDataToCol(j, val.log, size, changeFormAction);  //将数据添加入对应列表
                     }
                 });
             });
         });
     }
 
+    function includeToday(hs){
+        var td = new Date(),
+            tdstr = td.getFullYear() + "/" + (td.getMonth() + 1) + "/" + td.getDate(),
+            flag = false;
+        for(var t = 0; t < 7; t++){
+            var nd = new Date(new Date(hs.replace(/-/g, "/")).valueOf() + t * 24 * 60 * 60 * 1000);
+            if(nd.getFullYear() + "/" + (nd.getMonth() + 1) + "/" + nd.getDate() == tdstr){
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
     var nd = new Date();
     var tw = getThisWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate());
     var cws = tw.weekStart;
     var g_hash = cws.replace(/\//g, "-"); //全局变量，存储当前hash值
-    var reg = /#(\d{4}-\d{2}-\d{2})/g
+    var reg = /#(\d{4}-\d{2}-\d{2})/g;
+    var prev = $("#week-prev"), next = $("#week-next"), today = $("#today");
     if(reg.test(window.location.href)){
         g_hash = RegExp.$1;
         RegExp.lastIndex = 0;
     }else{
         window.location.hash = "#" + g_hash;
     }
+
     $(".week-main").bind("selectstart",function(){return false;});
     updateWeekHeader(g_hash.replace(/-/g, "/"));
-    createWeekTable(g_hash.replace(/-/g, "/"), initLayer);
+    createWeekTable(g_hash.replace(/-/g, "/"), function(){
+        initLayer();
+        if(includeToday(g_hash)){
+            addToday();
+        }else{
+            removeToday();
+        }
+    });
     loadData(g_hash.replace(/-/g, "/"));
 
+    today.click(function(){
+        updateWeekHeader(cws.replace(/-/g, "/"));
+        createWeekTable(cws.replace(/-/g, "/"), function(){
+            initLayer();
+            if(includeToday(cws)){
+                addToday();
+            }else{
+                removeToday();
+            }
+        });
+        loadData(cws.replace(/-/g, "/"));
+        g_hash = cws.replace(/\//g, "-");
+        today.attr("disabled", true);
+        window.location.hash = "#" + g_hash;
+    });
+
+    $(window).bind("hashchange",function(){
+        var hs = window.location.hash;
+        if(reg.test(hs)){
+            g_hash = RegExp.$1;
+            RegExp.lastIndex = 0;
+            updateWeekHeader(g_hash.replace(/-/g, "/"));
+            createWeekTable(g_hash.replace(/-/g, "/"), function(){
+                initLayer();
+                if(includeToday(g_hash)){
+                    addToday();
+                }else{
+                    removeToday();
+                }
+            });
+            loadData(g_hash.replace(/-/g, "/"));
+        }
+    });
+    if(includeToday(g_hash)){
+        today.attr("disabled", true);
+    }else{
+        today.attr("disabled", false);
+    }
     //console.log(getPreviousWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate()));
 });
