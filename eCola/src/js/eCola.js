@@ -40,14 +40,6 @@ $(function(){
         callback && callback();
     }
 
-    function createFormLayer(){
-        var main = $(".week-main:eq(0)");
-        var form = $('<div id="form-layer" class="form-layer"></div>');
-        var finner =  '<b class="form-arrow"><i></i></b><form class="form-horizontal ecalo-form" method="post" action=""><textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea><div class="control-group"><label class="control-label">分类：</label><div class="controls"><select name="ecolacat" id="ecola-cat" class="span2"><option value="0">默认分类</option><option value="1">第一种分类</option><option value="2">第二种分类</option><option value="3">第三种分类</option></select></div></div><div><a class="btn btn-primary ecola-save" href="#">保存</a><a href="#" class="help-inline ecola-cancel">取消</a><a href="#" class="pull-right ecola-del">删除</a></div></form>';
-        form.html(finner);
-        main.append(form);
-    }
-
     function updateWeekHeader(fd, callback){
         var wh = $(".week-day:eq(0)>li"),
             firstDay = new Date(fd).getTime(),
@@ -82,6 +74,7 @@ $(function(){
 
     function rePositionForm(dom){
         var f = $("#form-layer"),
+            w = $(".week-main:eq(0)"),
             d = $(dom),
             dl = parseInt(d.css("left")),
             dt = parseInt(d.css("top")),
@@ -90,10 +83,11 @@ $(function(){
             fw = f.outerWidth(),
             fh = f.outerHeight(),
             fl = dl + dw + 20,
-            ft = dt + (dh - fh) / 2;
+            ft = dt + (dh - fh) / 2 - w.scrollTop();
         f.css("left", fl + "px")
             .css("top",ft + "px")
-            .css("display", "block");//由此继续
+            .css("display", "block");
+        f.find("textarea").eq(0).focus();//由此继续
         //console.log(fw);
     }
 
@@ -224,10 +218,7 @@ $(function(){
     }
     $(".week-main").bind("selectstart",function(){return false;});
     updateWeekHeader(g_hash.replace(/-/g, "/"));
-    createWeekTable(g_hash.replace(/-/g, "/"), function(){
-        createFormLayer();
-        initLayer();
-    });
+    createWeekTable(g_hash.replace(/-/g, "/"), initLayer);
     loadData(g_hash.replace(/-/g, "/"));
 
     //console.log(getPreviousWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate()));

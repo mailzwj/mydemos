@@ -77,16 +77,40 @@
                     <li class="pull-left">7 / 7（六）</li>
                     <li class="pull-left">8 / 7（日）</li>
                 </ul>
-                <div class="week-main">
-                    <!--  ROW DEMO  -->
-                    <!--<div class="col-time time-line">
-                        <span class="time">0<b>am</b></span>
-                        <span class="time odd"></span>
+                <div class="week-box">
+                    <div class="week-main">
+                        <!--  ROW DEMO  -->
+                        <!--<div class="col-time time-line">
+                            <span class="time">0<b>am</b></span>
+                            <span class="time odd"></span>
+                        </div>
+                        <div class="col col-0">
+                            <div class="time">0<b>am</b></div>
+                            <div class="time odd"></div>
+                        </div>-->
                     </div>
-                    <div class="col col-0">
-                        <div class="time">0<b>am</b></div>
-                        <div class="time odd"></div>
-                    </div>-->
+                    <div id="form-layer" class="form-layer">
+                        <b class="form-arrow"><i></i></b>
+                        <form class="form-horizontal ecalo-form" method="post" action="">
+                            <textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea>
+                            <div class="control-group">
+                                <label class="control-label">分类：</label>
+                                <div class="controls">
+                                    <select name="ecolacat" id="ecola-cat" class="span2">
+                                        <option value="0">默认分类</option>
+                                        <option value="1">第一种分类</option>
+                                        <option value="2">第二种分类</option>
+                                        <option value="3">第三种分类</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="btn btn-primary ecola-save" href="#">保存</a>
+                                <a href="#" class="help-inline ecola-cancel">取消</a>
+                                <a href="#" class="pull-right ecola-del">删除</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="span3">

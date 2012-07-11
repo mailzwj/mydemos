@@ -1,9 +1,6 @@
 body {
     margin: 0;
     padding-top: 60px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
     color: #666;
     background-color: #ededed;
 }
@@ -119,6 +116,10 @@ body {
     text-align: center;
 }
 
+.week-box {
+    position: relative;
+}
+
 .week-main {
     position: relative;
     height: 730px;
@@ -190,6 +191,16 @@ body {
 .fullalpha {
     background-color: #999;
     opacity: 1;
+    cursor: pointer;
+    -moz-transition: background-color .2s ease-in;
+    -webkit-transition: background-color .2s ease-in;
+    -o-transition: background-color .2s ease-in;
+    -ms-transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in;
+}
+
+.fullalpha:hover {
+    background-color: #aaa;
 }
 
 .uplayer h5,
