@@ -193,11 +193,70 @@ body {
 }
 
 .uplayer h5,
-.uplayer div{
+.uplayer div {
     padding: 3px 5px;
     color: #fff;
 }
 
 .uplayer div {
     text-indent: 24px;
+}
+
+.form-layer {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 500px;
+    left: 50px;
+    padding: 10px 15px;
+    width: 310px;
+    height: 196px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #ccc;
+    background-color: #fff;
+}
+
+.form-layer .form-arrow,
+.form-layer .form-arrow i {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 20px solid #ccc;
+    border-left: 0;
+    border-top:20px dotted transparent;
+    border-bottom: 20px dotted transparent;
+}
+.form-layer .form-arrow i {
+    left: 2px;
+    border-right-color: #fff;
+}
+
+.form-layer .ecola-log {
+    width: 300px;
+    height: 100px;
+}
+
+.form-layer .control-group {
+    padding-top: 10px;
+}
+
+.form-layer .control-label {
+    float: left;
+    text-align: left;
+    width: auto;
+}
+
+.form-layer .controls {
+    margin-left: auto;
+}
+
+.form-layer .ecola-del {
+    line-height: 29px;
+    color: #f00;
 }
