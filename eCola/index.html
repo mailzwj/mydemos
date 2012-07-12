@@ -57,7 +57,7 @@
                         <button class="btn" id="week-prev"><i class="icon-chevron-left"></i></button>
                         <button class="btn" id="week-next"><i class="icon-chevron-right"></i></button>
                     </div>
-                    <div class="pull-left date-from-to">
+                    <div class="pull-left date-from-to" id="date-from-to">
                         2012年07月02日 ~ 2012年07月08日
                     </div>
                     <div class="pull-left loading" id="loading">
@@ -93,6 +93,8 @@
                         <b class="form-arrow"><i></i></b>
                         <form class="form-horizontal ecalo-form" method="post" action="">
                             <input type="hidden" name="ecola-id" id="ecola-id" value="">
+                            <input type="hidden" name="ecola-date-start" id="ecola-date-start" value="">
+                            <input type="hidden" name="ecola-date-end" id="ecola-date-end" value="">
                             <textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea>
                             <div class="control-group">
                                 <label class="control-label">分类：</label>
@@ -133,6 +135,7 @@
     </div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="src/js/jquery.hashchange.js"></script>
 <script src="src/js/weekAction.js"></script>
 <script src="src/js/eCola.js"></script>
 </body>

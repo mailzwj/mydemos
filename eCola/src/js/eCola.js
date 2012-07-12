@@ -40,16 +40,26 @@ $(function(){
         callback && callback();
     }
 
+    function addZero(num){
+        double = num < 10 ? "0" + num : num;
+        return double;
+    }
+
     function updateWeekHeader(fd, callback){
         var wh = $(".week-day:eq(0)>li"),
-            firstDay = new Date(fd).getTime(),
+            wk_box = $("#date-from-to"),
+            firstDay = new Date(fd),
             wk = 7,
             dis_day = 24 * 60 * 60 * 1000,
+            lastDay = new Date(firstDay + wk * dis_day),
             weekday = ["一","二","三","四","五","六","日"];
         for(var i = 0; i < wk; i++){
-            var new_day = new Date(firstDay + i * dis_day);
+            var new_day = new Date(firstDay.getTime() + i * dis_day);
             wh.eq(i).html(new_day.getDate() + " / " + (new_day.getMonth() + 1) + "（" + weekday[i] + "）");
         }
+
+        wk_box.html(addZero(firstDay.getFullYear()) + "年" + addZero(firstDay.getMonth() + 1) + "月" + addZero(firstDay.getDate() + "日")
+            + " ~ " + addZero(lastDay.getFullYear()) + "年" + addZero(lastDay.getMonth() + 1) + "月" + addZero(lastDay.getDate()) + "日");
 
         callback && callback();
     }
@@ -87,8 +97,10 @@ $(function(){
         f.css("left", fl + "px")
             .css("top",ft + "px")
             .css("display", "block");
-        f.find("textarea").eq(0).val(d.children("div").eq(0).html()).focus();//由此继续
+        f.find("textarea").eq(0).val(d.children("div").eq(0).html()).focus();
         f.find("input[type='hidden']").eq(0).val(d.attr("id"));
+        f.find("input[type='hidden']").eq(1).val(d.attr("date-start"));
+        f.find("input[type='hidden']").eq(2).val(d.attr("date-end"));
         //console.log(fw);
     }
 
@@ -118,9 +130,14 @@ $(function(){
                     height = $(evt).height(),
                     left = (index_par * width + fcol.width() + diff.x) + 'px',
                     top = (index_clicked * (height + 1) + diff.y ) + "px";
+                var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
+                var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
+                var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
                 html = $('<div class="uplayer text-empty"></div>');
                 html.attr("id", "")
                     .attr("cat", "")
+                    .attr("date-start", datestart)
+                    .attr("date-end", dateend)
                     .css("left", left)
                     .css("top", top)
                     .css("width", width - diff.x + "px")
@@ -147,7 +164,12 @@ $(function(){
                         et = index_sub;
                     }
                     var s2e = getStartAndEnd(index_clicked, et);
-                    html.css("top", top + "px")
+                    var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
+                    var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
+                    var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
+                    html.attr("date-start", datestart)
+                        .attr("date-end", dateend)
+                        .css("top", top + "px")
                         .css("height", nh + "px");
                     $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
                 }
@@ -171,7 +193,8 @@ $(function(){
         });
     }
 
-    function pushDataToCol(index, arr, size, callback){
+    function pushDataToCol(index, val, size, callback){
+        var arr = val.log;
         var main = $(".week-main:eq(0)");
         var tc = $(".week-main:eq(0)>.col-time").eq(0);
         var fc = $('<div class="uplayer fullalpha"></div>');
@@ -190,6 +213,8 @@ $(function(){
             var node = fc.clone();
             $(node).attr("id", obj.id)
                 .attr("cat", obj.cat)
+                .attr("date-start", val.date.replace(/\//g, "-") + " " + obj.start + ":00")
+                .attr("date-end", val.date.replace(/\//g, "-") + " " + obj.end + ":00")
                 .css("left", pl + "px")
                 .css("top", pt + "px")
                 .css("width", (size.w - diff.x) + "px")
@@ -219,7 +244,7 @@ $(function(){
                 weekdays.each(function(j, node){
                     if($(node).attr("date") == new Date(val.date).getTime()){
                         var size = {"w":$(node).width(), "h":($(node).children(".time:eq(0)").height() + 1)}
-                        pushDataToCol(j, val.log, size, changeFormAction);  //将数据添加入对应列表
+                        pushDataToCol(j, val, size, changeFormAction);  //将数据添加入对应列表
                     }
                 });
             });
@@ -243,7 +268,7 @@ $(function(){
     var tw = getThisWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate());
     var cws = tw.weekStart;
     var g_hash = cws.replace(/\//g, "-"); //全局变量，存储当前hash值
-    var reg = /#(\d{4}-\d{2}-\d{2})/g;
+    var reg = /(\d{4}-\d{2}-\d{2})/g;
     var prev = $("#week-prev"), next = $("#week-next"), today = $("#today");
     if(reg.test(window.location.href)){
         g_hash = RegExp.$1;
@@ -253,54 +278,42 @@ $(function(){
     }
 
     $(".week-main").bind("selectstart",function(){return false;});
-    updateWeekHeader(g_hash.replace(/-/g, "/"));
-    createWeekTable(g_hash.replace(/-/g, "/"), function(){
-        initLayer();
-        if(includeToday(g_hash)){
-            addToday();
-        }else{
-            removeToday();
-        }
-    });
-    loadData(g_hash.replace(/-/g, "/"));
 
-    today.click(function(){
-        updateWeekHeader(cws.replace(/-/g, "/"));
-        createWeekTable(cws.replace(/-/g, "/"), function(){
-            initLayer();
-            if(includeToday(cws)){
-                addToday();
-            }else{
-                removeToday();
-            }
-        });
-        loadData(cws.replace(/-/g, "/"));
-        g_hash = cws.replace(/\//g, "-");
-        today.attr("disabled", true);
-        window.location.hash = "#" + g_hash;
-    });
-
-    $(window).bind("hashchange",function(){
-        var hs = window.location.hash;
-        if(reg.test(hs)){
-            g_hash = RegExp.$1;
-            RegExp.lastIndex = 0;
+    $(window).hashchange(function(){
+        var hs = window.location.href;
+        var hash = hs.match(reg);
+        if(hash && hash.length > 0){
+            g_hash = hash[0];
             updateWeekHeader(g_hash.replace(/-/g, "/"));
             createWeekTable(g_hash.replace(/-/g, "/"), function(){
                 initLayer();
                 if(includeToday(g_hash)){
                     addToday();
+                    today.attr("disabled", true);
                 }else{
                     removeToday();
+                    today.attr("disabled", false);
                 }
             });
-            loadData(g_hash.replace(/-/g, "/"));
+            loadData(g_hash);
         }
     });
-    if(includeToday(g_hash)){
-        today.attr("disabled", true);
-    }else{
-        today.attr("disabled", false);
-    }
+
+    today.click(function(){
+        g_hash = cws.replace(/\//g, "-");
+        window.location.hash = "#" + g_hash;
+    });
+
+    prev.click(function(){
+        var pf = new Date(new Date(g_hash).getTime() - 7 * 24 * 60 * 60 * 1000);
+        g_hash = pf.getFullYear() + "-" + addZero(pf.getMonth() + 1) + "-" + addZero(pf.getDate());
+        window.location.hash = "#" + g_hash;
+    });
+
+    next.click(function(){
+        var nf = new Date(new Date(g_hash).getTime() + 7 * 24 * 60 * 60 * 1000);
+        g_hash = nf.getFullYear() + "-" + addZero(nf.getMonth() + 1) + "-" + addZero(nf.getDate());
+        window.location.hash = "#" + g_hash;
+    });
     //console.log(getPreviousWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate()));
 });
