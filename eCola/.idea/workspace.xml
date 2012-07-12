@@ -22,19 +22,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="69" selection-start="4433" selection-end="4433" vertical-scroll-proportion="-13.0">
+            <state line="66" column="52" selection-start="2813" selection-end="2813" vertical-scroll-proportion="0.47466007">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="85" selection-start="9367" selection-end="9367" vertical-scroll-proportion="-2.1217184">
+            <state line="53" column="53" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -72,8 +72,8 @@
         <option value="$PROJECT_DIR$/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/src/js/weekAction.js" />
         <option value="$PROJECT_DIR$/src/js/jquery.hashchange.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/js/eCola.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -109,16 +109,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -139,19 +129,29 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="File.Encoding" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -260,28 +260,26 @@
         <state line="65" column="26" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.6849642" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/jquery.hashchange.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="11" selection-start="4273" selection-end="4273" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="139" column="29" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/jquery.hashchange.js">
+    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="11" selection-start="4273" selection-end="4273" vertical-scroll-proportion="0.0">
+        <state line="53" column="53" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="69" selection-start="4433" selection-end="4433" vertical-scroll-proportion="-13.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="85" selection-start="9367" selection-end="9367" vertical-scroll-proportion="-2.1217184">
+        <state line="66" column="52" selection-start="2813" selection-end="2813" vertical-scroll-proportion="0.47466007">
           <folding />
         </state>
       </provider>

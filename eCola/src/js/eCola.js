@@ -51,14 +51,14 @@ $(function(){
             firstDay = new Date(fd),
             wk = 7,
             dis_day = 24 * 60 * 60 * 1000,
-            lastDay = new Date(firstDay + wk * dis_day),
+            lastDay = new Date(firstDay.getTime() + (wk - 1) * dis_day),
             weekday = ["一","二","三","四","五","六","日"];
         for(var i = 0; i < wk; i++){
             var new_day = new Date(firstDay.getTime() + i * dis_day);
             wh.eq(i).html(new_day.getDate() + " / " + (new_day.getMonth() + 1) + "（" + weekday[i] + "）");
         }
 
-        wk_box.html(addZero(firstDay.getFullYear()) + "年" + addZero(firstDay.getMonth() + 1) + "月" + addZero(firstDay.getDate() + "日")
+        wk_box.html(addZero(firstDay.getFullYear()) + "年" + addZero(firstDay.getMonth() + 1) + "月" + addZero(firstDay.getDate()) + "日"
             + " ~ " + addZero(lastDay.getFullYear()) + "年" + addZero(lastDay.getMonth() + 1) + "月" + addZero(lastDay.getDate()) + "日");
 
         callback && callback();
