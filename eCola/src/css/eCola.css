@@ -85,19 +85,16 @@ body {
     color: #666;
 }
 
-.in-out {
-    padding-top: 30px;
+.nopad {
+    padding-left: 0;
+    margin-top: 15px;
 }
 
-.in-out li {
-    padding: 5px 0;
+.nopad .nav-header {
+    font-size: 14px;
 }
 
-.in-out li a {
-    text-decoration: none;
-}
-
-.in-out li p {
+.nopad li p {
     color: #999;
 }
 

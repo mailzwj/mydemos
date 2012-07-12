@@ -25,8 +25,10 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="52" selection-start="2813" selection-end="2813" vertical-scroll-proportion="0.47466007">
-              <folding />
+            <state line="150" column="63" selection-start="7111" selection-end="7111" vertical-scroll-proportion="0.88133496">
+              <folding>
+                <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -34,7 +36,16 @@
       <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="53" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0">
+            <state line="238" column="31" selection-start="10098" selection-end="10098" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data1.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajax/data1.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -52,7 +63,7 @@
       <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="139" column="29" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0">
+            <state line="89" column="21" selection-start="1495" selection-end="1495" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,11 +79,12 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ajax/data.json" />
-        <option value="$PROJECT_DIR$/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/src/js/weekAction.js" />
         <option value="$PROJECT_DIR$/src/js/jquery.hashchange.js" />
+        <option value="$PROJECT_DIR$/ajax/data.json" />
+        <option value="$PROJECT_DIR$/ajax/data1.json" />
         <option value="$PROJECT_DIR$/src/js/eCola.js" />
+        <option value="$PROJECT_DIR$/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -109,6 +121,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -127,14 +149,18 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ajax" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -147,6 +173,11 @@
     <property name="options.lastSelected" value="File.Encoding" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ys\myFile\myJs\etao\eCola\ajax" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -169,7 +200,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -257,7 +288,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax/data.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="26" selection-start="1744" selection-end="1744" vertical-scroll-proportion="0.6849642" />
+        <state line="5" column="33" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/data1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/jquery.hashchange.js">
@@ -265,22 +301,26 @@
         <state line="123" column="11" selection-start="4273" selection-end="4273" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="29" selection-start="2188" selection-end="2188" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="53" selection-start="1819" selection-end="1819" vertical-scroll-proportion="0.0">
+        <state line="238" column="31" selection-start="10098" selection-end="10098" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="21" selection-start="1495" selection-end="1495" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="52" selection-start="2813" selection-end="2813" vertical-scroll-proportion="0.47466007">
-          <folding />
+        <state line="150" column="63" selection-start="7111" selection-end="7111" vertical-scroll-proportion="0.88133496">
+          <folding>
+            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

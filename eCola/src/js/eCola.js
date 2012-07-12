@@ -194,7 +194,6 @@ $(function(){
     }
 
     function pushDataToCol(index, val, size, callback){
-        var arr = val.log;
         var main = $(".week-main:eq(0)");
         var tc = $(".week-main:eq(0)>.col-time").eq(0);
         var fc = $('<div class="uplayer fullalpha"></div>');
@@ -203,25 +202,23 @@ $(function(){
         var pl = tc.width() + index * parseInt(size.w) + diff.x;
         var pt = 0;
         var st = 0, et = 0, h = 0;
-        $(arr).each(function(num, obj){
-            var as = obj.start.split(":");
-            var ae = obj.end.split(":");
-            st = (as[0] * 60 * 60 + as[1] * 60) * 1000;
-            et = (ae[0] * 60 * 60 + ae[1] * 60) * 1000;
-            h = Math.abs(et / m30 - st / m30) * size.h;
-            pt = (st / m30) * size.h;
-            var node = fc.clone();
-            $(node).attr("id", obj.id)
-                .attr("cat", obj.cat)
-                .attr("date-start", val.date.replace(/\//g, "-") + " " + obj.start + ":00")
-                .attr("date-end", val.date.replace(/\//g, "-") + " " + obj.end + ":00")
-                .css("left", pl + "px")
-                .css("top", pt + "px")
-                .css("width", (size.w - diff.x) + "px")
-                .css("height", h + "px")
-                .html("<h5>" + obj.start + " ~ " + obj.end + "</h5><div title='" + obj.content + "'>" + obj.content + "</div>");
-            main.append($(node));
-        });
+        var as = val.start.split(":");
+        var ae = val.end.split(":");
+        st = (as[0] * 60 * 60 + as[1] * 60) * 1000;
+        et = (ae[0] * 60 * 60 + ae[1] * 60) * 1000;
+        h = Math.abs(et / m30 - st / m30) * size.h;
+        pt = (st / m30) * size.h;
+        var node = fc.clone();
+        $(node).attr("id", val.id)
+            .attr("cat", val.cat)
+            .attr("date-start", val.date.replace(/\//g, "-") + " " + val.start + ":00")
+            .attr("date-end", val.date.replace(/\//g, "-") + " " + val.end + ":00")
+            .css("left", pl + "px")
+            .css("top", pt + "px")
+            .css("width", (size.w - diff.x) + "px")
+            .css("height", h + "px")
+            .html("<h5>" + val.start + " ~ " + val.end + "</h5><div title='" + val.content + "'>" + val.content + "</div>");
+        main.append($(node));
 
         callback && callback();
     }
@@ -239,7 +236,7 @@ $(function(){
 
     function loadData(s){   //周startDate
         var weekdays = $(".week-main:eq(0)>.col");
-        $.getScript("ajax/data.json?s=" + s, function(){
+        $.getScript("ajax/data1.json?s=" + s, function(){
             $(json).each(function(i, val){
                 weekdays.each(function(j, node){
                     if($(node).attr("date") == new Date(val.date).getTime()){
