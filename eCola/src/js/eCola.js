@@ -82,7 +82,7 @@ $(function(){
         return val;
     }
 
-    function rePositionForm(dom){
+    function rePositionForm(dom, mth){
         var f = $("#form-layer"),
             w = $(".week-main:eq(0)"),
             d = $(dom),
@@ -93,14 +93,25 @@ $(function(){
             fw = f.outerWidth(),
             fh = f.outerHeight(),
             fl = dl + dw + 20,
-            ft = dt + (dh - fh) / 2 - w.scrollTop();
+            ft = dt + (dh - fh) / 2 - w.scrollTop(),
+            cat = d.attr("cat");
         f.css("left", fl + "px")
             .css("top",ft + "px")
             .css("display", "block");
+        if(cat == "" || cat == "null"){cat = 0;}
         f.find("textarea").eq(0).val(d.children("div").eq(0).html()).focus();
         f.find("input[type='hidden']").eq(0).val(d.attr("id"));
         f.find("input[type='hidden']").eq(1).val(d.attr("date-start"));
         f.find("input[type='hidden']").eq(2).val(d.attr("date-end"));
+        f.find("#ecola-cat option[value='" + cat + "']").attr("selected", true);
+        f.find(".ecola-del").eq(0).attr("href", "delete.php?id=" + d.attr("id"));
+        if(mth == "add"){
+            f.find(".ecola-save").eq(0).attr("href", "add.php");
+            f.find(".ecola-del").eq(0).css("display", "none");
+        }else if(mth == "update"){
+            f.find(".ecola-save").eq(0).attr("href", "update.php");
+            f.find(".ecola-del").eq(0).css("display", "block");
+        }
         //console.log(fw);
     }
 
@@ -178,7 +189,7 @@ $(function(){
         });
         $(document).mouseup(function(){
             if(html != "" && clicked){
-                rePositionForm(html);
+                rePositionForm(html, "add");
             }
             clicked = false;
         });
@@ -230,7 +241,7 @@ $(function(){
             if($(".week-main:eq(0) .text-empty").length > 0){
                 $(".week-main:eq(0) .text-empty").remove();
             }
-            rePositionForm(this);
+            rePositionForm(this, "update");
         });
     }
 
@@ -293,6 +304,9 @@ $(function(){
                 }
             });
             loadData(g_hash);
+        }else{
+            g_hash = cws.replace(/\//g, "-");
+            window.location.hash = "#" + g_hash;
         }
     });
 

@@ -241,8 +241,10 @@ body {
     line-height: 0;
     border: 20px solid #ccc;
     border-left: 0;
-    border-top:20px dotted transparent;
-    border-bottom: 20px dotted transparent;
+    border-top:20px solid transparent;
+    _border-top:20px dotted transparent;
+    border-bottom: 20px solid transparent;
+    _border-bottom: 20px dotted transparent;
 }
 .form-layer .form-arrow i {
     left: 2px;

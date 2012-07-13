@@ -25,10 +25,8 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="63" selection-start="7111" selection-end="7111" vertical-scroll-proportion="0.88133496">
-              <folding>
-                <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
-              </folding>
+            <state line="27" column="29" selection-start="974" selection-end="974" vertical-scroll-proportion="0.6229913">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -36,7 +34,7 @@
       <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="31" selection-start="10098" selection-end="10098" vertical-scroll-proportion="0.0">
+            <state line="100" column="36" selection-start="3757" selection-end="3757" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -51,19 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.hashchange.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/js/jquery.hashchange.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="11" selection-start="4273" selection-end="4273" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="21" selection-start="1495" selection-end="1495" vertical-scroll-proportion="0.0">
+            <state line="245" column="4" selection-start="4083" selection-end="4083" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,8 +72,8 @@
         <option value="$PROJECT_DIR$/src/js/jquery.hashchange.js" />
         <option value="$PROJECT_DIR$/ajax/data.json" />
         <option value="$PROJECT_DIR$/ajax/data1.json" />
-        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/src/css/eCola.css" />
+        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
@@ -149,20 +138,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eCola" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eCola" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ajax" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -171,8 +146,8 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="File.Encoding" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -200,7 +175,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -291,36 +266,34 @@
         <state line="5" column="33" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/data1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/jquery.hashchange.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="11" selection-start="4273" selection-end="4273" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
+    <entry file="file://$PROJECT_DIR$/ajax/data1.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="31" selection-start="10098" selection-end="10098" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="12" selection-start="12" selection-end="12" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="21" selection-start="1495" selection-end="1495" vertical-scroll-proportion="0.0">
+        <state line="245" column="4" selection-start="4083" selection-end="4083" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="36" selection-start="3757" selection-end="3757" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="63" selection-start="7111" selection-end="7111" vertical-scroll-proportion="0.88133496">
-          <folding>
-            <element signature="tag#div#0;tag#div#0;tag#body#0;tag#html#0" expanded="false" />
-          </folding>
+        <state line="27" column="29" selection-start="974" selection-end="974" vertical-scroll-proportion="0.6229913">
+          <folding />
         </state>
       </provider>
     </entry>
