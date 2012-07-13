@@ -221,7 +221,7 @@ $(function(){
         pt = (st / m30) * size.h;
         var node = fc.clone();
         $(node).attr("id", val.id)
-            .attr("cat", val.cat)
+            .attr("cat", (val.cat && val.cat != null) ? val.cat : 0)
             .attr("date-start", val.date.replace(/\//g, "-") + " " + val.start + ":00")
             .attr("date-end", val.date.replace(/\//g, "-") + " " + val.end + ":00")
             .css("left", pl + "px")
