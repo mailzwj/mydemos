@@ -68,11 +68,19 @@ body {
     color: #fff;
 }
 
+.main-log {
+    width: 990px;
+}
+
 .cal-body {
-    width: 870px;
+    width: 784px;
     border-radius: 5px;
     box-shadow: 0 0 10px #ccc;
     background-color: #fff;
+}
+
+.cal-right {
+    width: 175px;
 }
 
 .cal-header {
@@ -104,12 +112,12 @@ body {
 }
 
 .week-day {
-    padding: 0 16px 0 77px;
+    padding: 0 0 0 77px;
 }
 
 .week-day .pull-left {
     padding: 4px 0;
-    width: 111px;
+    width: 101px;
     text-align: center;
 }
 
@@ -119,7 +127,7 @@ body {
 
 .week-main {
     position: relative;
-    height: 730px;
+    height: 820px;
     border-top: 1px solid #b4b4b4;
     border-bottom: 1px solid #b4b4b4;
     border-bottom-left-radius: 5px;
@@ -130,7 +138,7 @@ body {
 
 .col, .col-time {
     float: left;
-    width: 110px;
+    width: 100px;
 }
 
 .today {
@@ -144,8 +152,8 @@ body {
 .col .time,
 .col-time .time{
     display: block;
-    height: 25px;
-    line-height: 25px;
+    height: 16px;
+    line-height: 16px;
     text-align: center;
     font-weight: bold;
     border-bottom: 1px dotted #ccc;
