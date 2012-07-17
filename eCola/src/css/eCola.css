@@ -112,12 +112,12 @@ body {
 }
 
 .week-day {
-    padding: 0 0 0 77px;
+    padding: 0 0 0 82px;
 }
 
 .week-day .pull-left {
     padding: 4px 0;
-    width: 101px;
+    width: 100px;
     text-align: center;
 }
 
@@ -155,11 +155,17 @@ body {
     height: 16px;
     line-height: 16px;
     text-align: center;
-    font-weight: bold;
+    /*font-weight: bold;*/
     border-bottom: 1px dotted #ccc;
-    border-right: 1px solid #efefef;
-    color: #999;
+    /*border-right: 1px solid #efefef;*/
+    border-right: 1px solid #eaeaea;
+    color: #aaa;
     cursor: pointer;
+}
+
+.col .worktime,
+.col-time .worktime{
+    background-color: #f6f6f6;
 }
 
 .col .time:hover {

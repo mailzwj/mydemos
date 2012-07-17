@@ -25,16 +25,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="26" selection-start="1850" selection-end="1858" vertical-scroll-proportion="-14.068966">
+            <state line="70" column="35" selection-start="2980" selection-end="2988" vertical-scroll-proportion="-17.37931">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="214" column="21" selection-start="9311" selection-end="9311" vertical-scroll-proportion="0.0">
+            <state line="27" column="54" selection-start="991" selection-end="991" vertical-scroll-proportion="-0.83054894">
               <folding />
             </state>
           </provider>
@@ -43,16 +43,16 @@
       <file leaf-file-name="data1.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax/data1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="17" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+            <state line="2" column="23" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="16" selection-start="1196" selection-end="1196" vertical-scroll-proportion="1.00369">
+            <state line="114" column="21" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,13 +68,13 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/js/weekAction.js" />
         <option value="$PROJECT_DIR$/src/js/jquery.hashchange.js" />
         <option value="$PROJECT_DIR$/ajax/data.json" />
-        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/ajax/data1.json" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/src/css/eCola.css" />
+        <option value="$PROJECT_DIR$/src/js/weekAction.js" />
       </list>
     </option>
   </component>
@@ -125,6 +125,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -180,7 +212,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11406156" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11406156" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -256,11 +288,6 @@
         <state line="27" column="26" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/weekAction.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="20" selection-start="3170" selection-end="3170" vertical-scroll-proportion="0.7995227" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ajax/data.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="33" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" />
@@ -273,26 +300,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ajax/data1.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="17" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0" />
+        <state line="2" column="23" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
+    <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="21" selection-start="9311" selection-end="9311" vertical-scroll-proportion="0.0">
+        <state line="114" column="21" selection-start="1733" selection-end="1733" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="26" selection-start="1850" selection-end="1858" vertical-scroll-proportion="-14.068966">
+        <state line="70" column="35" selection-start="2980" selection-end="2988" vertical-scroll-proportion="-17.37931">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
+    <entry file="file://$PROJECT_DIR$/src/js/weekAction.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="16" selection-start="1196" selection-end="1196" vertical-scroll-proportion="1.00369">
+        <state line="69" column="37" selection-start="3113" selection-end="3113" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="54" selection-start="991" selection-end="991" vertical-scroll-proportion="-0.83054894">
           <folding />
         </state>
       </provider>

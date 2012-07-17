@@ -22,13 +22,21 @@ $(function(){
         for(var i = 0; i < wk; i++){
             if(i == 0){
                 for(var j = 0; j < row; j++){
-                    col_span += '<span class="time">' + ((j > 12) ? (j - 12) : j) + '&nbsp;<b>' + (j < 12 ? 'am' : 'pm') + '</b></span><span class="time odd"></span>';
+                    if(j >= 9 && j < 18) {
+                        col_span += '<span class="time worktime">' + (j < 10 ? "0" + j : j) + ":00" + '</span><span class="time worktime odd"></span>';
+                    }else{
+                        col_span += '<span class="time">' + (j < 10 ? "0" + j : j) + ":00" + '</span><span class="time odd"></span>';
+                    }
                 }
                 col_span += "</div>";
             }else{
                 col_div += col_div_temp.replace("{x}", i - 1).replace("{date}", firstDay + dis_day * (i - 1));
                 for(var j = 0; j < row; j++){
-                    col_div += '<div class="time"></div><div class="time odd"></div>';
+                    if(j >= 9 && j < 18) {
+                        col_div += '<div class="time worktime"></div><div class="time worktime odd"></div>';
+                    }else{
+                        col_div += '<div class="time"></div><div class="time odd"></div>';
+                    }
                 }
                 col_div += "</div>";
             }
@@ -316,13 +324,13 @@ $(function(){
     });
 
     prev.click(function(){
-        var pf = new Date(new Date(g_hash).getTime() - 7 * 24 * 60 * 60 * 1000);
-        g_hash = pf.getFullYear() + "-" + addZero(pf.getMonth() + 1) + "-" + addZero(pf.getDate());
+        var pf = new Date(new Date(g_hash.replace(/-/g, "/")).getTime() - 7 * 24 * 60 * 60 * 1000);
+        g_hash = pf.getFullYear() + "-" + addZero(pf.getMonth() + 1) + "-" + addZero(pf.getDate())
         window.location.hash = "#" + g_hash;
     });
 
     next.click(function(){
-        var nf = new Date(new Date(g_hash).getTime() + 7 * 24 * 60 * 60 * 1000);
+        var nf = new Date(new Date(g_hash.replace(/-/g, "/")).getTime() + 7 * 24 * 60 * 60 * 1000);
         g_hash = nf.getFullYear() + "-" + addZero(nf.getMonth() + 1) + "-" + addZero(nf.getDate());
         window.location.hash = "#" + g_hash;
     });

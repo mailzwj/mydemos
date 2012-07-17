@@ -59,7 +59,7 @@ function getNextWeek(year,month,day){
 function addToday(){
     var now = new Date();
     var wd = now.getDay();
-    var nodes = $(".week-main:eq(0) .col");
+    var nodes = $(".week-day:eq(0) li");
     wd = wd == 0 ? 7 : wd;
     $(nodes[wd - 1]).addClass("today");
 }
@@ -67,7 +67,7 @@ function addToday(){
 function removeToday(){
     var now = new Date();
     var wd = now.getDay();
-    var nodes = $(".week-main:eq(0) .col");
+    var nodes = $(".week-day:eq(0) li");
     wd = wd == 0 ? 7 : wd;
     $(nodes[wd - 1]).removeClass("today");
 }
