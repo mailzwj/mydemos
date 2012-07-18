@@ -103,6 +103,11 @@ $(function(){
             fl = dl + dw + 20,
             ft = dt + (dh - fh) / 2 - w.scrollTop(),
             cat = d.attr("cat");
+        f.removeClass("outOfTheWindow");
+        if (fl + fw > $(window).width()){
+            fl -= (fw + dw + 40);
+            f.addClass("outOfTheWindow");
+        }
         f.css("left", fl + "px")
             .css("top",ft + "px")
             .css("display", "block");

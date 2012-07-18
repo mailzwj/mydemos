@@ -142,7 +142,7 @@ body {
 }
 
 .today {
-    background-color: #efefef;
+    background-color: #cfefff;
 }
 
 .time-line {
@@ -165,7 +165,7 @@ body {
 
 .col .worktime,
 .col-time .worktime{
-    background-color: #f6f6f6;
+    background-color: #e7f7ff;
 }
 
 .col .time:hover {
@@ -260,9 +260,22 @@ body {
     border-bottom: 20px solid transparent;
     _border-bottom: 20px dotted transparent;
 }
+
+.outOfTheWindow .form-arrow, .outOfTheWindow .form-arrow i {
+    left: auto;
+    right: -20px;
+    border-left: 20px solid #ccc;
+    border-right: 0;
+}
+
 .form-layer .form-arrow i {
-    left: 2px;
+    left: 1px;
     border-right-color: #fff;
+}
+
+.outOfTheWindow .form-arrow i {
+    left: -21px;
+    border-left-color: #fff;
 }
 
 .form-layer .ecola-log {
