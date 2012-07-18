@@ -34,7 +34,7 @@
       <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="40" selection-start="4071" selection-end="4071" vertical-scroll-proportion="3.00716">
+            <state line="184" column="86" selection-start="8068" selection-end="8068" vertical-scroll-proportion="0.3150358">
               <folding />
             </state>
           </provider>
@@ -73,8 +73,8 @@
         <option value="$PROJECT_DIR$/ajax/data1.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/js/weekAction.js" />
-        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/src/css/eCola.css" />
+        <option value="$PROJECT_DIR$/src/js/eCola.js" />
       </list>
     </option>
   </component>
@@ -110,16 +110,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -172,14 +162,24 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="File.Encoding" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -315,14 +315,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="29" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="144" column="29" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="40" selection-start="4071" selection-end="4071" vertical-scroll-proportion="3.00716">
+        <state line="184" column="86" selection-start="8068" selection-end="8068" vertical-scroll-proportion="0.3150358">
           <folding />
         </state>
       </provider>

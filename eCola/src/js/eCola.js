@@ -182,7 +182,7 @@ $(function(){
                         top += cha * ($(evt).height() + 1);
                         nh = oh + Math.abs(cha) * ($(evt).height() + 1);
                         index_clicked = index_sub;
-                        et = Math.floor(oh / ($(evt).height() + 1)) + index_clicked + 1;
+                        et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
                     }else if(cha > 0){
                         nh = (cha + 1) * ($(evt).height() + 1);
                         et = index_sub;
