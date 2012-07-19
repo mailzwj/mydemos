@@ -6,6 +6,9 @@
  */
 
 $(function(){
+
+    var html = '';//全局
+
     /*
      * fd: first day in this week
      * callback: a function witch initial at the end of this function
@@ -117,14 +120,63 @@ $(function(){
         f.find("input[type='hidden']").eq(1).val(d.attr("date-start"));
         f.find("input[type='hidden']").eq(2).val(d.attr("date-end"));
         f.find("#ecola-cat option[value='" + cat + "']").attr("selected", true);
-        f.find(".ecola-del").eq(0).attr("href", "delete.php?id=" + d.attr("id"));
+        f.find(".ecola-del").eq(0).attr("href", "ajax/delete.php?id=" + d.attr("id"));
         if(mth == "add"){
-            f.find(".ecola-save").eq(0).attr("href", "add.php");
+            f.find(".ecola-save").eq(0).attr("href", "ajax/add.php");//新增日志入口
             f.find(".ecola-del").eq(0).css("display", "none");
         }else if(mth == "update"){
-            f.find(".ecola-save").eq(0).attr("href", "update.php");
+            f.find(".ecola-save").eq(0).attr("href", "ajax/update.php");//修改日志入口
             f.find(".ecola-del").eq(0).css("display", "block");
         }
+
+        f.find(".ecola-save").eq(0).unbind("click");
+        f.find(".ecola-del").eq(0).unbind("click");
+        f.find(".ecola-save").eq(0).bind("click", function(){
+            var url = $(this).attr("href");
+            var param = {};
+            param.content = f.find("textarea").eq(0).val();
+            param.id = f.find("input[type='hidden']").eq(0).val();
+            param.start_at = f.find("input[type='hidden']").eq(1).val();
+            param.end_at = f.find("input[type='hidden']").eq(2).val();
+            param.cat = $("#ecola-cat").val();
+            //console.log(param);
+            //saveData(d, url, param, mth);//日志节点，后台接口地址，url参数，操作类型
+            $.post(url, param, function(data){
+                var json = $.parseJSON(data);
+                if(json.status == "success"){
+                    d.children("div").eq(0).html(param.content);
+                    d.attr("id", json.id)
+                     .attr("cat", json.cat)
+                     .removeClass("text-empty")
+                     .addClass("fullalpha")
+                    $("#form-layer").css("display", "none");
+                    html = '';
+                    changeFormAction();
+                }else{
+                    alert("日志保存失败了，休息一会儿再来吧！");
+                }
+            });
+            return false;
+        });
+
+        f.find(".ecola-del").eq(0).bind("click", function(){
+            var url = $(this).attr("href");
+            var flag = confirm("日志一经删除无法恢复，确定删除该条日志吗？");
+            if(flag){
+                $.post(url, function(data){
+                    var json = $.parseJSON(data);
+                    if(json.status == "success"){
+                        $("#form-layer").css("display", "none");
+                        alert("日志删除成功");
+                        d.remove();
+                    }else{
+                        alert("删除失败了，请稍后重试");
+                    }
+                });
+            }
+
+            return false;
+        });
         //console.log(fw);
     }
 
@@ -134,7 +186,6 @@ $(function(){
         var fcol = $(".week-main:eq(0)>.col-time").eq(0), diff = {"x":3,"y":0};
         var clicked = false;
         var index_clicked = '';
-        var html = '';
         var index = '';
         var text = "";
         weekdays.each(function(i, eles){
@@ -339,5 +390,4 @@ $(function(){
         g_hash = nf.getFullYear() + "-" + addZero(nf.getMonth() + 1) + "-" + addZero(nf.getDate());
         window.location.hash = "#" + g_hash;
     });
-    //console.log(getPreviousWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate()));
 });
