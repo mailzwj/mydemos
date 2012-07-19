@@ -136,9 +136,9 @@ $(function(){
             var param = {};
             param.content = f.find("textarea").eq(0).val();
             param.id = f.find("input[type='hidden']").eq(0).val();
-            param.start_at = f.find("input[type='hidden']").eq(1).val();
+            param.begin_at = f.find("input[type='hidden']").eq(1).val();
             param.end_at = f.find("input[type='hidden']").eq(2).val();
-            param.cat = $("#ecola-cat").val();
+            param.logtype = $("#ecola-cat").val();
             //console.log(param);
             //saveData(d, url, param, mth);//日志节点，后台接口地址，url参数，操作类型
             $.post(url, param, function(data){
@@ -167,7 +167,7 @@ $(function(){
                     var json = $.parseJSON(data);
                     if(json.status == "success"){
                         $("#form-layer").css("display", "none");
-                        alert("日志删除成功");
+                        //alert("日志删除成功");
                         d.remove();
                     }else{
                         alert("删除失败了，请稍后重试");
