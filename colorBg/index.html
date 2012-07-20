@@ -47,12 +47,18 @@
 <script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
 <script>
 (function(S){
-    var D = S.DOM, E = S.Event;
+    var D = S.DOM, E = S.Event, index = -1, as = [];
 
-    S.all("#menu a").on("mouseenter", function(){
-        D.css(this, "background-color", "#66a7e1");
-    }).on("mouseleave", function(){
-        new S.Anim(this, {"backgroundColor":"#f8f9fd"}, 0.5, "easeOut", function(){}).run();
+    S.all("#menu a").on("mouseover", function(){
+		var _this = this;
+		index = S.indexOf(_this, S.all("#menu a"));
+		if(as[index] && as[index].isRunning(_this)){
+			as[index].stop(false);
+		}
+        D.css(_this, "background-color", "#66a7e1");
+    }).on("mouseout", function(){
+        as[index] = new S.Anim(this, {"backgroundColor":"#f8f9fd"}, 0.5, "easeOut", function(){});
+		as[index].run();
     });
 })(KISSY);
 </script>
