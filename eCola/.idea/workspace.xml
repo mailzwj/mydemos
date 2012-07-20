@@ -25,7 +25,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="35" selection-start="2980" selection-end="2988" vertical-scroll-proportion="-0.82758623">
+            <state line="9" column="52" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -34,7 +34,7 @@
       <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="169" column="26" selection-start="6929" selection-end="6929" vertical-scroll-proportion="0.5155131">
+            <state line="146" column="33" selection-start="6033" selection-end="6033" vertical-scroll-proportion="4.181384">
               <folding />
             </state>
           </provider>
@@ -75,9 +75,9 @@
         <option value="$PROJECT_DIR$/src/js/weekAction.js" />
         <option value="$PROJECT_DIR$/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/ajax/delete.php" />
-        <option value="$PROJECT_DIR$/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/ajax/add.php" />
         <option value="$PROJECT_DIR$/ajax/update.php" />
+        <option value="$PROJECT_DIR$/src/js/eCola.js" />
       </list>
     </option>
   </component>
@@ -149,8 +149,8 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="File.Encoding" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -183,7 +183,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11345806" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11345806" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -274,9 +274,19 @@
         <state line="2" column="46" selection-start="76" selection-end="76" vertical-scroll-proportion="0.057279237" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/add.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="29" selection-start="62" selection-end="62" vertical-scroll-proportion="0.057279237" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="32" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08591885" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="35" selection-start="2980" selection-end="2988" vertical-scroll-proportion="-0.82758623">
+        <state line="9" column="52" selection-start="355" selection-end="355" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -291,23 +301,9 @@
         <state line="144" column="29" selection-start="2234" selection-end="2234" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/add.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="29" selection-start="62" selection-end="62" vertical-scroll-proportion="0.057279237">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/update.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="32" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08591885">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="169" column="26" selection-start="6929" selection-end="6929" vertical-scroll-proportion="0.5155131">
+        <state line="146" column="33" selection-start="6033" selection-end="6033" vertical-scroll-proportion="4.181384">
           <folding />
         </state>
       </provider>

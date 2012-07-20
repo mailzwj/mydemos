@@ -120,12 +120,12 @@ $(function(){
         f.find("input[type='hidden']").eq(1).val(d.attr("date-start"));
         f.find("input[type='hidden']").eq(2).val(d.attr("date-end"));
         f.find("#ecola-cat option[value='" + cat + "']").attr("selected", true);
-        f.find(".ecola-del").eq(0).attr("href", "ajax/delete.php?id=" + d.attr("id"));
+        f.find(".ecola-del").eq(0).attr("href","worklogs/" + d.attr("id") + ".json");
         if(mth == "add"){
-            f.find(".ecola-save").eq(0).attr("href", "ajax/add.php");//新增日志入口
+            f.find(".ecola-save").eq(0).attr("href", "worklogs.json");//新增日志入口
             f.find(".ecola-del").eq(0).css("display", "none");
         }else if(mth == "update"){
-            f.find(".ecola-save").eq(0).attr("href", "ajax/update.php");//修改日志入口
+            f.find(".ecola-save").eq(0).attr("href", "worklogs/" + d.attr("id") + ".json");//修改日志入口
             f.find(".ecola-del").eq(0).css("display", "block");
         }
 
@@ -133,27 +133,40 @@ $(function(){
         f.find(".ecola-del").eq(0).unbind("click");
         f.find(".ecola-save").eq(0).bind("click", function(){
             var url = $(this).attr("href");
-            var param = {};
+            var param = {}, postData = {};
             param.content = f.find("textarea").eq(0).val();
             param.id = f.find("input[type='hidden']").eq(0).val();
             param.begin_at = f.find("input[type='hidden']").eq(1).val();
             param.end_at = f.find("input[type='hidden']").eq(2).val();
-            param.logtype = $("#ecola-cat").val();
+            param.logtype_id = parseInt($("#ecola-cat").val());
+			postData.worklog = param;
+			postData.authenticity_token = $('meta[name="csrf-token"]').eq(0).attr('content');
+            if(mth == "update"){
+                postData._method = "put";
+            }
             //console.log(param);
-            //saveData(d, url, param, mth);//日志节点，后台接口地址，url参数，操作类型
-            $.post(url, param, function(data){
-                var json = $.parseJSON(data);
-                if(json.status == "success"){
-                    d.children("div").eq(0).html(param.content);
-                    d.attr("id", json.id)
-                     .attr("cat", json.cat)
-                     .removeClass("text-empty")
-                     .addClass("fullalpha")
-                    $("#form-layer").css("display", "none");
-                    html = '';
-                    changeFormAction();
-                }else{
-                    alert("日志保存失败了，休息一会儿再来吧！");
+            //saveData(d, url, {"worklogs": param}, mth);//日志节点，后台接口地址，url参数，操作类型
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: postData,
+                /*beforeSend: function(xhr) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                },*/
+                success: function(data){
+                    var json = data;
+                    if(json.status == "success"){
+                        d.children("div").eq(0).html(param.content);
+                        d.attr("id", json.id)
+                         .attr("cat", json.cat)
+                         .removeClass("text-empty")
+                         .addClass("fullalpha")
+                        $("#form-layer").css("display", "none");
+                        html = '';
+                        changeFormAction();
+                    }else{
+                        alert("日志保存失败了，休息一会儿再来吧！");
+                    }
                 }
             });
             return false;
@@ -163,8 +176,8 @@ $(function(){
             var url = $(this).attr("href");
             var flag = confirm("日志一经删除无法恢复，确定删除该条日志吗？");
             if(flag){
-                $.post(url, function(data){
-                    var json = $.parseJSON(data);
+                $.post(url, {"_method":"delete"}, function(data){
+                    var json = data;
                     if(json.status == "success"){
                         $("#form-layer").css("display", "none");
                         //alert("日志删除成功");
@@ -311,7 +324,7 @@ $(function(){
 
     function loadData(s){   //周startDate
         var weekdays = $(".week-main:eq(0)>.col");
-        $.getScript("ajax/data1.json?s=" + s, function(){
+        $.getScript("worklogs.json?s=" + new Date(s.replace(/-/g, "/")).getTime(), function(){
             $(json).each(function(i, val){
                 weekdays.each(function(j, node){
                     if($(node).attr("date") == new Date(val.date).getTime()){
