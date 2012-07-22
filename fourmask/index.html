@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KISSY FourMask</title>
+    <style>
+        .small, .middle, .big {
+            position: relative;
+            margin: 10px auto 0;
+            text-align: center;
+            font-family: "微软雅黑",Arial;
+            color: #666;
+            text-shadow: 1px 1px 3px #000;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .small {
+            width: 200px;
+            height: 200px;
+            font-size: 60px;
+            line-height: 200px;
+        }
+        .middle {
+            width: 269px;
+            height: 180px;
+            font-size: 70px;
+            line-height: 180px;
+        }
+        .big {
+            width: 400px;
+            height: 400px;
+            font-size: 200px;
+            line-height: 400px;
+        }
+        .masker {
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 0;
+            background-color: #ccc;
+            opacity: 0.6;
+            filter: Alpha(opacity=60);
+        }
+    </style>
+</head>
+<body>
+<div class="Y_mask small">
+    <span>small</span>
+</div>
+<div class="Y_mask middle">
+    <span>middle</span>
+</div>
+<div class="Y_mask big">
+    <span>big</span>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+KISSY.add("fourmask", function(S){
+    var D = S.DOM, E = S.Event;
+    function FourMask(config){
+        this.eles = D.query(config.nodes);
+        this.easeing = config.easeing;
+        this.init();
+    }
+    FourMask.prototype = {
+        createMask: function(n){
+            var tmp = D.create('<span class="masker"></span>');
+            var nw = D.width(n), nh = D.height(n);
+            for(var i = 0; i < 4; i++){
+                var m = D.clone(tmp);
+                D.css(m, "left", 2 * (i % 2) * nw - nw);
+                D.css(m, "top", 2 * Math.floor(i / 2) * nh - nh);
+                D.css(m, "width", Math.ceil(nw / 2));
+                D.css(m, "height", Math.ceil(nh / 2));
+                D.append(m, n);
+            }
+        },
+        showMask: function(n){
+            var _this = this;
+            var nw = D.width(n), nh = D.height(n);
+            var nodes = D.query('.masker', n);
+            S.each(nodes, function(ele){
+                var i = S.indexOf(ele, nodes);
+                if(ele.isRuning){
+                    ele.stop();
+                }
+                new S.Anim(ele, {
+                    "left": (i % 2) * Math.ceil(nw / 2),
+                    "top": Math.floor(i / 2) * Math.ceil(nh / 2)
+                }, 0.5, _this.easing, function(){}).run();
+            });
+        },
+        hideMask: function(n){
+            var _this = this;
+            var nw = D.width(n), nh = D.height(n);
+            var nodes = D.query('.masker', n);
+            S.each(nodes, function(ele){
+                var i = S.indexOf(ele, nodes);
+                if(ele.isRuning){
+                    ele.stop();
+                }
+                new S.Anim(ele, {
+                    "left": 2 * (i % 2) * nw - nw,
+                    "top": 2 * Math.floor(i / 2) * nh - nh
+                }, 0.5, _this.easing, function(){}).run();
+            });
+        },
+        init: function(){
+            var _this = this;
+            S.each(_this.eles, function(ele){
+                _this.createMask(ele);
+            });
+            E.on(_this.eles, "mouseenter", function(){
+                _this.showMask(this);
+            });
+            E.on(_this.eles, "mouseleave", function(){
+                _this.hideMask(this);
+            });
+        }
+    };
+    S.FourMask = FourMask;
+});
+KISSY.use("fourmask", function(S){
+    new KISSY.FourMask({
+        nodes:".Y_mask",
+        easing:"easeBoth"
+    });
+});
+</script>
+</body>
+</html>
