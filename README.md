@@ -9,3 +9,5 @@
 4.基于KISSY的背景渐变特效`colorBg`
 
 5.基于KISSY的四角遮罩特效`fourmask`
+
+6.基于KISSY的标签提示效果`toolTips`
