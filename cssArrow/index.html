@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Arrow</title>
+    <link rel="stylesheet" href="arrow.css">
+</head>
+<body>
+<h1 class="page-title">CSS制作的带箭头的标签</h1>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark">
+            <b class="arrow"><i></i></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark .arrow, .mark .arrow i {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -10px;
+    border-top: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    _border-left-style: dotted;
+    _border-right-style: dotted;
+}
+.mark .arrow i {
+    top: 1px;
+    border-bottom-color: #fff;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;i&gt;&lt;/i&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark-left">
+            <b class="arrow"><i></i></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark-left .arrow, .mark-left .arrow i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-right: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+.mark-left .arrow i {
+    left: -9px;
+    top: -8px;
+    border-left-color: #fff;
+    border-bottom: 10px solid #fff;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;i&gt;&lt;/i&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark-right">
+            <b class="arrow"><i></i></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark-right .arrow, .mark-right .arrow i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-left: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+.mark-right .arrow i {
+    right: -9px;
+    top: -8px;
+    border-right-color: #fff;
+    border-bottom: 10px solid #fff;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;i&gt;&lt;/i&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark">
+            <b class="arrow"></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark .arrow {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -10px;
+    border-top: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    _border-left-style: dotted;
+    _border-right-style: dotted;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark-left">
+            <b class="arrow"></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark-left .arrow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-right: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+<div class="row clearfix">
+    <div class="demo fl">
+        <div class="mark-right">
+            <b class="arrow"></b>
+            <div class="content">
+                CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+            </div>
+        </div>
+    </div>
+    <div class="css fl">
+        <pre>
+.arrow {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark-right .arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-left: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}</pre>
+    </div>
+    <div class="html fl">
+        <pre>
+&lt;div class="mark"&gt;
+    &lt;b class="arrow"&gt;&lt;/b&gt;
+    &lt;div class="content"&gt;
+        CSS制作的带箭头的标签，改变边框尺寸，还能得到各种形状的箭头哦
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+</div>
+</body>
+</html>

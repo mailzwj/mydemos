@@ -11,3 +11,5 @@
 5.基于KISSY的四角遮罩特效`fourmask`
 
 6.基于KISSY的标签提示效果`toolTips`
+
+7.CSS制作带箭头的标签`cssArrow`
