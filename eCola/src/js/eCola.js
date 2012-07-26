@@ -270,15 +270,6 @@ $(function(){
             }
             clicked = false;
         });
-
-        $("#form-layer .ecola-cancel").eq(0).click(function(){
-            var form = $("#form-layer");
-            if(html != ''){
-                $(html).remove();
-            }
-            form.css("display", "none");
-            return false;
-        });
     }
 
     function pushDataToCol(index, val, size, callback){
@@ -364,6 +355,15 @@ $(function(){
 
     $(".week-main").bind("selectstart",function(){return false;});
 
+    /*设置初始周列表窗口高度*/
+    var wh = $(window).height();
+    $(".week-main").eq(0).css("height", wh - 185);  // 185 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 38(ecola-foot) + 3(预留)
+
+    $(window).resize(function(){
+        wh = $(window).height();
+        $(".week-main").eq(0).css("height", wh - 185);
+    });
+
     $(window).hashchange(function(){
         var hs = window.location.href;
         var hash = hs.match(reg);
@@ -384,6 +384,31 @@ $(function(){
         }else{
             g_hash = cws.replace(/\//g, "-");
             window.location.hash = "#" + g_hash;
+        }
+    });
+
+    $("#form-layer .ecola-cancel").eq(0).click(function(){
+        var form = $("#form-layer");
+        if(html != ''){
+            $(html).remove();
+        }
+        form.css("display", "none");
+        return false;
+    });
+
+    $(document).click(function(e){
+        var evt = $(e.target);
+        var formhide = false;
+        while(evt.get(0).tagName != "BODY"){
+            console.log(evt.get(0).tagName)
+            if(evt.get(0).id == "form-layer"){
+                formhide = true;
+                break;
+            }
+            evt = $(evt).parent();
+        }
+        if(!formhide){
+            $("#form-layer .ecola-cancel").eq(0).trigger("click");
         }
     });
 

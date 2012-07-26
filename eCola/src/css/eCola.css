@@ -2,14 +2,14 @@ body {
     margin: 0;
     padding-top: 60px;
     color: #666;
-    background-color: #ededed;
+    /*background-color: #ededed;*/
 }
 
 .has-margin {
     margin-left: 5px;
 }
 
-.navbar .brand {
+/*.navbar .brand {
     display: block;
     float: left;
     padding: 8px 20px 12px;
@@ -40,7 +40,7 @@ body {
     height: 40px;
     line-height: 40px;
     color: white;
-}
+}*/
 
 .user-action .ac-list,
 .user-action .ac-list li,
@@ -73,14 +73,14 @@ body {
 }
 
 .cal-body {
-    width: 784px;
+    width: 800px;
     border-radius: 5px;
     box-shadow: 0 0 10px #ccc;
     background-color: #fff;
 }
 
 .cal-right {
-    width: 175px;
+    width: 159px;
 }
 
 .cal-header {
@@ -127,7 +127,7 @@ body {
 
 .week-main {
     position: relative;
-    height: 820px;
+    height: 420px;
     border-top: 1px solid #b4b4b4;
     border-bottom: 1px solid #b4b4b4;
     border-bottom-left-radius: 5px;
@@ -152,8 +152,8 @@ body {
 .col .time,
 .col-time .time{
     display: block;
-    height: 16px;
-    line-height: 16px;
+    height: 24px;
+    line-height: 24px;
     text-align: center;
     /*font-weight: bold;*/
     border-bottom: 1px dotted #ccc;
@@ -161,11 +161,13 @@ body {
     border-right: 1px solid #eaeaea;
     color: #aaa;
     cursor: pointer;
+    background-color: #f6f6f6;
 }
 
 .col .worktime,
 .col-time .worktime{
-    background-color: #e7f7ff;
+    /*background-color: #e7f7ff;*/
+    background-color: #fff;
 }
 
 .col .time:hover {
