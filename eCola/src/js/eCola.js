@@ -60,17 +60,20 @@ $(function(){
         var line = $("#nowTimeLine");
         var line_p = $(".week-main:eq(0)");
         var h_p = line_p.children(".time-line").eq(0).height();
-        var line_w = line_p.width() - $(".week-main:eq(0) .time-line").eq(0).width() - 20;
+        var line_w = line_p.children(".col").eq(0).width();
         var line_left = $(".week-main:eq(0) .time-line").eq(0).width();
         var timecount = 24 * 60 * 60 * 1000;
         var nowcount = new Date();
+        var day = nowcount.getDay() == 0 ? 7 : nowcount.getDay();
         var daycount = new Date(nowcount.getFullYear() + "/" + addZero(nowcount.getMonth() + 1) + "/" + addZero(nowcount.getDate()));
         var percent = (nowcount.getTime() - daycount.getTime()) / timecount;
-        var line_top = Math.floor(h_p * percent);
+        var line_top = Math.floor(h_p * percent) - 1;
+        day -= 1;
+        line_left += day * line_p.children(".col").eq(0).outerWidth();
         line.css("left", line_left)
             .css("top", line_top)
             .css("width", line_w);
-        setTimeout(function(){setTimeLine();}, 60000);
+        setTimeout(function(){setNowTimeLine();}, 60000);
     }
 
     function updateWeekHeader(fd, callback){
@@ -156,8 +159,8 @@ $(function(){
             param.begin_at = f.find("input[type='hidden']").eq(1).val();
             param.end_at = f.find("input[type='hidden']").eq(2).val();
             param.logtype_id = parseInt($("#ecola-cat").val());
-			postData.worklog = param;
-			postData.authenticity_token = $('meta[name="csrf-token"]').eq(0).attr('content');
+            postData.worklog = param;
+            postData.authenticity_token = $('meta[name="csrf-token"]').eq(0).attr('content');
             if(mth == "update"){
                 postData._method = "put";
             }
@@ -168,16 +171,16 @@ $(function(){
                 url: url,
                 data: postData,
                 /*beforeSend: function(xhr) {
-                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                },*/
+                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                 },*/
                 success: function(data){
                     var json = data;
                     if(json.status == "success"){
                         d.children("div").eq(0).html(param.content);
                         d.attr("id", json.id)
-                         .attr("cat", json.cat)
-                         .removeClass("text-empty")
-                         .addClass("fullalpha")
+                            .attr("cat", json.cat)
+                            .removeClass("text-empty")
+                            .addClass("fullalpha")
                         $("#form-layer").css("display", "none");
                         html = '';
                         changeFormAction();
@@ -250,36 +253,36 @@ $(function(){
                     .html("<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><div title='" + text + "'>" + text + "</div>");
                 wm.append(html);
             }).mouseover(function(e){
-                if(clicked && index == $.inArray(eles, weekdays)){
-                    var evt = e.target,
-                        hours = $(this).children(".time"),
-                        index_sub = $.inArray(evt, hours),
-                        cha = index_sub - index_clicked;
-                    var oh = $(html).height(),
-                        nh = oh,
-                        et = index_sub,
-                        top = parseInt(html.css("top"));
-                    if(cha < 0){
-                        top += cha * ($(evt).height() + 1);
-                        nh = oh + 2 + Math.abs(cha) * ($(evt).height() + 1);
-                        index_clicked = index_sub;
-                        et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
-                    }else if(cha > 0){
-                        nh = (cha + 1) * ($(evt).height() + 1);
-                        et = index_sub;
+                    if(clicked && index == $.inArray(eles, weekdays)){
+                        var evt = e.target,
+                            hours = $(this).children(".time"),
+                            index_sub = $.inArray(evt, hours),
+                            cha = index_sub - index_clicked;
+                        var oh = $(html).height(),
+                            nh = oh,
+                            et = index_sub,
+                            top = parseInt(html.css("top"));
+                        if(cha < 0){
+                            top += cha * ($(evt).height() + 1);
+                            nh = oh + 2 + Math.abs(cha) * ($(evt).height() + 1);
+                            index_clicked = index_sub;
+                            et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
+                        }else if(cha > 0){
+                            nh = (cha + 1) * ($(evt).height() + 1);
+                            et = index_sub;
+                        }
+                        var s2e = getStartAndEnd(index_clicked, et);
+                        var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
+                        var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
+                        var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
+                        html.attr("date-start", datestart)
+                            .attr("date-end", dateend)
+                            .css("top", top + "px")
+                            .css("height", nh - 2 + "px");
+                        $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
                     }
-                    var s2e = getStartAndEnd(index_clicked, et);
-                    var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
-                    var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
-                    var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
-                    html.attr("date-start", datestart)
-                        .attr("date-end", dateend)
-                        .css("top", top + "px")
-                        .css("height", nh - 2 + "px");
-                    $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
-                }
-                return false;
-            });
+                    return false;
+                });
         });
         $(document).mouseup(function(){
             if(html != "" && clicked){

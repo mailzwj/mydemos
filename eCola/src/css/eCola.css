@@ -324,8 +324,8 @@
 .nowtimeline {
     position: absolute;
     z-index: 9999;
-    height: 1px;
+    height: 2px;
     line-height: 0;
     font-size: 0;
-    background-color: #f00;
+    background-color: #FF7F6E;
 }
