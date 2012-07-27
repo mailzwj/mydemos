@@ -229,10 +229,10 @@ $(function(){
                     .css("left", left)
                     .css("top", top)
                     .css("width", width - diff.x + "px")
-                    .css("height", height + "px")
+                    .css("height", height - 2 + "px")
                     .html("<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><div title='" + text + "'>" + text + "</div>");
                 wm.append(html);
-            }).mousemove(function(e){
+            }).mouseover(function(e){
                 if(clicked && index == $.inArray(eles, weekdays)){
                     var evt = e.target,
                         hours = $(this).children(".time"),
@@ -244,7 +244,7 @@ $(function(){
                         top = parseInt(html.css("top"));
                     if(cha < 0){
                         top += cha * ($(evt).height() + 1);
-                        nh = oh + Math.abs(cha) * ($(evt).height() + 1);
+                        nh = oh + 2 + Math.abs(cha) * ($(evt).height() + 1);
                         index_clicked = index_sub;
                         et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
                     }else if(cha > 0){
