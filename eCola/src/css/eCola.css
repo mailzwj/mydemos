@@ -306,7 +306,17 @@
     margin-left: auto;
 }
 
+.form-layer .ecola-cancel {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
 .form-layer .ecola-del {
-    line-height: 29px;
-    color: #f00;
+    /*line-height: 29px;
+    color: #f00;*/
+    margin-left: 15px;
 }
