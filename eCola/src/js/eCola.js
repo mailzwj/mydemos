@@ -258,7 +258,7 @@ $(function(){
                     html.attr("date-start", datestart)
                         .attr("date-end", dateend)
                         .css("top", top + "px")
-                        .css("height", nh + "px");
+                        .css("height", nh - 2 + "px");
                     $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
                 }
                 return false;
@@ -295,7 +295,7 @@ $(function(){
             .css("left", pl + "px")
             .css("top", pt + "px")
             .css("width", (size.w - diff.x) + "px")
-            .css("height", h + "px")
+            .css("height", h - 2 + "px")
             .html("<h5>" + val.start + " ~ " + val.end + "</h5><div title='" + val.content + "'>" + val.content + "</div>");
         main.append($(node));
 
@@ -344,6 +344,7 @@ $(function(){
     var tw = getThisWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate());
     var cws = tw.weekStart;
     var g_hash = cws.replace(/\//g, "-"); //全局变量，存储当前hash值
+    var currentHash = null;
     var reg = /(\d{4}-\d{2}-\d{2})/g;
     var prev = $("#week-prev"), next = $("#week-next"), today = $("#today");
     if(reg.test(window.location.href)){
@@ -357,11 +358,11 @@ $(function(){
 
     /*设置初始周列表窗口高度*/
     var wh = $(window).height();
-    $(".week-main").eq(0).css("height", wh - 185);  // 185 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 38(ecola-foot) + 3(预留)
+    $(".week-main").eq(0).css("height", wh - 220);  // 185 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 59(ecola-foot) + x(预留)
 
     $(window).resize(function(){
         wh = $(window).height();
-        $(".week-main").eq(0).css("height", wh - 185);
+        $(".week-main").eq(0).css("height", wh - 220);
     });
 
     $(window).hashchange(function(){
@@ -369,22 +370,25 @@ $(function(){
         var hash = hs.match(reg);
         if(hash && hash.length > 0){
             g_hash = hash[0];
-            updateWeekHeader(g_hash.replace(/-/g, "/"));
-            createWeekTable(g_hash.replace(/-/g, "/"), function(){
-                initLayer();
-                if(includeToday(g_hash)){
-                    addToday();
-                    today.attr("disabled", true);
-                }else{
-                    removeToday();
-                    today.attr("disabled", false);
-                }
-            });
-            loadData(g_hash);
+            if(g_hash != currentHash){
+                updateWeekHeader(g_hash.replace(/-/g, "/"));
+                createWeekTable(g_hash.replace(/-/g, "/"), function(){
+                    initLayer();
+                    if(includeToday(g_hash)){
+                        addToday();
+                        today.attr("disabled", true);
+                    }else{
+                        removeToday();
+                        today.attr("disabled", false);
+                    }
+                });
+                loadData(g_hash);
+            }
         }else{
             g_hash = cws.replace(/\//g, "-");
             window.location.hash = "#" + g_hash;
         }
+        currentHash = hash[0];
     });
 
     $("#form-layer .ecola-cancel").eq(0).click(function(){
@@ -399,15 +403,23 @@ $(function(){
     $(document).click(function(e){
         var evt = $(e.target);
         var formhide = false;
-        while(evt.get(0).tagName != "BODY"){
-            console.log(evt.get(0).tagName)
+        var updateflag = false;
+        var ue = $(evt);
+        while(ue.get(0).tagName != "BODY"){
+            if(ue.hasClass("fullalpha")){
+                updateflag = true;
+                break;
+            }
+            ue = $(ue).parent();
+        }
+        while(evt.get(0).tagName != "BODY" && !updateflag){
             if(evt.get(0).id == "form-layer"){
                 formhide = true;
                 break;
             }
             evt = $(evt).parent();
         }
-        if(!formhide){
+        if(!formhide && !updateflag){
             $("#form-layer .ecola-cancel").eq(0).trigger("click");
         }
     });

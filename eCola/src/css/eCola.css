@@ -152,8 +152,8 @@
 .col .time,
 .col-time .time{
     display: block;
-    height: 24px;
-    line-height: 24px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
     /*font-weight: bold;*/
     border-bottom: 1px dotted #ccc;
@@ -222,12 +222,19 @@
 
 .uplayer h5,
 .uplayer div {
-    padding: 3px 5px;
+    padding: 1px 5px 1px;
     color: #fff;
 }
 
+.uplayer h5 {
+    font-size: 10px;
+    line-height: 1.3;
+}
+
 .uplayer div {
-/*    text-indent: 24px;*/
+  /*text-indent: 24px;*/
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 .form-layer {
