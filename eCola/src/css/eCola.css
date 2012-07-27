@@ -240,7 +240,7 @@
 .form-layer {
     display: none;
     position: absolute;
-    z-index: 100;
+    z-index: 10000;
     top: 500px;
     left: 50px;
     padding: 10px 15px;
