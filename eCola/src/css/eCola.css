@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     padding-top: 60px;
     color: #666;
@@ -227,7 +227,7 @@ body {
 }
 
 .uplayer div {
-    /*text-indent: 24px;*/
+/*    text-indent: 24px;*/
 }
 
 .form-layer {
