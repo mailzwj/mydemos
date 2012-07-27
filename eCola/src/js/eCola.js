@@ -123,10 +123,10 @@ $(function(){
         f.find(".ecola-del").eq(0).attr("href","worklogs/" + d.attr("id") + ".json");
         if(mth == "add"){
             f.find(".ecola-save").eq(0).attr("href", "worklogs.json");//新增日志入口
-            f.find(".ecola-del").eq(0).css("display", "none");
+            f.find(".ecola-del").eq(0).css("visibility", "hidden");
         }else if(mth == "update"){
             f.find(".ecola-save").eq(0).attr("href", "worklogs/" + d.attr("id") + ".json");//修改日志入口
-            f.find(".ecola-del").eq(0).css("display", "block");
+            f.find(".ecola-del").eq(0).css("visibility", "visible");
         }
 
         f.find(".ecola-save").eq(0).unbind("click");

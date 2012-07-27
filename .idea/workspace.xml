@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/index.html" afterPath="$PROJECT_DIR$/eCola/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/css/eCola.css" afterPath="$PROJECT_DIR$/eCola/src/css/eCola.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/js/eCola.js" afterPath="$PROJECT_DIR$/eCola/src/js/eCola.js" />
     </list>
     <ignored path="etao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,25 +27,25 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="-20.448277">
+            <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.67527676">
+            <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="372" column="38" selection-start="15747" selection-end="15747" vertical-scroll-proportion="0.0">
+            <state line="122" column="26" selection-start="4761" selection-end="4770" vertical-scroll-proportion="0.33333334">
               <folding />
             </state>
           </provider>
@@ -76,9 +74,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$USER_HOME$/Desktop/house.html" />
         <option value="$PROJECT_DIR$/toolTips/index.html" />
-        <option value="$PROJECT_DIR$/eCola/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/eCola/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/eCola/index.html" />
+        <option value="$PROJECT_DIR$/eCola/src/js/eCola.js" />
       </list>
     </option>
   </component>
@@ -114,6 +112,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -162,16 +170,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -179,8 +177,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editing.templates" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -338,23 +336,23 @@
         <state line="20" column="10" selection-start="1256" selection-end="1256" vertical-scroll-proportion="0.5728643" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="372" column="38" selection-start="15747" selection-end="15747" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/eCola/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="-20.448277">
+        <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.67527676">
+        <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="26" selection-start="4761" selection-end="4770" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
