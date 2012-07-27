@@ -45,7 +45,7 @@ $(function(){
             }
         }
 
-        wm.html(col_span + col_div);
+        wm.html(col_span + col_div + '<div id="nowTimeLine" class="nowtimeline"></div>');
 
         wm.scrollTop(18 * ($(".week-main:eq(0) .time").eq(0).height() + 1));
         callback && callback();
@@ -54,6 +54,23 @@ $(function(){
     function addZero(num){
         double = num < 10 ? "0" + num : num;
         return double;
+    }
+
+    function setNowTimeLine(){
+        var line = $("#nowTimeLine");
+        var line_p = $(".week-main:eq(0)");
+        var h_p = line_p.children(".time-line").eq(0).height();
+        var line_w = line_p.width() - $(".week-main:eq(0) .time-line").eq(0).width() - 20;
+        var line_left = $(".week-main:eq(0) .time-line").eq(0).width();
+        var timecount = 24 * 60 * 60 * 1000;
+        var nowcount = new Date();
+        var daycount = new Date(nowcount.getFullYear() + "/" + addZero(nowcount.getMonth() + 1) + "/" + addZero(nowcount.getDate()));
+        var percent = (nowcount.getTime() - daycount.getTime()) / timecount;
+        var line_top = Math.floor(h_p * percent);
+        line.css("left", line_left)
+            .css("top", line_top)
+            .css("width", line_w);
+        setTimeout(function(){setTimeLine();}, 60000);
     }
 
     function updateWeekHeader(fd, callback){
@@ -373,6 +390,7 @@ $(function(){
             if(g_hash != currentHash){
                 updateWeekHeader(g_hash.replace(/-/g, "/"));
                 createWeekTable(g_hash.replace(/-/g, "/"), function(){
+                    setNowTimeLine();
                     initLayer();
                     if(includeToday(g_hash)){
                         addToday();

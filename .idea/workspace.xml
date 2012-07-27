@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/css/eCola.css" afterPath="$PROJECT_DIR$/eCola/src/css/eCola.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/js/eCola.js" afterPath="$PROJECT_DIR$/eCola/src/js/eCola.js" />
     </list>
     <ignored path="etao.iws" />
@@ -27,7 +29,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="0.0">
+            <state line="117" column="26" selection-start="5842" selection-end="5842" vertical-scroll-proportion="-36.41379">
               <folding />
             </state>
           </provider>
@@ -36,7 +38,7 @@
       <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.0">
+            <state line="308" column="27" selection-start="0" selection-end="5479" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +47,7 @@
       <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="234" column="24" selection-start="0" selection-end="18054" vertical-scroll-proportion="0.45141453">
+            <state line="54" column="44" selection-start="0" selection-end="18993" vertical-scroll-proportion="0.29520294">
               <folding />
             </state>
           </provider>
@@ -74,9 +76,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$USER_HOME$/Desktop/house.html" />
         <option value="$PROJECT_DIR$/toolTips/index.html" />
-        <option value="$PROJECT_DIR$/eCola/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/eCola/index.html" />
         <option value="$PROJECT_DIR$/eCola/src/js/eCola.js" />
+        <option value="$PROJECT_DIR$/eCola/src/css/eCola.css" />
       </list>
     </option>
   </component>
@@ -338,21 +340,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="95" selection-start="5744" selection-end="5815" vertical-scroll-proportion="0.0">
+        <state line="117" column="26" selection-start="5842" selection-end="5842" vertical-scroll-proportion="-36.41379">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="308" column="27" selection-start="5125" selection-end="5125" vertical-scroll-proportion="0.0">
+        <state line="308" column="27" selection-start="0" selection-end="5479" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="24" selection-start="0" selection-end="18054" vertical-scroll-proportion="0.45141453">
+        <state line="54" column="44" selection-start="0" selection-end="18993" vertical-scroll-proportion="0.29520294">
           <folding />
         </state>
       </provider>

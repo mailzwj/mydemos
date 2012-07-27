@@ -320,3 +320,12 @@
     color: #f00;*/
     margin-left: 15px;
 }
+
+.nowtimeline {
+    position: absolute;
+    z-index: 9999;
+    height: 1px;
+    line-height: 0;
+    font-size: 0;
+    background-color: #f00;
+}
