@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     padding-top: 60px;
     color: #666;
@@ -152,8 +152,8 @@ body {
 .col .time,
 .col-time .time{
     display: block;
-    height: 24px;
-    line-height: 24px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
     /*font-weight: bold;*/
     border-bottom: 1px dotted #ccc;
@@ -222,18 +222,25 @@ body {
 
 .uplayer h5,
 .uplayer div {
-    padding: 3px 5px;
+    padding: 1px 5px 1px;
     color: #fff;
 }
 
+.uplayer h5 {
+    font-size: 10px;
+    line-height: 1.3;
+}
+
 .uplayer div {
-    text-indent: 24px;
+  /*text-indent: 24px;*/
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 .form-layer {
     display: none;
     position: absolute;
-    z-index: 100;
+    z-index: 10000;
     top: 500px;
     left: 50px;
     padding: 10px 15px;
@@ -299,7 +306,26 @@ body {
     margin-left: auto;
 }
 
+.form-layer .ecola-cancel {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
 .form-layer .ecola-del {
-    line-height: 29px;
-    color: #f00;
+    /*line-height: 29px;
+    color: #f00;*/
+    margin-left: 15px;
+}
+
+.nowtimeline {
+    position: absolute;
+    z-index: 9999;
+    height: 2px;
+    line-height: 0;
+    font-size: 0;
+    background-color: #FF7F6E;
 }

@@ -45,7 +45,7 @@ $(function(){
             }
         }
 
-        wm.html(col_span + col_div);
+        wm.html(col_span + col_div + '<div id="nowTimeLine" class="nowtimeline"></div>');
 
         wm.scrollTop(18 * ($(".week-main:eq(0) .time").eq(0).height() + 1));
         callback && callback();
@@ -54,6 +54,26 @@ $(function(){
     function addZero(num){
         double = num < 10 ? "0" + num : num;
         return double;
+    }
+
+    function setNowTimeLine(){
+        var line = $("#nowTimeLine");
+        var line_p = $(".week-main:eq(0)");
+        var h_p = line_p.children(".time-line").eq(0).height();
+        var line_w = line_p.children(".col").eq(0).width();
+        var line_left = $(".week-main:eq(0) .time-line").eq(0).width();
+        var timecount = 24 * 60 * 60 * 1000;
+        var nowcount = new Date();
+        var day = nowcount.getDay() == 0 ? 7 : nowcount.getDay();
+        var daycount = new Date(nowcount.getFullYear() + "/" + addZero(nowcount.getMonth() + 1) + "/" + addZero(nowcount.getDate()));
+        var percent = (nowcount.getTime() - daycount.getTime()) / timecount;
+        var line_top = Math.floor(h_p * percent) - 1;
+        day -= 1;
+        line_left += day * line_p.children(".col").eq(0).outerWidth();
+        line.css("left", line_left)
+            .css("top", line_top)
+            .css("width", line_w);
+        setTimeout(function(){setNowTimeLine();}, 60000);
     }
 
     function updateWeekHeader(fd, callback){
@@ -123,10 +143,10 @@ $(function(){
         f.find(".ecola-del").eq(0).attr("href","worklogs/" + d.attr("id") + ".json");
         if(mth == "add"){
             f.find(".ecola-save").eq(0).attr("href", "worklogs.json");//新增日志入口
-            f.find(".ecola-del").eq(0).css("display", "none");
+            f.find(".ecola-del").eq(0).css("visibility", "hidden");
         }else if(mth == "update"){
             f.find(".ecola-save").eq(0).attr("href", "worklogs/" + d.attr("id") + ".json");//修改日志入口
-            f.find(".ecola-del").eq(0).css("display", "block");
+            f.find(".ecola-del").eq(0).css("visibility", "visible");
         }
 
         f.find(".ecola-save").eq(0).unbind("click");
@@ -139,8 +159,8 @@ $(function(){
             param.begin_at = f.find("input[type='hidden']").eq(1).val();
             param.end_at = f.find("input[type='hidden']").eq(2).val();
             param.logtype_id = parseInt($("#ecola-cat").val());
-			postData.worklog = param;
-			postData.authenticity_token = $('meta[name="csrf-token"]').eq(0).attr('content');
+            postData.worklog = param;
+            postData.authenticity_token = $('meta[name="csrf-token"]').eq(0).attr('content');
             if(mth == "update"){
                 postData._method = "put";
             }
@@ -151,16 +171,16 @@ $(function(){
                 url: url,
                 data: postData,
                 /*beforeSend: function(xhr) {
-                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-                },*/
+                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+                 },*/
                 success: function(data){
                     var json = data;
                     if(json.status == "success"){
                         d.children("div").eq(0).html(param.content);
                         d.attr("id", json.id)
-                         .attr("cat", json.cat)
-                         .removeClass("text-empty")
-                         .addClass("fullalpha")
+                            .attr("cat", json.cat)
+                            .removeClass("text-empty")
+                            .addClass("fullalpha")
                         $("#form-layer").css("display", "none");
                         html = '';
                         changeFormAction();
@@ -229,40 +249,40 @@ $(function(){
                     .css("left", left)
                     .css("top", top)
                     .css("width", width - diff.x + "px")
-                    .css("height", height + "px")
+                    .css("height", height - 2 + "px")
                     .html("<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><div title='" + text + "'>" + text + "</div>");
                 wm.append(html);
-            }).mousemove(function(e){
-                if(clicked && index == $.inArray(eles, weekdays)){
-                    var evt = e.target,
-                        hours = $(this).children(".time"),
-                        index_sub = $.inArray(evt, hours),
-                        cha = index_sub - index_clicked;
-                    var oh = $(html).height(),
-                        nh = oh,
-                        et = index_sub,
-                        top = parseInt(html.css("top"));
-                    if(cha < 0){
-                        top += cha * ($(evt).height() + 1);
-                        nh = oh + Math.abs(cha) * ($(evt).height() + 1);
-                        index_clicked = index_sub;
-                        et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
-                    }else if(cha > 0){
-                        nh = (cha + 1) * ($(evt).height() + 1);
-                        et = index_sub;
+            }).mouseover(function(e){
+                    if(clicked && index == $.inArray(eles, weekdays)){
+                        var evt = e.target,
+                            hours = $(this).children(".time"),
+                            index_sub = $.inArray(evt, hours),
+                            cha = index_sub - index_clicked;
+                        var oh = $(html).height(),
+                            nh = oh,
+                            et = index_sub,
+                            top = parseInt(html.css("top"));
+                        if(cha < 0){
+                            top += cha * ($(evt).height() + 1);
+                            nh = oh + 2 + Math.abs(cha) * ($(evt).height() + 1);
+                            index_clicked = index_sub;
+                            et = Math.ceil(nh / ($(evt).height() + 1)) + index_clicked - 1;
+                        }else if(cha > 0){
+                            nh = (cha + 1) * ($(evt).height() + 1);
+                            et = index_sub;
+                        }
+                        var s2e = getStartAndEnd(index_clicked, et);
+                        var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
+                        var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
+                        var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
+                        html.attr("date-start", datestart)
+                            .attr("date-end", dateend)
+                            .css("top", top + "px")
+                            .css("height", nh - 2 + "px");
+                        $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
                     }
-                    var s2e = getStartAndEnd(index_clicked, et);
-                    var date = new Date(parseInt($(evt).parent(".col").eq(0).attr("date")));
-                    var datestart = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.start + ":00";
-                    var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
-                    html.attr("date-start", datestart)
-                        .attr("date-end", dateend)
-                        .css("top", top + "px")
-                        .css("height", nh + "px");
-                    $(html).children("h5").eq(0).html([s2e.start,s2e.end].join(" ~ "))
-                }
-                return false;
-            });
+                    return false;
+                });
         });
         $(document).mouseup(function(){
             if(html != "" && clicked){
@@ -295,7 +315,7 @@ $(function(){
             .css("left", pl + "px")
             .css("top", pt + "px")
             .css("width", (size.w - diff.x) + "px")
-            .css("height", h + "px")
+            .css("height", h - 2 + "px")
             .html("<h5>" + val.start + " ~ " + val.end + "</h5><div title='" + val.content + "'>" + val.content + "</div>");
         main.append($(node));
 
@@ -344,6 +364,7 @@ $(function(){
     var tw = getThisWeek(nd.getFullYear(), nd.getMonth() + 1, nd.getDate());
     var cws = tw.weekStart;
     var g_hash = cws.replace(/\//g, "-"); //全局变量，存储当前hash值
+    var currentHash = null;
     var reg = /(\d{4}-\d{2}-\d{2})/g;
     var prev = $("#week-prev"), next = $("#week-next"), today = $("#today");
     if(reg.test(window.location.href)){
@@ -357,11 +378,11 @@ $(function(){
 
     /*设置初始周列表窗口高度*/
     var wh = $(window).height();
-    $(".week-main").eq(0).css("height", wh - 185);  // 185 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 38(ecola-foot) + 3(预留)
+    $(".week-main").eq(0).css("height", wh - 220);  // 185 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 59(ecola-foot) + x(预留)
 
     $(window).resize(function(){
         wh = $(window).height();
-        $(".week-main").eq(0).css("height", wh - 185);
+        $(".week-main").eq(0).css("height", wh - 220);
     });
 
     $(window).hashchange(function(){
@@ -369,22 +390,26 @@ $(function(){
         var hash = hs.match(reg);
         if(hash && hash.length > 0){
             g_hash = hash[0];
-            updateWeekHeader(g_hash.replace(/-/g, "/"));
-            createWeekTable(g_hash.replace(/-/g, "/"), function(){
-                initLayer();
-                if(includeToday(g_hash)){
-                    addToday();
-                    today.attr("disabled", true);
-                }else{
-                    removeToday();
-                    today.attr("disabled", false);
-                }
-            });
-            loadData(g_hash);
+            if(g_hash != currentHash){
+                updateWeekHeader(g_hash.replace(/-/g, "/"));
+                createWeekTable(g_hash.replace(/-/g, "/"), function(){
+                    setNowTimeLine();
+                    initLayer();
+                    if(includeToday(g_hash)){
+                        addToday();
+                        today.attr("disabled", true);
+                    }else{
+                        removeToday();
+                        today.attr("disabled", false);
+                    }
+                });
+                loadData(g_hash);
+            }
         }else{
             g_hash = cws.replace(/\//g, "-");
             window.location.hash = "#" + g_hash;
         }
+        currentHash = hash[0];
     });
 
     $("#form-layer .ecola-cancel").eq(0).click(function(){
@@ -399,15 +424,23 @@ $(function(){
     $(document).click(function(e){
         var evt = $(e.target);
         var formhide = false;
-        while(evt.get(0).tagName != "BODY"){
-            console.log(evt.get(0).tagName)
+        var updateflag = false;
+        var ue = $(evt);
+        while(ue.get(0).tagName != "BODY"){
+            if(ue.hasClass("fullalpha")){
+                updateflag = true;
+                break;
+            }
+            ue = $(ue).parent();
+        }
+        while(evt.get(0).tagName != "BODY" && !updateflag){
             if(evt.get(0).id == "form-layer"){
                 formhide = true;
                 break;
             }
             evt = $(evt).parent();
         }
-        if(!formhide){
+        if(!formhide && !updateflag){
             $("#form-layer .ecola-cancel").eq(0).trigger("click");
         }
     });
