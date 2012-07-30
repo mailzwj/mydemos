@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eCola/teamlog.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/css/eCola.css" afterPath="$PROJECT_DIR$/eCola/src/css/eCola.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/js/eCola.js" afterPath="$PROJECT_DIR$/eCola/src/js/eCola.js" />
     </list>
     <ignored path="etao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teamlog.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="teamlog.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="40" selection-start="2803" selection-end="2815" vertical-scroll-proportion="-11.344828">
+            <state line="68" column="26" selection-start="2844" selection-end="2844" vertical-scroll-proportion="0.43634117">
               <folding />
             </state>
           </provider>
@@ -54,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.7732697">
+            <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -224,7 +221,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -325,13 +322,6 @@
         <state line="163" column="29" selection-start="2602" selection-end="2602" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="40" selection-start="2803" selection-end="2815" vertical-scroll-proportion="-11.344828">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="337" column="17" selection-start="5582" selection-end="5582" vertical-scroll-proportion="0.0">
@@ -348,7 +338,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.7732697">
+        <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="26" selection-start="2844" selection-end="2844" vertical-scroll-proportion="0.43634117">
           <folding />
         </state>
       </provider>
