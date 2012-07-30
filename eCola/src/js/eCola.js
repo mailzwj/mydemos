@@ -70,7 +70,8 @@ $(function(){
         var line_top = Math.floor(h_p * percent) - 1;
         day -= 1;
         line_left += day * line_p.children(".col").eq(0).outerWidth();
-        line.css("left", line_left)
+        line.css("display", "block")
+            .css("left", line_left)
             .css("top", line_top)
             .css("width", line_w);
         setTimeout(function(){setNowTimeLine();}, 60000);
@@ -393,9 +394,9 @@ $(function(){
             if(g_hash != currentHash){
                 updateWeekHeader(g_hash.replace(/-/g, "/"));
                 createWeekTable(g_hash.replace(/-/g, "/"), function(){
-                    setNowTimeLine();
                     initLayer();
                     if(includeToday(g_hash)){
+                        setNowTimeLine();
                         addToday();
                         today.attr("disabled", true);
                     }else{
