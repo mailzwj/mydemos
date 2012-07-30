@@ -330,3 +330,10 @@
     font-size: 0;
     background-color: #FF7F6E;
 }
+
+
+
+/*----------------团队日志-----------------*/
+.teamlog-list {
+    padding: 0 18px;
+}

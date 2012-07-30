@@ -341,7 +341,10 @@ $(function(){
                 weekdays.each(function(j, node){
                     if($(node).attr("date") == new Date(val.date).getTime()){
                         var size = {"w":$(node).width(), "h":($(node).children(".time:eq(0)").height() + 1)}
-                        pushDataToCol(j, val, size, changeFormAction);  //将数据添加入对应列表
+                        pushDataToCol(j, val, size, function(){
+                            $("#loading").css("display", "none");
+                            changeFormAction();
+                        });  //将数据添加入对应列表
                     }
                 });
             });
@@ -392,6 +395,7 @@ $(function(){
         if(hash && hash.length > 0){
             g_hash = hash[0];
             if(g_hash != currentHash){
+                $("#loading").css("display", "block");
                 updateWeekHeader(g_hash.replace(/-/g, "/"));
                 createWeekTable(g_hash.replace(/-/g, "/"), function(){
                     initLayer();
