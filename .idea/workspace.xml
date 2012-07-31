@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/css/eCola.css" afterPath="$PROJECT_DIR$/eCola/src/css/eCola.css" />
     </list>
     <ignored path="etao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,25 +28,25 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="-11.586206">
+            <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="-5.793103">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teamlog.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="teamlog.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="26" selection-start="2844" selection-end="2844" vertical-scroll-proportion="0.43634117">
+            <state line="105" column="113" selection-start="5329" selection-end="5329" vertical-scroll-proportion="-17.51724">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="eCola.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="337" column="17" selection-start="5582" selection-end="5582" vertical-scroll-proportion="0.0">
+            <state line="378" column="13" selection-start="6241" selection-end="6241" vertical-scroll-proportion="0.59904534">
               <folding />
             </state>
           </provider>
@@ -84,9 +85,9 @@
         <option value="$USER_HOME$/Desktop/house.html" />
         <option value="$PROJECT_DIR$/toolTips/index.html" />
         <option value="$PROJECT_DIR$/eCola/index.html" />
+        <option value="$PROJECT_DIR$/eCola/src/js/eCola.js" />
         <option value="$PROJECT_DIR$/eCola/teamlog.html" />
         <option value="$PROJECT_DIR$/eCola/src/css/eCola.css" />
-        <option value="$PROJECT_DIR$/eCola/src/js/eCola.js" />
       </list>
     </option>
   </component>
@@ -173,8 +174,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editing.templates" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -221,7 +222,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -322,30 +323,28 @@
         <state line="163" column="29" selection-start="2602" selection-end="2602" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
+    <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="337" column="17" selection-start="5582" selection-end="5582" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="-11.586206">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.0">
+        <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="-5.793103">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="26" selection-start="2844" selection-end="2844" vertical-scroll-proportion="0.43634117">
+        <state line="105" column="113" selection-start="5329" selection-end="5329" vertical-scroll-proportion="-17.51724">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCola/src/css/eCola.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="378" column="13" selection-start="6241" selection-end="6241" vertical-scroll-proportion="0.59904534">
           <folding />
         </state>
       </provider>

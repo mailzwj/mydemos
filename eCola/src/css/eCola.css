@@ -376,9 +376,10 @@ ul, ol, dl, li, dt, dd {
 .teamlog-list .time-count {
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 10px;
     font-weight: bold;
     font-size: 36px;
+    line-height: 40px;
     color: #ccc;
 }
 
