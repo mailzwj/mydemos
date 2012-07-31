@@ -5,6 +5,12 @@
     /*background-color: #ededed;*/
 }
 
+ul, ol, dl, li, dt, dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .has-margin {
     margin-left: 5px;
 }
@@ -336,4 +342,120 @@
 /*----------------团队日志-----------------*/
 .teamlog-list {
     padding: 0 18px;
+}
+
+.teamlog-list .log-row {
+    position: relative;
+    margin-top: 35px;
+    min-height: 40px;
+    _height: 40px;
+    border-top: 1px solid #ccc;
+}
+
+.teamlog-list .head-pic {
+    position: absolute;
+    left: 0;
+    top: -15px;
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.teamlog-list .user-nick {
+    margin: 0;
+    padding:16px 0 4px 70px;
+    line-height: 20px;
+}
+
+.teamlog-list .user-nick a {
+    font-weight: 600;
+}
+
+.teamlog-list .time-count {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    font-weight: bold;
+    font-size: 36px;
+    color: #ccc;
+}
+
+.teamlog-list .work-log {
+    padding: 15px 100px 0 35px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.teamlog-list .work-log span {
+    display: inline-block;
+    _display: inline;
+    _zoom: 1;
+    margin-right: 10px;
+    vertical-align: top;
+    *vertical-align: middle;
+}
+
+.teamlog-list .work-log .work-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.teamlog-list .work-log .work-percent {
+    position: relative;
+    margin-top: 3px;
+    width: 48px;
+    height: 12px;
+    border: 1px solid #ccc;
+}
+
+.teamlog-list .work-log .work-percent b {
+    position: absolute;
+    left: 22px;
+    top: 0;
+    height: 12px;
+    width: 5px;
+    background-color: #ccc;
+}
+
+.teamlog-list .work-log .work-cat {
+    font-size: 12px;
+    color: #999;
+}
+
+.teamer {
+    margin-top: 35px;
+    padding: 0 40px 20px;
+    border-top: 1px dotted #ccc;
+}
+
+.teamer h2 {
+    padding: 15px 0;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #777;
+}
+
+.teamer-other .item {
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.teamer-other .item .head-pic {
+    display: block;
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+.teamer-other .item .user-nick {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 12px;
+    text-align: center;
 }
