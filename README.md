@@ -13,3 +13,5 @@
 6.基于KISSY的标签提示效果`toolTips`
 
 7.CSS制作带箭头的标签`cssArrow`
+
+8.CSS+KISSY实现用方向键控制动画`cssanim`
