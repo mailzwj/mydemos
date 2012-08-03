@@ -1,4 +1,4 @@
-##Etao learning and working backup
+﻿##Etao learning and working backup
 
 1.Bootstrap learning`bootstrap`
 
@@ -15,3 +15,5 @@
 7.CSS制作带箭头的标签`cssArrow`
 
 8.CSS+KISSY实现用方向键控制动画`cssanim`
+
+9.CSS实现兼容IE6-8的背景或边框半透明`alpha`
