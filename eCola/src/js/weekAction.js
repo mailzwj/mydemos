@@ -59,15 +59,15 @@ function getNextWeek(year,month,day){
 function addToday(){
     var now = new Date();
     var wd = now.getDay();
-    var nodes = $(".week-day:eq(0) li");
+    var nodes = KISSY.query("li", KISSY.get(".week-day"));
     wd = wd == 0 ? 7 : wd;
-    $(nodes[wd - 1]).addClass("today");
+    KISSY.DOM.addClass(nodes[wd - 1], "today");
 }
 
 function removeToday(){
     var now = new Date();
     var wd = now.getDay();
-    var nodes = $(".week-day:eq(0) li");
+    var nodes = KISSY.query("li", KISSY.get(".week-day"));
     wd = wd == 0 ? 7 : wd;
-    $(nodes[wd - 1]).removeClass("today");
+    KISSY.DOM.removeClass(nodes[wd - 1], "today");
 }
