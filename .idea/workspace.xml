@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="" />
+    <list default="true" id="15c9bf32-9e2f-41b2-b60a-c3f90d68744a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eCola/src/js/reindex.js" afterPath="$PROJECT_DIR$/eCola/src/js/reindex.js" />
+    </list>
     <ignored path="etao.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,10 +52,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eCola.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eCola.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.028639618">
+            <state line="323" column="5" selection-start="13084" selection-end="14413" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reindex.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/eCola/src/js/reindex.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="338" column="29" selection-start="14379" selection-end="14379" vertical-scroll-proportion="2.1217713">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reindex.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eCola/reindex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -86,6 +107,7 @@
         <option value="$PROJECT_DIR$/eCola/src/css/eCola.css" />
         <option value="$PROJECT_DIR$/cssanim/index.html" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/eCola/src/js/reindex.js" />
       </list>
     </option>
   </component>
@@ -121,16 +143,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -163,6 +175,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="etao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eCola" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -172,8 +212,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editing.templates" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -328,9 +368,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="62" column="62" selection-start="2557" selection-end="2564" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/teamlog.html">
@@ -343,9 +381,25 @@
         <state line="378" column="13" selection-start="6241" selection-end="6241" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/eCola/reindex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/eCola/src/js/eCola.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="344" column="62" selection-start="15362" selection-end="15362" vertical-scroll-proportion="0.028639618" />
+        <state line="323" column="5" selection-start="13084" selection-end="14413" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eCola/src/js/reindex.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="338" column="29" selection-start="14379" selection-end="14379" vertical-scroll-proportion="2.1217713">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
