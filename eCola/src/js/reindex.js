@@ -126,7 +126,7 @@ KISSY.use("sizzle",function(S){
     function changeFormAction(){
         var form = S.one("#form-layer"),
             nodes = S.all(".week-main:eq(0) .fullalpha");
-        nodes.click(function(){
+        E.on(nodes, "click", function(){
             if(S.all(".week-main:eq(0) .text-empty").length > 0){
                 D.remove(S.all(".week-main:eq(0) .text-empty"));
             }
@@ -158,9 +158,9 @@ KISSY.use("sizzle",function(S){
         if(cat == "" || cat == "null"){cat = 0;}
         D.val(D.query("textarea", f)[0], D.html(D.children(node, "div")[0]));
         D.query("textarea", f)[0].focus();
-        D.val(D.query("input[type='hidden']")[0], D.attr(node, "id"));
-        D.val(D.query("input[type='hidden']")[1], D.attr(node, "date-start"));
-        D.val(D.query("input[type='hidden']")[2], D.attr(node, "date-end"));
+        D.val(D.query("input[type='hidden']", f)[0], D.attr(node, "id"));
+        D.val(D.query("input[type='hidden']", f)[1], D.attr(node, "date-start"));
+        D.val(D.query("input[type='hidden']", f)[2], D.attr(node, "date-end"));
         D.attr(S.all("#ecola-cat option[value='" + cat + "']"), "selected", true);
         D.attr(S.one(".ecola-del"), "href", "worklogs/" + D.attr(node, "id") + ".json");
         if(mth == "add"){
@@ -177,19 +177,24 @@ KISSY.use("sizzle",function(S){
             var url = D.attr(this, "href");
             var param = {}, postData = {};
             param.content = D.val(S.one("textarea"));
-            param.id = D.val(D.query("input[type='hidden']")[0]);
-            param.begin_at = D.val(D.query("input[type='hidden']")[1]);
-            param.end_at = D.val(D.query("input[type='hidden']")[2]);
-            param.logtype_id = parseInt(D.val(S.one("#ecola-cat")));
+            param.id = D.val(D.query("input[type='hidden']", f)[0]);
+            param.begin_at = D.val(D.query("input[type='hidden']", f)[1]);
+            param.end_at = D.val(D.query("input[type='hidden']", f)[2]);
+            param.team_name = D.val(S.one("#ecola-cat"));
             postData.worklog = param;
             postData.authenticity_token = D.attr(S.one('meta[name="csrf-token"]'), "content");
             if(mth == "update"){
                 postData._method = "put";
             }
+			var cs = 'authenticity_token=' + postData.authenticity_token + '&worklog[id]=' + postData.worklog.id + '&worklog[content]=' + postData.worklog.content + '&worklog[begin_at]=' + postData.worklog.begin_at + '&worklog[end_at]=' + postData.worklog.end_at + '&worklog[team_name]=' + postData.worklog.team_name;
+			if(mth == "update"){
+				cs += '&_method=put';
+			}
             S.IO({
                 type: "POST",
+				dataType: "json",
                 url: url,
-                data: postData,
+                data: cs,
                 success: function(data){
                     var json = data;
                     if(json.status == "success"){
@@ -326,7 +331,7 @@ KISSY.use("sizzle",function(S){
         et = (ae[0] * 60 * 60 + ae[1] * 60) * 1000;
         h = Math.abs(et / m30 - st / m30) * size.h;
         pt = (st / m30) * size.h;
-        var node = fc.clone();
+        var node = D.clone(fc);
         D.attr(node,"id", val.id)
         D.attr(node, "cat", (val.cat && val.cat != null) ? val.cat : 0)
         D.attr(node, "date-start", val.date.replace(/\//g, "-") + " " + val.start + ":00")
@@ -409,7 +414,7 @@ KISSY.use("sizzle",function(S){
                 D.css(D.get("#loading"), "display", "block");
                 updateWeekHeader(g_hash.replace(/-/g, "/"));
                 createWeekTable(g_hash.replace(/-/g, "/"), function(){
-                    //initLayer();
+                    initLayer();
                     if(includeToday(g_hash)){
                         setNowTimeLine();
                         addToday();
