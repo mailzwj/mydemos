@@ -125,13 +125,90 @@ KISSY.use("sizzle",function(S){
 
     function changeFormAction(){
         var form = S.one("#form-layer"),
-            nodes = S.all(".week-main:eq(0) .fullalpha");
-        E.on(nodes, "click", function(){
+			wm = S.one(".week-main"),
+            fa = S.all(".week-main:eq(0) .fullalpha"),
+			nodes = [],
+			texts = [],
+			log = null,
+			dragable = false,
+			drag_start = {x:0, y:0},
+			drag_ing = {x:0, y:0},
+			drag_end = {x:0, y:0},
+			index = 0,//起始行索引
+			cd = 0;//当前操作日志日期
+		S.each(fa, function(n){
+			nodes.push(D.get("h5", n));
+			texts.push(D.get("div", n));
+		});
+		E.detach(nodes, "mousedown");
+		//E.detach(wm, "mousemove");
+		E.on(texts, "click", function(){
+			if(S.all(".week-main:eq(0) .text-empty").length > 0){
+				D.remove(S.all(".week-main:eq(0) .text-empty"));
+			}
+			rePositionForm(D.parent(this, ".fullalpha"), "update");
+		});
+        E.on(nodes, "mousedown", function(e){
             if(S.all(".week-main:eq(0) .text-empty").length > 0){
                 D.remove(S.all(".week-main:eq(0) .text-empty"));
             }
-            rePositionForm(this, "update");
+			D.css("#form-layer", "display", "none");
+			drag_start.x = e.clientX;
+			drag_start.y = e.clientY;
+			drag_ing.x = drag_start.x;
+			drag_ing.y = drag_start.y;
+			drag_end.x = drag_start.x;
+			drag_end.y = drag_start.y;
+			var s_time = D.attr(D.parent(this, ".fullalpha"), "date-start").split(" ")[1];//取得开始时间
+			cd = D.attr(D.parent(this, ".fullalpha"), "date-start").split(" ")[0];
+			var s_minutes = s_time.split(":")[0] * 60 + s_time.split(":")[1] * 1;
+			index = s_minutes / 30;//每格30分钟，计算格子数，即起始index
+			dragable = true;
+			log = D.parent(this, ".fullalpha");
+            //rePositionForm(this, "update");
+			e.halt();
         });
+		E.on(wm, "mousemove", function(e){
+			if(dragable){
+				drag_end.x = e.clientX;
+				drag_end.y = e.clientY;
+				var dis = drag_end.y - drag_ing.y;
+				var move_d = rowHeight;
+				if(Math.abs(dis) > rowHeight / 2){
+					move_d = dis > 0 ? rowHeight : -1 * rowHeight;
+					D.css(log, "top", parseInt(D.css(log, "top")) + move_d);
+					drag_ing.y += move_d;
+					index = dis > 0 ? index + 1 : index - 1;
+					var sToe = getStartAndEnd(index, D.height(log));
+					var new_start = cd + " " + sToe.start + ":00";
+					var new_end = cd + " " + sToe.end + ":00";
+					D.html(D.get("h5", log), sToe.start + " ~ " + sToe.end);
+					D.attr(log, "date-start", new_start);
+					D.attr(log, "date-end", new_end);
+				}
+			}
+		});
+		E.on(document, "mouseup", function(){
+			if(dragable){
+				dragable = false;
+				var url = 'worklogs/' + D.attr(log, 'id') + '.json';
+				var cs = 'authenticity_token=' + D.attr(S.one('meta[name="csrf-token"]'), "content") + '&worklog[id]=' + D.attr(log, "id") + '&worklog[content]=' + D.html(D.get("div", log)) + '&worklog[begin_at]=' + D.attr(log, "date-start") + '&worklog[end_at]=' + D.attr(log, "date-end") + '&worklog[team_name]=' + D.attr(log, "cat") + "&_method=put";
+				S.IO({
+					type: "POST",
+					dataType: "json",
+					url: url,
+					data: cs,
+					success: function(data){
+					var json = data;
+						if(json.status == "success"){
+							changeFormAction();
+						}else{
+							alert("日志保存失败了，休息一会儿再来吧！");
+						}
+					}
+				});
+			}
+		})
     }
 
     function rePositionForm(dom, mth){
@@ -201,6 +278,7 @@ KISSY.use("sizzle",function(S){
                         D.html(D.children(node, "div")[0], param.content);
                         D.attr(node, "id", json.id);
                         D.attr(node, "cat", json.cat);
+						D.attr(node, "title", param.content);
                         D.removeClass(node, "text-empty");
                         D.addClass(node, "fullalpha");
                         D.css(S.one("#form-layer"), "display", "none");
@@ -305,7 +383,6 @@ KISSY.use("sizzle",function(S){
                     D.html(html, "<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><div title='" + text + "'>" + text + "</div>");
                 }
             }
-            return false;
         });
         E.on(document, "mouseup", function(){
             if(clicked){
@@ -374,6 +451,20 @@ KISSY.use("sizzle",function(S){
     if(reg.test(window.location.href)){
         g_hash = RegExp.$1;
         RegExp.lastIndex = 0;
+		D.css(D.get("#loading"), "display", "block");
+		updateWeekHeader(g_hash.replace(/-/g, "/"));
+		createWeekTable(g_hash.replace(/-/g, "/"), function(){
+			initLayer();
+			if(includeToday(g_hash)){
+				setNowTimeLine();
+				addToday();
+				D.attr(today, "disabled", true);
+			}else{
+				removeToday();
+				D.attr(today, "disabled", false);
+			}
+			loadData(g_hash);
+		});
     }else{
         window.location.hash = "#" + g_hash;
     }
@@ -388,22 +479,7 @@ KISSY.use("sizzle",function(S){
         wh = D.height(window);
         D.css(D.get(".week-main"), "height", wh - 220);
     });
-	
-    D.css(D.get("#loading"), "display", "block");
-    updateWeekHeader(g_hash.replace(/-/g, "/"));
-    createWeekTable(g_hash.replace(/-/g, "/"), function(){
-        initLayer();
-        if(includeToday(g_hash)){
-            setNowTimeLine();
-            addToday();
-            D.attr(today, "disabled", true);
-        }else{
-            removeToday();
-            D.attr(today, "disabled", false);
-        }
-    });
-    loadData(g_hash);
-
+    
 	S.all(window).on("hashchange", function(){
         var hs = window.location.href;
         var hash = hs.match(reg);
@@ -423,8 +499,8 @@ KISSY.use("sizzle",function(S){
                         removeToday();
                         D.attr(today, "disabled", false);
                     }
+					loadData(g_hash);
                 });
-                loadData(g_hash);
             }
         }else{
             g_hash = cws.replace(/\//g, "-");
