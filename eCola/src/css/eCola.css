@@ -205,14 +205,27 @@ ul, ol, dl, li, dt, dd {
     position: absolute;
     z-index: 10;
     border-radius: 4px;
-    background-color: #ccc;
+    background-color: #70c4ee;
     color: #fff;
     opacity: 0.7;
+	filter: alpha(opacity=70);
     overflow: hidden;
 }
 
+.uplayer .log-resize {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-left: -8px;
+	width: 17px;
+	height: 10px;
+	background: url(resize.png) no-repeat center;
+	overflow: hidden;
+	cursor: n-resize;
+	opacity: 0.5;
+}
+
 .fullalpha {
-    background-color: #999;
     opacity: 1;
     cursor: pointer;
     -moz-transition: background-color .2s ease-in;
@@ -220,32 +233,43 @@ ul, ol, dl, li, dt, dd {
     -o-transition: background-color .2s ease-in;
     -ms-transition: background-color .2s ease-in;
     transition: background-color .2s ease-in;
+	background-color: rgba(86, 177, 222, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF56b1de,endColorStr=#FF56b1de);
 }
 
 .fullalpha:hover {
-    background-color: #aaa;
+    background-color: rgba(112, 196, 238, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF70c4ee,endColorStr=#FF70c4ee);
 }
 
 .uplayer h5,
-.uplayer div {
+.uplayer .log-text {
+	display: block;
     padding: 1px 5px 1px;
     color: #fff;
 }
 
 .uplayer h5 {
-	background-color: #ccc;
+	background-color: rgba(0, 136, 204, 0.7);
     font-size: 10px;
     line-height: 1.3;
-	border: 1px solid #999;
+	border: 1px solid #1b62c0;
 	border-radius: 4px;
-	color: #555;
+	color: #fff;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#b20088cc,endColorStr=#b20088cc);
 	cursor: move;
 }
 
-.uplayer div {
+.fullalpha h5 {
+	background-color: rgba(0, 136, 204, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF0088cc,endColorStr=#FF0088cc);
+}
+
+.uplayer .log-text {
   /*text-indent: 24px;*/
     font-size: 12px;
     line-height: 1.3;
+	color: #fff;
 }
 
 .form-layer {
