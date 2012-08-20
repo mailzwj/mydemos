@@ -8,6 +8,15 @@
 KISSY.use("sizzle",function(S){
 	var D = S.DOM, E = S.Event;
 	var html = '', rowHeight = 26;
+	var global_nowtimeline = null;
+
+	/* 函数名：createWeekTable
+	 * 功能：在第一个class为week-main的元素中创建8列48行的周历表格
+	 * 业务需求：8列48行，节点数太多，直接放置于DOM中比较混乱，由代码生成，方便管理，易于复用
+	 * 参数说明：
+	 *		fd：每周开始的一天，格式为yyyy/mm/dd
+	 *		callback：表格创建完成后的回调函数，可用于表格内部的操作，或依赖该表格的操作
+	 */
 	function createWeekTable(fd, callback){
         var wm = D.get(".week-main"),
             col_span = '<div class="col-time time-line">',
@@ -46,11 +55,24 @@ KISSY.use("sizzle",function(S){
         callback && callback();
     }
 
+	/* 函数名：addZero
+	 * 功能：为小于10的整数添加前置补零，保证两位数格式，例：0 -> 00
+	 * 业务需求：脚本内部对日期时间操作较多，保证统一的两位格式，整体风格一致
+	 * 参数说明：
+	 *		num：有效正整数，小于10，自动补零返回，大于10，直接返回原数
+	 */
 	function addZero(num){
         double = num < 10 ? "0" + num : num;
         return double;
     }
-
+	
+	/* 函数名：updateWeekHeader
+	 * 功能：修改表头每周中每天对应的日期
+	 * 业务需求：由于系统具有上一周/下一周功能设计，可能频繁切换周日期，封装操作函数，方便频繁调用
+	 * 参数说明：
+	 *		fd：每周开始的一天，格式为yyyy/mm/dd
+	 *		callback：表头更新完成后的回调函数，可用于表头内部的操作，或依赖该表表头的操作
+	 */
 	function updateWeekHeader(fd, callback){
         var wh = S.all(".week-day:eq(0)>li"),
             wk_box = D.get("#date-from-to"),
@@ -70,6 +92,12 @@ KISSY.use("sizzle",function(S){
         callback && callback();
     }
 
+	/* 函数名：includeToday
+	 * 功能：判断当前所在周是否包含当天，返回布尔值
+	 * 业务需求：在周切换操作中有对当前天做特殊操作，需要判断当天是否在当前显示周范围内
+	 * 参数说明：
+	 *		hs：当前URL中设置的hash值，实为每周开始的一天，格式为yyyy-mm-dd
+	 */
 	function includeToday(hs){
         var td = new Date(),
             tdstr = td.getFullYear() + "/" + (td.getMonth() + 1) + "/" + td.getDate(),
@@ -83,6 +111,10 @@ KISSY.use("sizzle",function(S){
         return flag;
     }
 
+	/* 函数名：setNowTimeLine
+	 * 功能：在当前天所在的列设置当前时间线，标记当前具体时间位置
+	 * 业务需求：为方便用户快速找到工作内容所处具体时段，更方便的记录日志，安排时间
+	 */
 	function setNowTimeLine(){
         var line = D.get("#nowTimeLine");
         var line_p = S.one(".week-main");
@@ -101,9 +133,16 @@ KISSY.use("sizzle",function(S){
         D.css(line, "left", line_left);
         D.css(line, "top", line_top);
         D.css(line, "width", line_w);
-        setTimeout(function(){setNowTimeLine();}, 60000);
+        global_nowtimeline = setTimeout(function(){setNowTimeLine();}, 60000);
     }
 
+	/* 函数名：getStartAndEnd
+	 * 功能：返回日志的开始和结束时间，发送至后台用于存储记录，返回Object
+	 * 业务需求：由于每一天中，用户可能存在多条日志记录，需分时段记录存储日志，故需要计算并存储每条日志对应的起始时间
+	 * 参数说明：
+	 *		srow：日志开始行，由于本应用中每行代表半小时，因此可根据该行号计算开始时间
+	 *		h：该条日志对应节点的高度，由该值与每行代表的时间进行计算，可得与开始行的时间跨度，从而计算出结束时间
+	 */
     function getStartAndEnd(srow, h){
         var val = {};
         var stime = srow * 0.5 * 60,
@@ -123,6 +162,12 @@ KISSY.use("sizzle",function(S){
         return val;
     }
 
+	/* 函数名：getIndexX
+	 * 功能：计算拖动日志时的起始列索引，用于横向拖动，返回由周开始日期毫秒值和当前索引组成的Object
+	 * 业务需求：日志需要实现横向拖动，实现跨天更改时间功能，需记录当前列的索引值，与每周一比较计算日志更改后的列日期
+	 * 参数说明：
+	 *		nd：当前选中（拖动）日志块所在列对应的日期，格式yyyy-mm-dd
+	 */
 	function getIndexX(nd){
 		var cols = S.all(".week-main .col");
 		var first_d = parseInt(D.attr(cols[0], "date"));
@@ -132,6 +177,10 @@ KISSY.use("sizzle",function(S){
 		return {s:first_d, c:i_x};
 	}
 
+	/* 函数名：changeFormAction
+	 * 功能：完成用户对浮层表单的各项操作，保存（新增/修改），删除，关闭（取消）
+	 * 业务需求：用户的任何一项修改或全新添加都需要保存记录
+	 */
     function changeFormAction(){
         var form = S.one("#form-layer"),
 			wm = S.one(".week-main"),
@@ -298,6 +347,13 @@ KISSY.use("sizzle",function(S){
 		});
     }
 
+	/* 函数名：rePositionForm
+	 * 功能：根据用户操作，重新定位浮层表单
+	 * 业务需求：由于每条日志在表格中的位置不一样，当用户新建或修改日志时，需要重新调整日志表单，以使指示更明确
+	 * 参数说明：
+	 *		dom：当前新增或修改的日志对应的节点
+	 *		mth：标记行为（新增/修改），新增为add，修改为update，用于更改表单保存按钮的连接路径
+	 */
     function rePositionForm(dom, mth){
         var f = S.one("#form-layer"),
             w = S.one(".week-main"),
@@ -400,6 +456,10 @@ KISSY.use("sizzle",function(S){
         //console.log(fw);
     }
 
+	/* 函数名：initLayer
+	 * 功能：初始化拖动选择日志块功能，在表格创建完成后，用户可在表格上按住鼠标拖动以选择日志时间段
+	 * 业务需求：相比传统日志记录有更好的用户体验，更灵活的创建方式
+	 */
     function initLayer(){
         var wm = S.one(".week-main");
         var weekdays = S.all(".week-main:eq(0)>.col");
@@ -490,6 +550,15 @@ KISSY.use("sizzle",function(S){
         });
     }
 
+	/* 函数名：pushDataToCol
+	 * 功能：页面加载完成后将从后台异步取回的数据添加到日历中
+	 * 业务需求：日志在日历中的位置需要根据记录时间计算，因此需要JS动态计算每条日志的具体位置
+	 * 参数说明：
+	 *		index：该条日志所在列索引值，理论值0-6
+	 *		val：该条日志内容组成的Object
+	 *		size：每个单元格的尺寸用于计算left、top以及width、height
+	 *		callback：数据显示完成后的回调函数
+	 */
     function pushDataToCol(index, val, size, callback){
         var main = S.one(".week-main");
         var tc = S.one(".week-main:eq(0)>.col-time");
@@ -520,6 +589,12 @@ KISSY.use("sizzle",function(S){
         callback && callback();
     }
 
+	/* 函数名：loadData
+	 * 功能：加载日志数据
+	 * 业务需求：所有日志数据均采用异步的方式从后台获取
+	 * 参数说明：
+	 *		s：每周开始的一天，格式为yyyy-mm-dd
+	 */
     function loadData(s){   //周startDate
         var weekdays = S.all(".week-main:eq(0)>.col");
         S.getScript("worklogs.json?s=" + new Date(s.replace(/-/g, "/")).getTime(), function(){
@@ -561,6 +636,7 @@ KISSY.use("sizzle",function(S){
 				addToday();
 				D.attr(today, "disabled", true);
 			}else{
+				clearTimeout(global_nowtimeline);
 				removeToday();
 				D.attr(today, "disabled", false);
 			}
@@ -597,6 +673,7 @@ KISSY.use("sizzle",function(S){
                         addToday();
                         D.attr(today, "disabled", true);
                     }else{
+						clearTimeout(global_nowtimeline);
                         removeToday();
                         D.attr(today, "disabled", false);
                     }
