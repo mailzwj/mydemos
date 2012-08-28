@@ -62,8 +62,8 @@ KISSY.use("sizzle",function(S){
 	 *		num：有效正整数，小于10，自动补零返回，大于10，直接返回原数
 	 */
 	function addZero(num){
-        double = num < 10 ? "0" + num : num;
-        return double;
+        var doub = num < 10 ? "0" + num : num;
+        return doub;
     }
 	
 	/* 函数名：updateWeekHeader
