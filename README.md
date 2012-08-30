@@ -18,4 +18,6 @@
 
 9.CSS实现兼容IE6-8的背景或边框半透明`alpha`
 
-10.KISSY实现横向Accordion效果
+10.KISSY实现横向Accordion效果`accordion`
+
+11.新增JS仿谷歌日历开源代码`beehive.calendar`

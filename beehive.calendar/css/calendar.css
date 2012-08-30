@@ -1,0 +1,1013 @@
+@charset "utf-8";
+body {
+	margin:0;
+	padding:0;
+	font-family:"Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+}
+#main{ }
+.text { 
+	color: #000000 
+	}
+
+a.menulink:link, a.menulink:visited { 
+	color: #0059b2;
+	}
+
+a.menulink:hover, a.menulink:active { 
+	color: #ff0000;
+	}
+
+
+a:link { 
+	color: #0059b2;
+	}
+
+a:visited { 
+	color: #840084;
+	}
+
+a:hover,a:active { 
+	color: #ff0000;
+	}
+
+ul, ol, blockquote { 
+	margin-top: 5px; 
+	margin-bottom: 10px; 
+	margin-left: 20px 
+	}
+
+form {
+	margin: 0px;
+	}
+
+h1	{
+	font-size: 150%;
+	margin-top: 5px; 
+	margin-bottom: 5px;
+	}
+
+h2	{ 
+	font-size: 130%;
+	margin-top: 15px; 
+	margin-bottom: 5px; 
+	}
+
+h3	{ 
+	font-size: 110%; font-style: italic;
+	margin-top: 15px; 
+	margin-bottom: 5px; 
+	}
+
+h4	{ 
+	font-size: 100%;
+	margin-top: 15px; 
+	margin-bottom: 5px; 
+	}
+
+h5	{ 
+	font-size: 100%; font-style: italic;
+	margin-top: 15px; 
+	margin-bottom: 5px; 
+	}
+
+h6	{ 
+	font-size: 90%;
+	margin-top: 15px; 
+	margin-bottom: 5px; 
+	}
+
+th	{ 
+	font-size: 100%;
+	padding: 0; 
+	}
+
+td { 
+	font-size: 100%;
+	padding: 0; 
+}
+
+.br2{border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;}
+.br4{border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;}
+.brt4{border-radius:4px 4px 0 0;-moz-border-radius:4px 4px 0 0;-webkit-border-radius:4px 4px 0 0;}
+.br10{border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;}
+.bs1{-webkit-box-shadow:1px 1px 10px #ccc;-moz-box-shadow:1px 1px 10px #ccc;box-shadow:1px 1px 10px #ccc;}
+.bs{-webkit-box-shadow:3px 3px 10px #000;-moz-box-shadow:3px 3px 10px #000;box-shadow:3px 3px 10px #000;}
+/* END Common */
+
+.Header {
+	width: 100%;
+	 border-collapse:collapse; 
+ 	border-spacing:0; 
+	}
+
+.Header th { 
+	font-size:16px; font-weight: bold; text-align: left;
+	padding: 4px;
+	background-color: #3d84cc; color: #ffffff;
+	width: 100%;
+	white-space: nowrap;
+	}
+	/*
+.Header th a{
+	background:#F1AF00;
+	padding:2px 10px;
+	cursor:pointer;
+	color:#fff;
+	-webkit-box-shadow:1px 1px 1px #C88F00;
+	-moz-box-shadow:1px 1px 1px #C88F00;
+	box-shadow:1px 1px 1px #C88F00;
+} 	
+*/
+ .tbg { 
+	font-size:16px; font-weight: bold; text-align: left;
+	padding: 4px;
+	background-color: #3d84cc; color: #ffffff;
+	width: 100%;
+	white-space: nowrap;
+	}
+
+.Header a:link { 
+	color: #ffffff;
+	}
+
+.Header a:visited { 
+	color: #ffffff;
+	}
+
+.Header a:hover, .Caption a:active { 
+	color: #ffffff; text-decoration: none;
+	}
+
+.HeaderLeft { 
+	background:#3D84CC;
+	}
+
+.HeaderRight { 
+	background:#3D84CC;
+	}
+
+.HeaderLeft img{
+	width: 14px;
+	}
+
+.HeaderRight img{
+	width: 14px;
+	}
+
+
+/* Grid Options */
+.Grid { 
+	border-bottom: 1px solid #3d84cc;
+	width: 100%;
+	border-collapse:collapse;
+	}
+
+.Caption th { 
+	font-size: 80%; 	text-align: left; vertical-align: top;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-image: url('images/CaptionBg.gif'); color: #000000;
+	white-space: nowrap;
+	}
+
+.Caption td { 
+	font-size: 80%; 	text-align: left; vertical-align: top;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-image: url('images/CaptionBg.gif'); color: #000000;
+	white-space: nowrap;
+	}
+
+.Caption a:link { 
+	color: #000000;
+	}
+
+.Caption a:visited { 
+	color: #000000;
+	}
+
+.Caption a:hover, .Caption a:active { 
+	color: #ff0000;
+	}
+
+.Caption img {
+	margin: 2px; 
+	vertical-align: middle;
+}
+
+.Caption input {
+	vertical-align: middle;
+	}
+
+.Row th { 
+	font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #f7f7f7; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.Row td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	background-color: #f7f7f7; 
+	color: #000000;
+	}
+
+.Row a:link { 
+	color: #0059b2;
+	}
+
+.Row a:visited { 
+	color: #840084;
+	}
+
+.Row a:hover, .Row a:active { 
+	color: #ff0000;
+	}
+
+.Separator{
+	color: #3d84cc;
+	}
+
+.Separator td{
+	height: 1px;
+	}
+
+
+.AltRow th { 
+	font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #f7f7f7; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.AltRow td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	background-color: #ebf2f8; 
+	color: #000000;
+	}
+
+.AltRow a:link { 
+	color: #0059b2;
+	}
+
+.AltRow a:visited { 
+	color: #840084;
+	}
+
+.AltRow a:hover, .AltRow a:active { 
+	color: #ff0000;
+	}
+
+.NoRecords td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #f7f7f7; 
+	color: #000000;
+	vertical-align: top;
+	}
+
+.Footer td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #dfdfdf; color: #000000;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.Footer a:link { 
+	color: #0059b2;
+	}
+
+.Footer a:visited { 
+	color: #840084;
+	}
+
+.Footer a:hover, .Footer a:active { 
+	color: #ff0000;
+	}
+
+.Footer img {
+	margin: 2px; 
+	vertical-align: middle;
+	}
+
+.Footer input {
+	vertical-align: middle;
+	}
+
+/* Record Options */
+.Record { 
+	border-left: 1px solid #3d84cc; border-bottom: 1px solid #3d84cc;
+	width: 100%;
+	}
+
+.Error td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	color: #FF0000;
+	vertical-align: top;
+	background-color: #f7f7f7; 
+	}
+
+.Controls th { 
+	font-size: 80%; font-weight: normal; text-align: left; vertical-align: top;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #f7f7f7; color: #000000;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.Controls td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	background-color: #f7f7f7; 
+	color: #000000;
+	}
+
+.Bottom td { 
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #dfdfdf; color: #000000;
+	text-align: right;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.Bottom a:link { 
+	color: #0059b2;
+	}
+
+.Bottom a:visited { 
+	color: #840084;
+	}
+
+.Bottom a:hover, .Caption a:active { 
+	color: #ff0000;
+	}
+
+.Bottom img {
+	margin: 2px;
+	vertical-align: middle; 
+	}
+
+.Bottom input {
+	vertical-align: middle;
+	}
+
+/* Report */
+.GroupCaption th{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	white-space: nowrap;
+	text-align: left; 
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #ebf2f8; 
+	color: #000000;
+	}
+
+.GroupCaption td{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #f7f7f7; 
+	color: #000000;
+	}
+
+.GroupCaption a:link {
+	color: #000000;
+	}
+
+.GroupCaption a:visited{
+	color: #000000;
+	}
+
+.GroupCaption a:hover, .GroupCaption a:active{
+	color: #ff0000;
+	}
+
+.GroupFooter td{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	background-color: #dfdfdf; 
+	color: #000000;
+	}
+
+.GroupFooter a:link {
+	color: #0059b2;
+	}
+
+.GroupFooter a:visited{
+	color: #840084;
+	}
+
+.GroupFooter a:hover,.GroupFooter a:active{
+	color: #ff0000;
+	}
+
+.GroupFooter img {
+	margin: 2px; 
+	vertical-align: middle;
+	}
+
+.GroupFooter input {
+	vertical-align: middle;
+	}
+
+.SubTotal td{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	font-weight: bold;
+	background-color: #ebf2f8; 
+	color: #000000;
+	border-bottom: 2px solid #3d84cc;
+	}
+
+.SubTotal a:link {
+	color: #0059b2;
+	}
+
+.SubTotal a:visited{
+	color: #840084;
+	}
+
+.SubTotal a:hover, .SubTotal a:active{
+	color: #ff0000;
+	}
+
+.Total td{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	vertical-align: top;
+	white-space: nowrap;
+	font-weight: bold;
+	background-color: #ebf2f8; 
+	color: #000000;
+	}
+
+.Total a:link {
+	color: #0059b2;
+	}
+
+.Total a:visited{
+	color: #840084;
+	}
+
+.Total a:hover, .Total a:active{
+	color: #ff0000;
+	}
+
+/* Form Options */
+.Button { 
+	margin: 2px
+	}
+
+/* Calendar */
+
+.Calendar { 
+	border: 1px solid #3d84cc;
+	border-collapse:collapse;
+	width: 100%;
+}
+#tool a{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border:1px solid #ddd;
+	border-bottom:none;
+    float: left;
+    margin-bottom: -3px;
+    margin-left: 5px;
+    padding: 4px 10px;
+	text-decoration:none;
+	border-radius:4px 4px 0 0;
+	-moz-border-radius:4px 4px 0 0;
+	-webkit-border-radius:4px 4px 0 0;
+}
+.CalendarWeekdayName{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center; 
+	vertical-align: top;
+	white-space: nowrap;
+	background-color: #ebf2f8; 
+	color: #000000;
+	}
+
+.CalendarWeekdayName a:link {
+	color: #0059b2;
+	}
+
+.CalendarWeekdayName a:visited{
+	color: #840084;
+	}
+
+.CalendarWeekdayName a:hover, .CalendarWeekdayName a:active{
+	color: #ff0000;
+	}
+
+.CalendarWeek_endName{
+	font-size: 80%;
+	padding: 4px 0;
+	border-top: 1px solid #3d84cc; 
+	white-space: nowrap;
+	text-align: center; 
+	vertical-align: top;
+	background-color: #ebf2f8;	
+	color: #000000;
+	}
+.CalendarWeekendName{
+	font-size: 80%;
+	padding: 4px 0;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	white-space: nowrap;
+	text-align: center; 
+	vertical-align: top;
+	background-color: #ebf2f8;	
+	color: #000000;
+	}
+
+.CalendarWeekendName a:link {
+	color: #000000;
+	}
+
+.CalendarWeekendName a:visited{
+	color: #000000;
+	}
+
+.CalendarWeekendName a:link, .CalendarWeekendName a:visited{
+	color: #ff0000;
+	}
+
+/* Calendar Day */
+.CalendarDay{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	background-color: #f7f7f7;	
+	color: #000000;
+	}
+
+.CalendarDay a:link {
+	color: #0059b2;
+	}
+
+.CalendarDay a:visited{
+	color: #840084;
+	}
+
+.CalendarDay a:hover, .CalendarDay a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Weekend */
+.CalendarWeekend{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	color: #000000;
+	}
+
+.CalendarWeekend a:link {
+	color: #0059b2;
+	}
+
+.CalendarWeekend a:visited{
+	color: #840084;
+	}
+
+.CalendarWeekend a:hover, .CalendarWeekend a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Today */
+.CalendarToday {
+	font-size: 80%;
+	padding: 2px;
+	border-top: 3px solid #3d84cc; border-right: 3px solid #3d84cc; border-left: 2px solid #3d84cc; border-bottom: 2px solid #3d84cc;
+	text-align: center;
+	background-color: #f7f7f7;	
+	color: #000000;
+	}
+
+.CalendarToday a:link {
+	color: #0059b2;
+	}
+
+.CalendarToday a:visited{
+	color: #840084;
+	}
+
+.CalendarToday a:hover, .CalendarToday a:active {
+	color: #ff0000;
+	}
+
+/* Calendar Weekend Today */
+.CalendarWeekendToday {
+	font-size: 80%;
+	padding: 2px;
+	border-top: 3px solid #3d84cc; border-right: 3px solid #3d84cc; border-left: 2px solid #3d84cc; border-bottom: 2px solid #3d84cc;
+	text-align: center;
+	background-color: #ebf2f8;	
+	color: #000000;
+	}
+
+.CalendarWeekendToday a:link {
+	color: #0059b2;
+	}
+
+.CalendarWeekendToday a:visited{
+	color: #840084;
+	}
+
+.CalendarWeekendToday a:hover, .CalendarWeekendToday a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Other Month's Day */
+.CalendarOtherMonthDay{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	background-color: #f7f7f7;	
+	color: #3d84cc;
+	}
+.CalendarOtherMonthDay a{ cursor:pointer}
+.CalendarOtherMonthDay a:link {
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthDay a:visited{
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthDay a:hover, .CalendarOtherMonthDay a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Other Month's Today */
+.CalendarOtherMonthToday {
+	font-size: 80%;
+	padding: 2px;
+	border-top: 3px solid #3d84cc;
+	border-right: 3px solid #3d84cc;
+	border-left: 2px solid #3d84cc; 
+	border-bottom: 2px solid #3d84cc;
+	text-align: center;
+	background-color: #f7f7f7;	
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthToday a:link {
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthToday a:visited{
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthToday a:hover,.CalendarOtherMonthToday a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Other Month's Weekend */
+.CalendarOtherMonthWeekend {
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	background-color: #ebf2f8;	
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthWeekend a:link {
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthWeekend a:visited{
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthWeekend a:hover, .CalendarOtherMonthWeekend a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Other Month's Weekend Today */
+.CalendarOtherMonthWeekendToday {
+	font-size: 80%;
+	padding: 2px;
+	border-top: 3px solid #3d84cc; border-right: 3px solid #3d84cc; border-left: 2px solid #3d84cc; border-bottom: 2px solid #3d84cc;
+	text-align: center;
+	color: #3d84cc;
+	background-color: #ebf2f8;	
+	}
+
+.CalendarOtherMonthWeekendToday a:link {
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthWeekendToday a:visited{
+	color: #3d84cc;
+	}
+
+.CalendarOtherMonthWeekendToday a:hover, .CalendarOtherMonthWeekendToday a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Selected Day (for DatePicker) */
+.CalendarSelectedDay{
+	font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	background-color: #dfdfdf;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+	}
+
+.CalendarSelectedDay a:link {
+	color: #000000;
+	}
+
+.CalendarSelectedDay a:visited{
+	color: #000000;
+	}
+
+.CalendarSelectedDay a:hover, .CalendarSelectedDay a:active{
+	color: #ff0000;
+	}
+
+/* Calendar Navigator */
+.CalendarNavigator {
+	font-size: 80%;
+	padding: 4px;
+	background-color: #dfdfdf; color: #000000;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	color: #000000;
+	}
+
+.CalendarNavigator a:link {
+	color: #0059b2;
+	}
+
+.CalendarNavigator a:visited{
+	color: #840084;
+	}
+
+.CalendarNavigator a:hover, .CalendarNavigator a:active{
+	color: #ff0000;
+	}
+
+.CalendarNavigator img{
+	margin: 2px;
+	vertical-align: middle; 	
+	}
+
+/* Calendar Extra */
+.CalendarEvent{
+	font-size: 80%;
+	text-align: left;
+	}
+
+.CalendarEvent a:link {
+	color: #0059b2;
+	}
+
+.CalendarEvent a:visited{
+	color: #840084;
+	}
+.elist{ clear:both}	
+.CalendarEvent a:hover, .CalendarEvent a:active{color: #ff0000;}
+.c_sz{ font-size:12px;}
+.day_d{ width:100%;background:none; position:relative}
+.day_d2{ width:100%; height:auto; background:none; }
+.day_d font{ font-size:10px}
+.add_event{float:right; display:none; cursor:pointer;position:absolute;right:0;top:0;}
+.day_num{  font-size:11px; color:#000066;cursor:pointer}
+.day_cd{ width:100%; height:60px; background-color:#FFCC00; border:1px solid #CCCCCC; }
+.eventList{  width:99%; height:440px; overflow:auto; border:1px solid #3D84CC; }
+.eventList .et{font-size:12px; font-weight:bold; background-color:#D3E1F1}
+.eli{ margin:5px; border-bottom:1px  dashed #99BBE8}
+.node{ padding:5px; font-size:12px;}
+.node a{ text-decoration:none}
+.node div{ margin-left:5px;}
+.selectTab{ 
+		font-weight:bold; 
+		background:#3D84CC !important; 
+		color:#fff !important;
+		border:1px solid #0066CC !important;
+		border-bottom:none !important;
+}
+
+.day_p{background:none;font-size: 80%;
+	padding: 4px;
+	border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;
+	text-align: center;
+	color: #000000;}
+.day_pc{background-color:#FFCC00;font-size: 80%;border-top: 1px solid #3d84cc; border-right: 1px solid #3d84cc;padding: 4px;}
+.prevMonth{
+	background:url("../images/Prev.gif") no-repeat scroll 0 2px transparent;
+	cursor:pointer;
+	float:left;
+	height:23px;
+	width:23px;
+}
+.nextMonth{
+	background:url("../images/Next.gif") no-repeat scroll 0 2px transparent;
+	cursor:pointer;
+	float:left;
+	height:23px;
+	width:23px;
+	margin-left:5px;	
+}
+.prevMonth:hover{background:url("../images/Prev_hover.gif") no-repeat scroll 0 2px transparent}
+.nextMonth:hover{background:url("../images/Next_hover.gif") no-repeat scroll 0 2px transparent}
+.wc-scrollable-grid {
+	background-color:#FFFFFF;
+	overflow-x:hidden !important;
+	overflow-y:auto !important;
+	position:relative;
+	width:100%;
+	height:400px;
+}
+table.wc-time-slots {
+	cursor:default;
+	table-layout:fixed;
+	width:100%;
+	position:absolute;
+	border-collapse:collapse;
+}
+
+.wc-time-slots {
+	position:absolute;
+	width:100%;
+}
+.wc-time-slots .wc-today {
+	background-color:#FFFFCC;
+}
+.wc-time-slot-wrapper  {
+	height:1px;
+	position:relative;
+	top:1px;
+}
+
+.wc-time-slot {
+	border-bottom:1px dotted #DDDDDD;
+}
+.wc-hour-end, .wc-hour-header {
+	border-bottom:1px solid #CCCCCC;
+	color:#555555;
+}
+.wc-business-hours {
+	color:#333333;
+	font-weight:bold;
+}
+.wc-hour-header {
+	text-align:right;
+}
+ .wc-am-pm {
+font-size:0.7em;
+margin-right:5px;
+}
+.wc-grid-timeslot-header  {
+	background:none repeat scroll 0 0 #EEEEEE;
+	width:6%;
+}
+.wc-day-column {
+	
+	overflow:visible;
+	vertical-align:top;
+	width:13.5%;
+}
+.wc-day-column-inner {
+	border-left:1px solid #DDDDDD;
+	position:relative;
+	-moz-user-select: none;
+	width:100%;
+	cursor:default;
+}
+.wc-cal-event {
+	background-color:#68A1E5;
+	color:#FFFFFF;
+	cursor:pointer;
+	opacity:0.8;
+	overflow:hidden;
+	position:absolute;
+	text-align:center;
+	width:100%;
+	filter:alpha(opacity=80);
+	opacity:0.8;
+}
+.wc-cal-event .wc-time {
+	background-color:#2B72D0;
+	border:1px solid #1B62C0;
+	color:#FFFFFF;
+	font-weight:bold;
+	padding:0;
+	font-size:10px;
+	line-height:18px;
+}
+.ui-corner-all {
+	-moz-border-radius:4px 4px 4px 4px;
+}
+.wc-container .ui-resizable-s {
+	bottom:-8px;
+	height:10px;
+}
+.ui-resizable-handle  {
+	display:block;
+	font-size:0.1px;
+	position:absolute;
+	z-index:1000;
+}
+.ui-resizable-s {
+	bottom:-5px;
+	cursor:s-resize;
+	height:7px;
+	left:0;
+	width:100%;
+}
+.dialog{
+	display:block;
+	left:412px;
+	outline:0 none;
+	overflow:hidden;
+	position:absolute;
+	top:95px;
+	width:400px;
+	z-index:1001;
+	color:#222222;
+	background:#eee;
+	font-size:12px;
+	border:5px solid #999;
+}
+.dialog .bar{ padding:5px; background:#2B72D0; color:#fff;}
+.dialog form{ padding:10px;}
+.dialog input[type='text'],textarea{
+	width:97%;
+	border:1px solid #333;
+	-moz-border-radius:4px 4px 4px 4px;
+	border:1px solid #AAAAAA;
+	color:#222222;
+	padding:2px 5px;
+	font-size:12px;
+} 
+.dialog input[type='text']{ height:25px;}
+.dialog textarea{ height:100px;}
+.dialog div{ margin-bottom:10px;}
+.dialog a{ text-decoration:underline; color:#3D84CC}
+.dialog hr{ border:1px dotted #aaa;}
+
+.dialog .close{
+	position:absolute;
+	right:4px;
+	top:4px;
+	z-index:1002;
+}
+.blackBg{
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	background:#000;
+	filter:alpha(opacity=20);
+	opacity:0.2;
+	z-index:1000;
+}
+
+.today{ background:#FCE89C}

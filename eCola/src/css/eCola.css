@@ -74,7 +74,7 @@ ul, ol, dl, li, dt, dd {
     color: #fff;
 }
 
-.main-log {
+.container {
     width: 990px;
 }
 
@@ -205,14 +205,27 @@ ul, ol, dl, li, dt, dd {
     position: absolute;
     z-index: 10;
     border-radius: 4px;
-    background-color: #ccc;
+    background-color: #70c4ee;
     color: #fff;
     opacity: 0.7;
+	filter: alpha(opacity=70);
     overflow: hidden;
 }
 
+.uplayer .log-resize {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	margin-left: -8px;
+	width: 17px;
+	height: 10px;
+	background: url(resize.png) no-repeat center;
+	overflow: hidden;
+	cursor: n-resize;
+	opacity: 0.5;
+}
+
 .fullalpha {
-    background-color: #999;
     opacity: 1;
     cursor: pointer;
     -moz-transition: background-color .2s ease-in;
@@ -220,27 +233,43 @@ ul, ol, dl, li, dt, dd {
     -o-transition: background-color .2s ease-in;
     -ms-transition: background-color .2s ease-in;
     transition: background-color .2s ease-in;
+	background-color: rgba(86, 177, 222, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF56b1de,endColorStr=#FF56b1de);
 }
 
 .fullalpha:hover {
-    background-color: #aaa;
+    background-color: rgba(112, 196, 238, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF70c4ee,endColorStr=#FF70c4ee);
 }
 
 .uplayer h5,
-.uplayer div {
+.uplayer .log-text {
+	display: block;
     padding: 1px 5px 1px;
     color: #fff;
 }
 
 .uplayer h5 {
+	background-color: rgba(0, 136, 204, 0.7);
     font-size: 10px;
     line-height: 1.3;
+	border: 1px solid #1b62c0;
+	border-radius: 4px;
+	color: #fff;
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#b20088cc,endColorStr=#b20088cc);
+	cursor: move;
 }
 
-.uplayer div {
+.fullalpha h5 {
+	background-color: rgba(0, 136, 204, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF0088cc,endColorStr=#FF0088cc);
+}
+
+.uplayer .log-text {
   /*text-indent: 24px;*/
     font-size: 12px;
     line-height: 1.3;
+	color: #fff;
 }
 
 .form-layer {
@@ -342,6 +371,7 @@ ul, ol, dl, li, dt, dd {
 /*----------------团队日志-----------------*/
 .teamlog-list {
     padding: 0 18px;
+    padding-bottom: 50px;
 }
 
 .teamlog-list .log-row {
@@ -384,7 +414,8 @@ ul, ol, dl, li, dt, dd {
 }
 
 .teamlog-list .work-log {
-    padding: 15px 100px 0 35px;
+	position: relative;
+    padding: 15px 100px 0 123px;
     line-height: 20px;
     font-size: 14px;
     color: #333;
@@ -397,15 +428,19 @@ ul, ol, dl, li, dt, dd {
     margin-right: 10px;
     vertical-align: top;
     *vertical-align: middle;
+	color: #08c;
 }
 
 .teamlog-list .work-log .work-time {
+	position: absolute;
+	left: 35px;
     font-size: 12px;
     color: #999;
 }
 
 .teamlog-list .work-log .work-percent {
-    position: relative;
+    position: absolute;
+	left: 63px;
     margin-top: 3px;
     width: 48px;
     height: 12px;
@@ -419,6 +454,10 @@ ul, ol, dl, li, dt, dd {
     height: 12px;
     width: 5px;
     background-color: #ccc;
+}
+
+.teamlog-list .work-log a {
+	color: #666;
 }
 
 .teamlog-list .work-log .work-cat {
@@ -459,4 +498,418 @@ ul, ol, dl, li, dt, dd {
     padding-top: 5px;
     font-size: 12px;
     text-align: center;
+}
+
+/*----------------团队设置-----------------*/
+.team-set {
+    padding: 20px;
+}
+
+.team-tab {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.team-tab li {
+    float: left;
+    margin-left: 5px;
+}
+
+.team-tab a {
+    float: left;
+    outline: none;
+    position: relative;
+    bottom: -1px;
+    display: block;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 25px;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    -webkit-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+    border: 1px solid #ccc;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #e9e9e9;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#e9e9e9));
+    background: -webkit-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -moz-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -ms-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -o-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: linear-gradient(top, #f6f6f6, #e9e9e9);
+}
+
+.team-tab a:hover {
+    color: #555;
+    background: #f0f0f0;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#f0f0f0));
+    background: -webkit-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -moz-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -ms-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -o-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: linear-gradient(top, #f9f9f9, #f0f0f0);
+}
+
+.team-tab li.active a,
+.team-tab li.active a:hover {
+    color: #008cd8;
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.team-con li {
+    display: none;
+}
+
+.team-con li.active {
+    display: block;
+}
+
+.teamlist {
+    padding: 10px 15px;
+    line-height: 200%;
+    font-size: 16px;
+}
+
+.teamlist:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.teamlist .team-intro {
+    padding-left: 15px;
+    color: #999;
+}
+
+.team-exit {
+    float: right;
+    margin-bottom: 0;
+    padding-left: 10px;
+    line-height: 100%;
+}
+
+.teamlist .invited:visited {
+    color:#fff;
+}
+
+.addteam {
+    margin-bottom: 0;
+    padding-top: 15px;
+}
+
+.teamlist .user-act {
+    float: right;
+    margin-bottom: 0;
+}
+
+.addteam .control-group {
+    margin-bottom: 0;
+}
+
+.addteam .teambtns {
+    padding-top: 10px;
+}
+
+/*----------------工作日志-----------------*/
+.list-title {
+    padding: 0 30px;
+    margin: 20px 0 10px 0;
+    font-size: 120%;
+}
+
+.per-list {
+    margin: 0 20px;
+}
+
+.per-list .item {
+    padding: 20px;
+    border-top: 1px dashed #ddd;
+}
+
+.per-date {
+    float: left;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px #eee;
+}
+
+.per-date p {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.per-date .per-mon {
+    height: 24px;
+    line-height: 24px;
+    color: #fff;
+    background-color: #08c;
+}
+
+.per-date .per-day {
+    padding-top: 6px;
+    line-height: 36px;
+    font-size: 30px;
+    color: #aaa;
+}
+
+.per-logs {
+    float: left;
+    padding-left: 20px;
+    max-width: 630px;
+    _width: 630px;
+}
+
+.per-logs .per-row {
+	position: relative;
+    padding: 5px 0 5px 43px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+
+.per-logs .per-row a {
+	color: #666;
+}
+
+.per-logs .per-row .per-row-hour {
+	position: absolute;
+	left: 0;
+    font-size: 12px;
+    color: #999;
+}
+
+.per-logs .per-row .per-row-comment {
+    font-size: 12px;
+	color: #08c;
+}
+
+/*----------------成员列表-----------------*/
+.mem-box {
+    padding: 0 20px 20px;
+}
+
+.mem-box .controls {
+    padding-top: 15px;
+    margin-left: 0;
+}
+
+.mem-box .controls img {
+	width: 48px;
+	height: 48px;
+}
+
+.inviting span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.inviting .reciver-text {
+	margin-bottom: 0;
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	width: 100px;
+	height: 18px;
+	overflow: hidden;
+}
+
+.inviting .reciver-text span {
+	display: inline;
+	margin-right: 0;
+}
+
+.mem-header {
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    font-weight: normal;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.mem-box legend {
+    margin-bottom: 0;
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    color: #666;
+}
+
+.mem-box .control-group {
+    margin: 0;
+}
+
+.mem-box .form-horizontal {
+    margin-bottom: 0;
+}
+
+.mem-box .form-actions {
+    margin-bottom: 0;
+    padding: 0;
+    border-top: 0;
+    background-color: #fff;
+}
+
+.mem-box .control-label {
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+    margin-left: 0;
+}
+
+.form-horizontal :first-child.controls {
+	padding-left: 7px;
+}
+
+.mem-box .user-avatar {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin: 0 20px 10px 0;
+	padding: 5px 10px 5px 5px;
+	border-radius: 4px;
+	border: 1px dashed #ccc;
+	width: 152px;
+}
+
+.mem-box .user-avatar .inline {
+	width: 81px;
+	height: 18px;
+	overflow: hidden;
+}
+
+.my-inviting {
+	margin-bottom: 15px;
+	padding: 8px;
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 784px;
+}
+
+.my-inviting form {
+	margin: 0;
+}
+
+.inviting-text {
+	float: left;
+	margin: 0;
+	margin-right: 10px;
+	height: 28px;
+	line-height: 28px;
+	color: #ff0000;
+	font-size: 14px;
+}
+
+.my-inviting .form_access {
+	float: left;
+	margin-right: 10px;
+}
+
+.form_refuse {
+	float: left;
+}
+
+.user-notice {
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #f50;
+	border-radius: 3px;
+	font-size: 14px;
+	color: #39f;
+}
+
+.no-comment {
+    opacity: 0.5;
+}
+
+/*----------------评论页面-----------------*/
+.log-detail .page-header {
+	padding-bottom: 0;
+	padding-left: 15px;
+}
+
+.log-detail .log-text {
+	padding: 20px 15px 0;
+}
+
+.log-detail .log-user, .log-detail .log-content {
+	float: left;
+}
+
+.log-detail .log-user {
+	margin-right: 10px;
+	padding: 2px;
+	width: 48px;
+	height: 48px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.log-detail .log-content {
+	width: 700px;
+}
+
+.log-detail .log-content .log-title {
+	margin-bottom: 5px;
+}
+
+.comment-ls {
+	padding-left: 80px;
+}
+
+.comment-ls .comments {
+	padding-bottom: 15px;
+}
+
+.comment-ls .comment-user, .comment-ls .comment-detail {
+	float: left;
+}
+
+.comment-ls .comment-user {
+	margin-right: 10px;
+	padding: 2px;
+	width: 48px;
+	height: 48px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.comment-ls .comment-detail {
+	width: 640px;
+}
+
+.comment-ls .comment-detail .comment-title {
+	margin-bottom: 0;
+}
+
+.log-detail .form-horizontal {
+	padding-left: 20px;
+}
+
+.log-detail .comment-area {
+	display: block;
+	margin-bottom: 10px;
+	width: 500px;
+	height: 100px;
+}
+
+.log-detail .comment-label {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.nav-list > .selected > a, .nav-list > .selected > a:hover {
+	background-color: #ccc;
 }
