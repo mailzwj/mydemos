@@ -17,3 +17,5 @@
 8.CSS+KISSY实现用方向键控制动画`cssanim`
 
 9.CSS实现兼容IE6-8的背景或边框半透明`alpha`
+
+10.KISSY实现横向Accordion效果
