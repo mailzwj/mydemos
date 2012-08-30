@@ -159,6 +159,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,6 +345,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eCola/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="378" column="13" selection-start="6241" selection-end="6241" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beehive.calendar/beehive.calendar/week.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="378" column="13" selection-start="6241" selection-end="6241" vertical-scroll-proportion="0.0" />
       </provider>
