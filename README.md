@@ -21,3 +21,7 @@
 10.KISSY实现横向Accordion效果`accordion`
 
 11.新增JS仿谷歌日历开源代码`beehive.calendar`
+
+12.新增CSS3绘制叮当猫DEMO`css3dingdang`
+
+13.新增书签栏应用DEMO`bookmarkapp`

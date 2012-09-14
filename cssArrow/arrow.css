@@ -66,13 +66,13 @@ pre {
     line-height: 0;
     border: 10px solid #ccc;
 }
-.mark, .mark-left, .mark-right {
+.mark, .mark-left, .mark-right, .mark-right-bottom, .mark-left-bottom {
     position: relative;
     margin: 0 auto;
     padding-top: 10px;
     width: 70%;
 }
-.mark .content, .mark-left .content, .mark-right .content {
+.mark .content, .mark-left .content, .mark-right .content, .mark-right-bottom .content, .mark-left-bottom .content {
     padding: 3px 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -126,4 +126,26 @@ pre {
     top: -8px;
     border-right-color: #fff;
     border-bottom: 10px solid #fff;
+}
+
+.mark-right-bottom .arrow, .mark-right-bottom .arrow i {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+
+.mark-left-bottom .arrow, .mark-left-bottom .arrow i {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
 }
