@@ -7,11 +7,8 @@
 
 KISSY.use("sizzle",function(S){
 	var D = S.DOM, E = S.Event;
-	var html = '', //新建日历时的节点变量
-		rowHeight = 28; //周历表格行高（+边框）
-	var global_nowtimeline = null; //时间线timer
-	var firstColWidth = 0; //首列宽度
-	var logTypeClass = {"work": "", "meeting": "meetingClass", "others": "otherClass"}; //日志类型对应高亮样式
+	var html = '', rowHeight = 26;
+	var global_nowtimeline = null;
 
 	/* 函数名：createWeekTable
 	 * 功能：在第一个class为week-main的元素中创建8列48行的周历表格
@@ -22,8 +19,8 @@ KISSY.use("sizzle",function(S){
 	 */
 	function createWeekTable(fd, callback){
         var wm = D.get(".week-main"),
-            col_span = '<div class="col-time time-line">',//首列特殊（显示时间用）
-            col_div_temp = '<div class="col col-{x}" date="{date}">',//显示空白方格
+            col_span = '<div class="col-time time-line">',
+            col_div_temp = '<div class="col col-{x}" date="{date}">',
             col_div = '',
             wk = 8,
             dis_day = 24 * 60 * 60 * 1000,
@@ -53,10 +50,8 @@ KISSY.use("sizzle",function(S){
         }
 
         D.html(wm, col_span + col_div + '<div id="nowTimeLine" class="nowtimeline"></div>');
-		firstColWidth = D.outerWidth(S.one(".week-main .col-time"));
-		rowHeight = D.outerHeight(S.one(".week-main:eq(0) .time"));
 
-        D.scrollTop(wm, 18 * rowHeight);//设置滚动条默认滚动位置为09:00
+        D.scrollTop(wm, 18 * (D.height(S.one(".week-main:eq(0) .time")) + 1));
         callback && callback();
     }
 
@@ -134,7 +129,10 @@ KISSY.use("sizzle",function(S){
         var line_top = Math.floor(h_p * percent) - 1;
         day -= 1;
         line_left += day * D.outerWidth(D.children(line_p, ".col")[0]);
-        D.css(line, {"display": "block", "left": line_left, "top": line_top, "width": line_w});
+        D.css(line, "display", "block");
+        D.css(line, "left", line_left);
+        D.css(line, "top", line_top);
+        D.css(line, "width", line_w);
         global_nowtimeline = setTimeout(function(){setNowTimeLine();}, 60000);
     }
 
@@ -187,8 +185,9 @@ KISSY.use("sizzle",function(S){
         var form = S.one("#form-layer"),
 			wm = S.one(".week-main"),
             fa = S.all(".week-main:eq(0) .fullalpha"),
-			texts = [],//日志内容节点（点击弹出修改浮层）
-			resizes = [],//改变尺寸节点（resize控制节点）
+			nodes = [],
+			texts = [],
+			resizes = [],
 			log = null,
 			log_resize = null,
 			dragable = false,
@@ -204,27 +203,21 @@ KISSY.use("sizzle",function(S){
 			week_s = 0,//每周开始的一天
 			cd = 0;//当前操作日志日期
 		S.each(fa, function(n){
+			nodes.push(D.get("h5", n));
 			texts.push(D.get(".log-text", n));
 			resizes.push(D.get(".log-resize", n));
 		});
-		//清除相应节点上的相同事件，避免事件叠加
-		//E.detach(nodes, "mousedown");
-		E.detach(fa, "mousedown");
+		E.detach(nodes, "mousedown");
 		E.detach(resizes, "mousedown");
-		E.detach(texts, "click");
-		//E.on(fa, "mouseup", function(e){e.halt();});
-		//重新绑定事件
+		E.on(texts, "mouseup", function(e){e.halt();});
 		E.on(texts, "click", function(){
 			if(S.all(".week-main:eq(0) .text-empty").length > 0){
 				D.remove(S.all(".week-main:eq(0) .text-empty"));
 			}
-			if(drag_start.x == drag_ing.x && drag_start.y == drag_ing.y){
-				rePositionForm(D.parent(this, ".fullalpha"), "update");
-			}
+			rePositionForm(D.parent(this, ".fullalpha"), "update");
 			return false;
 		});
-		//drag节点上按下鼠标时，记录鼠标起始及初始过程中变量值
-        E.on(fa, "mousedown", function(e){
+        E.on(nodes, "mousedown", function(e){
             if(S.all(".week-main:eq(0) .text-empty").length > 0){
                 D.remove(S.all(".week-main:eq(0) .text-empty"));
             }
@@ -235,18 +228,17 @@ KISSY.use("sizzle",function(S){
 			drag_ing.y = drag_start.y;
 			drag_end.x = drag_start.x;
 			drag_end.y = drag_start.y;
-			var s_time = D.attr(this, "date-start").split(" ")[1];//取得开始时间
-			cd = D.attr(this, "date-start").split(" ")[0];
+			var s_time = D.attr(D.parent(this, ".fullalpha"), "date-start").split(" ")[1];//取得开始时间
+			cd = D.attr(D.parent(this, ".fullalpha"), "date-start").split(" ")[0];
 			var s_minutes = s_time.split(":")[0] * 60 + s_time.split(":")[1] * 1;
 			index = s_minutes / 30;//每格30分钟，计算格子数，即起始index
 			index_x = getIndexX(cd).c;
 			week_s = getIndexX(cd).s;
 			dragable = true;
-			log = this;
+			log = D.parent(this, ".fullalpha");
             //rePositionForm(this, "update");
 			e.halt();
         });
-		//resize节点上按下鼠标，记录鼠标起始及过程中变量值
 		E.on(resizes, "mousedown", function(e){
             if(S.all(".week-main:eq(0) .text-empty").length > 0){
                 D.remove(S.all(".week-main:eq(0) .text-empty"));
@@ -266,8 +258,6 @@ KISSY.use("sizzle",function(S){
 			log_resize = D.parent(this, ".fullalpha");
 			e.halt();
         });
-		//当鼠标在drag或resize节点上按下并移动时，计算当前位置与初始位置的差值，用于判断是否该改变日志块位置或大小
-		//如需改变，则设置其相关css（left,top,height）新值，以及部分（date-start、date-end）属性值
 		E.on(wm, "mousemove", function(e){
 			if(dragable){
 				drag_end.x = e.clientX;
@@ -275,7 +265,7 @@ KISSY.use("sizzle",function(S){
 				var dis = drag_end.y - drag_ing.y;
 				var move_d = rowHeight;
 				var dis_x = drag_end.x - drag_ing.x;
-				var move_x = D.outerWidth(log) + 3;
+				var move_x = D.width(log) + 3;
 				if(Math.abs(dis) > rowHeight / 2){
 					move_d = dis > 0 ? rowHeight : -1 * rowHeight;
 					D.css(log, "top", parseInt(D.css(log, "top")) + move_d);
@@ -291,23 +281,21 @@ KISSY.use("sizzle",function(S){
 				if(Math.abs(dis_x) >= move_x){
 					move_x = dis_x > 0 ? move_x : -1 * move_x;
 					index_x = dis_x > 0 ? index_x + 1 : index_x - 1;
-					if(parseInt(D.css(log, "left")) + move_x > firstColWidth){
-						if(index_x <= 0){
-							index_x = 0;
-						}else if(index_x >= 6){
-							index_x = 6;
-						}
-						D.css(log, "left", parseInt(D.css(log, "left")) + move_x);
-						drag_ing.x += move_x;
-						var last_d = new Date(parseInt(week_s) + index_x * 24 * 60 * 60 * 1000);
-						cd = last_d.getFullYear() + "-" + addZero(last_d.getMonth() + 1) + "-" + addZero(last_d.getDate());
-						var sToend = getStartAndEnd(index, D.height(log));
-						var new_start = cd + " " + sToend.start + ":00";
-						var new_end = cd + " " + sToend.end + ":00";
-						D.html(D.get("h5", log), sToend.start + " ~ " + sToend.end);
-						D.attr(log, "date-start", new_start);
-						D.attr(log, "date-end", new_end);
+					if(index_x <= 0){
+						index_x = 0;
+					}else if(index_x >= 6){
+						index_x = 6;
 					}
+					D.css(log, "left", parseInt(D.css(log, "left")) + move_x);
+					drag_ing.x += move_x;
+					var last_d = new Date(parseInt(week_s) + index_x * 24 * 60 * 60 * 1000);
+					cd = last_d.getFullYear() + "-" + addZero(last_d.getMonth() + 1) + "-" + addZero(last_d.getDate());
+					var sToend = getStartAndEnd(index, D.height(log));
+					var new_start = cd + " " + sToend.start + ":00";
+					var new_end = cd + " " + sToend.end + ":00";
+					D.html(D.get("h5", log), sToend.start + " ~ " + sToend.end);
+					D.attr(log, "date-start", new_start);
+					D.attr(log, "date-end", new_end);
 				}
 			}
 			if(resize_able){
@@ -328,7 +316,6 @@ KISSY.use("sizzle",function(S){
 				}
 			}
 		});
-		//当鼠标松开时，判断是否有drag或resize触发，若有则发送日志更新请求
 		E.on(document, "mouseup", function(e){
 			var update_node = null;
 			if(dragable){
@@ -341,7 +328,7 @@ KISSY.use("sizzle",function(S){
 				dragable = false;
 				resize_able = false;
 				var url = 'worklogs/' + D.attr(update_node, 'id') + '.json';
-				var cs = 'authenticity_token=' + D.attr(S.one('meta[name="csrf-token"]'), "content") + '&worklog[id]=' + D.attr(update_node, "id") + '&worklog[begin_at]=' + D.attr(update_node, "date-start") + '&worklog[end_at]=' + D.attr(update_node, "date-end") + "&_method=put";
+				var cs = 'authenticity_token=' + D.attr(S.one('meta[name="csrf-token"]'), "content") + '&worklog[id]=' + D.attr(update_node, "id") + '&worklog[content]=' + D.html(D.get(".log-text", update_node)) + '&worklog[begin_at]=' + D.attr(update_node, "date-start") + '&worklog[end_at]=' + D.attr(update_node, "date-end") + '&worklog[team_name]=' + D.attr(update_node, "cat") + "&_method=put";
 				S.IO({
 					type: "POST",
 					dataType: "json",
@@ -379,166 +366,94 @@ KISSY.use("sizzle",function(S){
             fh = D.outerHeight(f),
             fl = dl + dw + 20,
             ft = dt + (dh - fh) / 2 - D.scrollTop(w),
-            cat = D.attr(node, "cat"),
-			href = D.attr(S.get(".log-text", node), "href");
-		D.css(D.get(".form-arrow", "#form-layer"), "display", "block");
+            cat = D.attr(node, "cat");
         D.removeClass(f, "outOfTheWindow");
         if (fl + fw > D.width(window)){
             fl -= (fw + dw + 40);
             D.addClass(f, "outOfTheWindow");
         }
-        D.css(f, {"left": fl, "top": ft});
-		S.IO({
-			type: "GET",
-			url: href,
-			data: {"nohead": "1"},
-			dataType: "html",
-			success: function(data){
-				D.css(f, "display", "block");
-				D.html(D.get("#forminner"), data);
-				var nodes = S.all("#ecola-teams input");
-				var pub_status = D.attr(D.get("#edit-teams"), "data-area").split(",");
+        D.css(f, "left", fl);
+        D.css(f, "top",ft);
+        D.css(f, "display", "block");
+        if(cat == "" || cat == "null"){cat = 0;}
+        D.val(D.query("textarea", f)[0], D.html(D.children(node, ".log-text")[0]));
+        D.query("textarea", f)[0].focus();
+        D.val(D.query("input[type='hidden']", f)[0], D.attr(node, "id"));
+        D.val(D.query("input[type='hidden']", f)[1], D.attr(node, "date-start"));
+        D.val(D.query("input[type='hidden']", f)[2], D.attr(node, "date-end"));
+        D.attr(S.all("#ecola-cat option[value='" + cat + "']"), "selected", true);
+        D.attr(S.one(".ecola-del"), "href", "worklogs/" + D.attr(node, "id") + ".json");
+        if(mth == "add"){
+            D.attr(S.one(".ecola-save"), "href", "worklogs.json");//新增日志入口
+            D.css(S.one(".ecola-del"), "visibility", "hidden");
+        }else if(mth == "update"){
+            D.attr(S.one(".ecola-save"), "href", "worklogs/" + D.attr(node, "id") + ".json");//修改日志入口
+            D.css(S.one(".ecola-del"), "visibility", "visible");
+        }
 
-				//toggle团队列表浮层
-				E.on(D.get("#edit-teams"), "click", function(){
-					var par = D.parent(D.get("#edit-teams"), ".ecola-group");
-					var fu = D.get("#ecola-teams");
-					if(D.hasClass(par, "ecola-group-expand")){
-						D.removeClass(par, "ecola-group-expand");
-						D.css(fu, "display", "none");
-					}else{
-						D.addClass(par, "ecola-group-expand");
-						D.css(fu, "display", "block");
-					}
-
-					//若表单溢出窗口，则改变表单位置
-					var form = D.get("#form-layer");
-					var team = D.get("#ecola-teams");
-					var arrow = D.get(".form-arrow", "#form-layer");
-					D.css(arrow, "display", "block");
-					var fleft = parseInt(D.css(form, "left"));
-					var fpos = D.offset(form);
-					var fwidth = D.outerWidth(form);
-					var twidth = D.outerWidth(team);
-					if(fpos.left + fwidth + twidth > D.width(window)){
-						D.css(arrow, "display", "none");
-						D.attr(par, "pleft", fleft);
-						new S.Anim(form, {"left": fleft - twidth}, 0.3, "easeOut",function(){}).run();
-					}else{
-						new S.Anim(form, {"left": parseInt(D.attr(par, "pleft"))}, 0.3, "easeOut", function(){}).run();
-					}
-
-					return false;
-				});
-				//全选
-				E.on(D.get("#check-all"), "click", function(){
-					S.each(nodes, function(nl){
-						D.attr(nl, "checked", true);
-					});
-					D.html(D.get("#edit-teams"), pub_status[0] + " <i class='icon-play'></i>");
-					return false;
-				});
-				//取消全选
-				E.on(D.get("#cancel-all"), "click", function(){
-					S.each(nodes, function(nl){
-						D.attr(nl, "checked", false);
-					});
-					D.html(D.get("#edit-teams"), pub_status[2] + " <i class='icon-play'></i>");
-					return false;
-				});
-				//点选
-				E.on(nodes, "click", function(){
-					var cct = 0;
-					S.each(nodes, function(nl){
-						if(D.attr(nl, "checked")){
-							cct++;
-						}
-					});
-					if(cct == nodes.length){
-						D.html(D.get("#edit-teams"), pub_status[0] + ' <i class="icon-play"></i>');
-					}else if(cct == 0){
-						D.html(D.get("#edit-teams"), pub_status[2] + ' <i class="icon-play"></i>');
-					}else{
-						D.html(D.get("#edit-teams"), pub_status[1] + ' <i class="icon-play"></i>');
-					}
-				});
-
-				//保存数据
-				if(cat == "" || cat == "null"){cat = 0;}
-				D.query("textarea", f)[0].focus();
-				D.attr(S.one(".ecola-del"), "href", "worklogs/" + D.attr(node, "id") + ".json");
-				if(mth == "add"){
-					D.val(D.get("#ecola-id"), D.attr(node, "id"));
-					D.val(D.query("#ecola-date-start"), D.attr(node, "date-start"));
-					D.val(D.query("#ecola-date-end"), D.attr(node, "date-end"));
-					D.attr(S.all("#ecola-cat option[value='" + cat + "']"), "selected", true);
-					D.attr(S.one(".ecola-save"), "href", "worklogs.json");//新增日志入口
-					D.css(S.one(".ecola-del"), "visibility", "hidden");
-				}else if(mth == "update"){
-					D.attr(S.one(".ecola-save"), "href", "worklogs/" + D.attr(node, "id") + ".json");//修改日志入口
-					D.css(S.one(".ecola-del"), "visibility", "visible");
-				}
-				E.detach(S.one(".ecola-save"), "click");
-				E.detach(S.one(".ecola-del"), "click");
-				E.on(S.one(".ecola-save"), "click", function(){
-					var area = S.one("#form-layer textarea").val();
-					if(area == ""){
-						alert("您还没填写日志内容哦，请先填写好您的日志吧！");
-						return false;
-					}
-					var url = D.attr(this, "href");
-					var ltype = logTypeClass[D.val(S.one("#form-layer input[type='radio']:checked"))];
-					var params = S.IO.serialize("#form-layer form");
-					console.log(ltype);
-					S.IO({
-						type: "POST",
-						dataType: "json",
-						url: url,
-						data: params,
-						success: function(data){
-							var json = data;
-							if(json.status == "success"){
-								D.html(D.children(node, ".log-text")[0], D.val(S.one("#form-layer textarea")));
-								D.attr(D.children(node, ".log-text")[0], "href", "worklogs/" + json.id + "/edit");
-								D.attr(node, "id", json.id);
-								if(ltype && ltype != ""){
-									D.attr(node,"class", "uplayer " + ltype);
-								}else{
-									D.attr(node, "class", "uplayer text-empty");
-								}
-								//D.attr(node, "cat", json.cat);
-								D.attr(D.children(node, ".log-text")[0], "title", D.val(S.one("#form-layer textarea")));
-								D.removeClass(node, "text-empty");
-								D.addClass(node, "fullalpha");
-								D.css(S.one("#form-layer"), "display", "none");
-								html = '';
-								changeFormAction();
-							}else{
-								alert("日志保存失败了，休息一会儿再来吧！");
-							}
-						}
-					});
-					return false;
-				});
-
-				E.on(S.one(".ecola-del"), "click", function(){
-					var url = D.attr(this, "href");
-					var flag = confirm("日志一经删除无法恢复，确定删除该条日志吗？");
-					if(flag){
-						S.IO.post(url, {"_method":"delete"}, function(data){
-							var json = data;
-							if(json.status == "success"){
-								D.css(S.one("#form-layer"), "display", "none");
-								D.remove(node);
-							}else{
-								alert("删除失败了，请稍后重试");
-							}
-						});
-					}
-					return false;
-				});
+        E.detach(S.one(".ecola-save"), "click");
+        E.detach(S.one(".ecola-del"), "click");
+        E.on(S.one(".ecola-save"), "click", function(){
+            var url = D.attr(this, "href");
+            var param = {}, postData = {};
+            param.content = D.val(S.one("textarea"));
+            param.id = D.val(D.query("input[type='hidden']", f)[0]);
+            param.begin_at = D.val(D.query("input[type='hidden']", f)[1]);
+            param.end_at = D.val(D.query("input[type='hidden']", f)[2]);
+            param.team_name = D.val(S.one("#ecola-cat"));
+            postData.worklog = param;
+            postData.authenticity_token = D.attr(S.one('meta[name="csrf-token"]'), "content");
+            if(mth == "update"){
+                postData._method = "put";
+            }
+			var cs = 'authenticity_token=' + postData.authenticity_token + '&worklog[id]=' + postData.worklog.id + '&worklog[content]=' + postData.worklog.content + '&worklog[begin_at]=' + postData.worklog.begin_at + '&worklog[end_at]=' + postData.worklog.end_at + '&worklog[team_name]=' + postData.worklog.team_name;
+			if(mth == "update"){
+				cs += '&_method=put';
 			}
-		});
+            S.IO({
+                type: "POST",
+				dataType: "json",
+                url: url,
+                data: cs,
+                success: function(data){
+                    var json = data;
+                    if(json.status == "success"){
+                        D.html(D.children(node, ".log-text")[0], param.content);
+                        D.attr(node, "id", json.id);
+                        D.attr(node, "cat", json.cat);
+						D.attr(D.children(node, ".log-text")[0], "title", param.content);
+                        D.removeClass(node, "text-empty");
+                        D.addClass(node, "fullalpha");
+                        D.css(S.one("#form-layer"), "display", "none");
+                        html = '';
+                        changeFormAction();
+                    }else{
+                        alert("日志保存失败了，休息一会儿再来吧！");
+                    }
+                }
+            });
+            return false;
+        });
+
+        E.on(S.one(".ecola-del"), "click", function(){
+            var url = D.attr(this, "href");
+            var flag = confirm("日志一经删除无法恢复，确定删除该条日志吗？");
+            if(flag){
+                S.IO.post(url, {"_method":"delete"}, function(data){
+                    var json = data;
+                    if(json.status == "success"){
+                        D.css(S.one("#form-layer"), "display", "none");
+                        //alert("日志删除成功");
+                        D.remove(node);
+                    }else{
+                        alert("删除失败了，请稍后重试");
+                    }
+                });
+            }
+
+            return false;
+        });
+        //console.log(fw);
     }
 
 	/* 函数名：initLayer
@@ -556,7 +471,6 @@ KISSY.use("sizzle",function(S){
         var m_start = {x: 0, y: 0};//鼠标点击位置
         var m_row = {x: 0, y: 0};//鼠标过渡位置
         var m_end = {x: 0, y: 0};//鼠标移动位置
-		//鼠标在周历空白各自上被按下时，记录日志块起始位置
         E.on(weekdays, "mousedown", function(e){
             index = S.indexOf(this, weekdays);
             m_start.x = e.clientX;
@@ -579,11 +493,13 @@ KISSY.use("sizzle",function(S){
             html = D.create('<div class="uplayer text-empty"></div>');
             D.attr(html, "id", "");
             D.attr(html, "cat", "");
-            D.css(html, {"left": left, "top": top, "width": width - diff.x - 12, "height": 0});
+            D.css(html, "left", left);
+            D.css(html, "top", top);
+            D.css(html, "width", width - diff.x - 2);
+            D.css(html, "height", 0);
             D.append(html, wm);
             return false;
         });
-		//鼠标在有空白格子被点击状态下移动，则根据鼠标初始位置及过程位置计算日志时间区域大小
         E.on(wm, "mousemove", function(e){
             if(clicked){
                 m_end.x = e.clientX;
@@ -611,11 +527,10 @@ KISSY.use("sizzle",function(S){
                     var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
                     D.attr(html, "date-start", datestart);
                     D.attr(html, "date-end", dateend);
-                    D.html(html, "<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><a href='worklogs/new/' class='log-text' title='" + text + "'>" + text + "</a><span class='log-resize'></span>");
+                    D.html(html, "<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><a href='#' class='log-text' title='" + text + "'>" + text + "</a><span class='log-resize'></span>");
                 }
             }
         });
-		//鼠标被松开时判断是否是创建日志操作，如果是则做相关（表单获取、定位、显示）操作，同时取消创建标记
         E.on(document, "mouseup", function(){
 			if(D.get(html) && D.height(html) <= 0){
 				D.css(html, "height", 2 * rowHeight - 2);
@@ -625,7 +540,7 @@ KISSY.use("sizzle",function(S){
                 var dateend = date.getFullYear() + "-" + addZero(date.getMonth() + 1) + "-" + addZero(date.getDate()) + " " + s2e.end + ":00";
                 D.attr(html, "date-start", datestart);
                 D.attr(html, "date-end", dateend);
-                D.html(html, "<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><a href='worklogs/new/' class='log-text' title='" + text + "'>" + text + "</a><span class='log-resize'></span>");
+                D.html(html, "<h5>" + [s2e.start,s2e.end].join(" ~ ") + "</h5><a href='#' class='log-text' title='" + text + "'>" + text + "</a><span class='log-resize'></span>");
 			}
             if(clicked){
                 rePositionForm(html, "add");
@@ -659,19 +574,16 @@ KISSY.use("sizzle",function(S){
         et = (ae[0] * 60 * 60 + ae[1] * 60) * 1000;
         h = Math.abs(et / m30 - st / m30) * size.h;
         pt = (st / m30) * size.h;
-		var type = logTypeClass[val.cat];
         var node = D.clone(fc);
-        D.attr(node,"id", val.id);
-		if(type && type != ""){
-			D.addClass(node, type);
-		}else{
-			D.attr(node, "class", "uplayer fullalpha");
-		}
-        //D.attr(node, "cat", (val.cat && val.cat != null) ? val.cat : 0);
-        D.attr(node, "date-start", val.date.replace(/\//g, "-") + " " + val.start + ":00");
-        D.attr(node, "date-end", val.date.replace(/\//g, "-") + " " + val.end + ":00");
-		D.css(node, {"left": pl, "top": pt, "width": size.w - diff.x - 12, "height": h - 2});
-        D.html(node, "<h5>" + val.start + " ~ " + val.end + "</h5><a href='worklogs/" + val.id + "/edit' class='log-text' title='" + val.content + "'>" + val.content + "</a><span class='log-resize'></span>");
+        D.attr(node,"id", val.id)
+        D.attr(node, "cat", (val.cat && val.cat != null) ? val.cat : 0)
+        D.attr(node, "date-start", val.date.replace(/\//g, "-") + " " + val.start + ":00")
+        D.attr(node, "date-end", val.date.replace(/\//g, "-") + " " + val.end + ":00")
+        D.css(node, "left", pl)
+        D.css(node, "top", pt)
+        D.css(node, "width", size.w - diff.x - 2)
+        D.css(node, "height", h - 2)
+        D.html(node, "<h5>" + val.start + " ~ " + val.end + "</h5><a href='#' class='log-text' title='" + val.content + "'>" + val.content + "</a><span class='log-resize'></span>");
         D.append(node, main);
 
         callback && callback();
@@ -712,7 +624,7 @@ KISSY.use("sizzle",function(S){
     var currentHash = null;
     var reg = /(\d{4}-\d{2}-\d{2})/g;
     var prev = D.get("#week-prev"), next = D.get("#week-next"), today = D.get("#today");
-    if(reg.test(window.location.href)){//如果url中已经存在时间值hash，则直接初始化周历，请求数据
+    if(reg.test(window.location.href)){
         g_hash = RegExp.$1;
         RegExp.lastIndex = 0;
 		D.css(D.get("#loading"), "display", "block");
@@ -730,24 +642,25 @@ KISSY.use("sizzle",function(S){
 			}
 			loadData(g_hash);
 		});
-    }else{//如果url中没有时间值hash，则设置hash为当前天所在周的第一天的时间值
+    }else{
         window.location.hash = "#" + g_hash;
     }
-	//阻止周历区域的选中被选中，保证drag及resize的正常执行
+
     S.all(".week-main").on("selectstart",function(){return false;});
 
     /*设置初始周列表窗口高度*/
     var wh = D.height(window);
     D.css(D.get(".week-main"), "height", wh - 220);  // 220 = 60(body的padding-top) + 58(cal-header) + 26(week-day) + 59(ecola-foot) + x(预留)
-	//窗口大小改变时改变周历尺寸，避免滚动条，设置自适应
+
     E.on(window, "resize", function(){
         wh = D.height(window);
         D.css(D.get(".week-main"), "height", wh - 220);
     });
-    //监听hash改变事件，更新周历数据
+    
 	S.all(window).on("hashchange", function(){
         var hs = window.location.href;
         var hash = hs.match(reg);
+		//console.log(hash)
         if(hash && hash.length > 0){
             g_hash = hash[0];
             if(g_hash != currentHash){
@@ -773,7 +686,7 @@ KISSY.use("sizzle",function(S){
         }
         currentHash = hash[0];
     });
-	//关闭浮层表单
+
     S.one("#form-layer .ecola-cancel").on("click", function(){
         var form = D.get("#form-layer");
         if(html != ''){
@@ -782,7 +695,7 @@ KISSY.use("sizzle",function(S){
         D.css(form, "display", "none");
         return false;
     });
-	//当事件不在相应节点上触发时，则隐藏浮层表单，否则显示
+
     E.on(document, "click, mouseup", function(e){
         var evt = D.get(e.target);
         var formhide = false;
@@ -806,18 +719,18 @@ KISSY.use("sizzle",function(S){
             E.fire(S.one("#form-layer .ecola-cancel"), "click");
         }
     });
-	//显示‘今天’所在周的数据
+
     E.on(today, "click", function(){
         g_hash = cws.replace(/\//g, "-");
         window.location.hash = "#" + g_hash;
     });
-	//显示当前显示周的上一周数据
+
     E.on(prev, "click", function(){
         var pf = new Date(new Date(g_hash.replace(/-/g, "/")).getTime() - 7 * 24 * 60 * 60 * 1000);
         g_hash = pf.getFullYear() + "-" + addZero(pf.getMonth() + 1) + "-" + addZero(pf.getDate())
         window.location.hash = "#" + g_hash;
     });
-	//显示当前所在周的下一周数据
+
     E.on(next, "click", function(){
         var nf = new Date(new Date(g_hash.replace(/-/g, "/")).getTime() + 7 * 24 * 60 * 60 * 1000);
         g_hash = nf.getFullYear() + "-" + addZero(nf.getMonth() + 1) + "-" + addZero(nf.getDate());
