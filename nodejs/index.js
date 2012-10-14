@@ -9,7 +9,7 @@ http.createServer(function(req, res){
 	res.write("<title>NodeJS 入门</title>\n");
 	res.write("</head>\n");
 	res.write("<body>\n");
-	res.write("Hello Word!");
+	res.write("Hello Word!" + "First Node Program!");
 	res.write("\n</body>\n");
 	res.end("</html>");
 	console.log(req.headers.host);
