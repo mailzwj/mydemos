@@ -25,3 +25,5 @@
 12.新增CSS3绘制叮当猫DEMO`css3dingdang`
 
 13.新增书签栏应用DEMO`bookmarkapp`
+
+14.新增便签效果DEMO`other`
