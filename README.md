@@ -27,3 +27,5 @@
 13.新增书签栏应用DEMO`bookmarkapp`
 
 14.新增便签效果DEMO`other`
+
+15.新增拼图程序DEMO`jigsaw`

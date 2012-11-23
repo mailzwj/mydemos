@@ -1,0 +1,62 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JS拼图游戏</title>
+</head>
+<body>
+<link rel="stylesheet" href="jigsaw/jigsaw.css">
+<div class="J_Jigsaw">
+	<ul class="J_Lattice">
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+	</ul>
+	<span class="shatter s1"></span>
+	<span class="shatter s2"></span>
+	<span class="shatter s3"></span>
+	<span class="shatter s4"></span>
+	<span class="shatter s5"></span>
+	<span class="shatter s6"></span>
+	<span class="shatter s7"></span>
+	<span class="shatter s8"></span>
+	<span class="shatter s9"></span>
+	<span class="shatter s10"></span>
+	<span class="shatter s11"></span>
+	<span class="shatter s12"></span>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="jigsaw/jigsaw.js"></script>
+<script>
+KISSY.ready(function(S){
+	S.use("jigsaw", function(S){
+		new S.Jigsaw({
+			box: ".J_Jigsaw",
+			shatter: ".shatter",
+			lattice: ".item",
+			offset: {
+				l: 308,
+				t: 0
+			},
+			shatterSize: {
+				w: 100,
+				h: 125
+			},
+			callback: function(){
+				alert("Success!");
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>
