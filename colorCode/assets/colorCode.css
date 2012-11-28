@@ -1,0 +1,66 @@
+/* default style */
+h2 {
+  font-weight: normal;
+  font-family: '\5fae\8f6f\96c5\9ed1', 'microsoft yahei', '\5b8b\4f53', sans-serif;
+  font-size: 16px;
+}
+pre.colorCode {
+  margin: 0;
+  padding: 8px 10px;
+  line-height: 1.5;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #272822;
+  color: #ffffff;
+}
+/* classes for html */
+span.html_tag {
+  color: #f92672;
+}
+span.html_prop {
+  color: #a6e22e;
+}
+span.html_propval {
+  color: #e6db74;
+}
+span.html_note {
+  color: #75715e;
+}
+/* classes for css */
+span.css_tag {
+  color: #d92731;
+}
+span.css_selector {
+  color: #7fe22e;
+}
+span.css_prop {
+  color: #66d9ef;
+}
+span.css_propval {
+  color: #ae81ff;
+}
+span.css_unit {
+  color: #f92672;
+}
+span.css_string {
+  color: #3da3ef;
+}
+span.css_note {
+  color: #75715e;
+}
+/* classes for js */
+span.js_keyword {
+  color: #66d9ef;
+}
+span.js_internal {
+  color: #d92731;
+}
+span.js_number {
+  color: #ae81ff;
+}
+span.js_string {
+  color: #c8db74;
+}
+span.js_note {
+  color: #75715e;
+}
