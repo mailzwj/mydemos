@@ -29,3 +29,5 @@
 14.新增便签效果DEMO`other`
 
 15.新增拼图程序DEMO`jigsaw`
+
+16.新增代码高亮DEMO`colorCode`
