@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>KISSY图片裁剪插件</title>
+</head>
+<body>
+<link rel="stylesheet" href="assets/kcrop.css">
+<div class="demo" id="K_crop">
+	<img src="imgs/img_01.jpg" width="800" height="500">
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="assets/kcrop.js"></script>
+<script>
+KISSY.ready(function(S){
+	S.use('kcrop', function(S){
+		var kc = new S.Kcrop({
+			container: "#K_crop"
+		});	
+	});
+});
+</script>
+</body>
+</html>

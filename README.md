@@ -31,3 +31,5 @@
 15.新增拼图程序DEMO`jigsaw`
 
 16.新增代码高亮DEMO`colorCode`
+
+17.新增KISSY图片裁剪插件`Kcrop`
