@@ -12,8 +12,7 @@
 			tag: /(\&lt;\/?)([a-zA-Z]+)/g,
 			prop: /\s+([a-zA-Z]+)\="(<|")/g,
 			propval: /\="(\S+)"/g,
-			notestart: /\&lt;\!--/g,
-			noteend: /--\&gt;/g
+			notes: /\&lt;\!--(.*?)--\&gt;/g
 		},
 		css: {
 			style: /(^|\n)([\w\-_\.#\s,]+)(?=\{)/g,
@@ -21,14 +20,12 @@
 			clsorid: /([\.#][\w\-]+)/g,
 			prop: /(^|\n|\s+|\{|;)([a-zA-Z\-]+)(?=\s?:)/g,
 			propval: /(:\s?)([\w\-:\/#@\.]+)(;?)/g,
-			notestart: /\/\*/g,
-			noteend: /\*\//g
+			notes: /\/\*(?!\*\/).*/g
 		},
 		js: {
 			keyword: /(new|do|break|while|typeof|delete|for|continue|if|with|try|switch|in|instanceof|case|default|throw|catch|finally|else|return)(?=;|\s|\(|\{|\}|\:)/g,
 			number: /(\d+|false|true|null)/g,
-			notestart: /\/\*/g,
-			noteend: /\*\//g,
+			notes: /\/\*(?!\*\/).*/g,
 			noteline: /(\/\/.+)(?=\n)/g
 		}
 	};
@@ -78,10 +75,8 @@
 				return ' <span class="html_prop">' + arguments[1] + '</span>="' + arguments[2];
 			}).replace(CC.regs.html.tag, function(){
 				return arguments[1] + '<span class="html_tag">' + arguments[2] + '</span>';
-			}).replace(CC.regs.html.notestart, function(){
-				return '<span class="html_note">' + arguments[0];
-			}).replace(CC.regs.html.noteend, function(){
-				return arguments[0] + '</span>';
+			}).replace(CC.regs.html.notes, function(){
+				return '<span class="html_note">' + arguments[0] + '</span>';
 			});
 			return txt;
 		},
@@ -98,10 +93,8 @@
 				return arguments[1] + '<span class="css_prop">' + arguments[2] +'</span>';
 			}).replace(CC.regs.css.propval, function(){
 				return arguments[1] + '<span class="css_propval">' + arguments[2] +'</span>' + arguments[3];
-			}).replace(CC.regs.css.notestart, function(){
-				return '<span class="css_note">' + arguments[0];
-			}).replace(CC.regs.css.noteend, function(){
-				return arguments[0] + '</span>';
+			}).replace(CC.regs.css.notes, function(){
+				return '<span class="css_note">' + arguments[0] + '</span>';
 			});
 			return txt;
 		},
@@ -110,10 +103,8 @@
 				return '<span class="js_internal">' + arguments[1] + '</span>';
 			}).replace(CC.regs.js.number, function(){
 				return '<span class="js_number">' + arguments[1] + '</span>';
-			}).replace(CC.regs.js.notestart, function(){
-				return '<span class="js_note">' + arguments[0];
-			}).replace(CC.regs.js.noteend, function(){
-				return arguments[0] + '</span>';
+			}).replace(CC.regs.js.notes, function(){
+				return '<span class="js_note">' + arguments[0] + '</span>';
 			}).replace(CC.regs.js.noteline, function(){
 				return '<span class="js_note">' + arguments[1] + '</span>';
 			});
