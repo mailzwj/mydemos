@@ -4,11 +4,13 @@
 }
 
 .box1, .box2, .box3 {
+	position: relative;
 	margin: 10px auto 0;
 	background-color: #39f;
 	font-size: 48px;
 	color: #f50;
 	text-align: center;
+	overflow: hidden;
 }
 
 .box1 {
@@ -27,4 +29,13 @@
 	width: 400px;
 	height: 400px;
 	line-height: 400px;
+}
+
+.J_Sliders {
+	position: absolute;
+	left: -999em;
+	top: -999em;
+	width: 100%;
+	height: 100%;
+	background-color: #ccc;
 }

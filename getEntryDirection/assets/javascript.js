@@ -2,6 +2,7 @@ KISSY.add('ged', function(S){
 	var D = S.DOM, E = S.Event;
 	function GED(cfg){
 		this.eles = S.all(cfg.eles);
+		this.ss = cfg.slider;
 		this.init();
 	}
 
@@ -42,25 +43,64 @@ KISSY.add('ged', function(S){
 		_render: function(node){
 			var _this = this;
 			var data = _this._getData(node);
-			E.on(node, 'mouseover', function(e){
+			var ss = D.get(_this.ss, node);
+			E.on(node, 'mouseenter', function(e){
 				var dir = _this._getDir(e, data);
+				var left = -data.size.w, top = 0;
 				switch(dir){
-					case "l": D.html(node, "左方进入");break;
-					case "t": D.html(node, "上方进入");break;
-					case "r": D.html(node, "右方进入");break;
-					case "b": D.html(node, "下方进入");break;
+					case "l": 
+						D.html(ss, "左方进入");
+						break;
+					case "t": 
+						D.html(ss, "上方进入");
+						left = 0;
+						top = -data.size.h;
+						break;
+					case "r": 
+						D.html(ss, "右方进入");
+						left = data.size.w;
+						top = 0;
+						break;
+					case "b": 
+						D.html(ss, "下方进入");
+						left = 0;
+						top = data.size.h;
+						break;
 					default:
 				}
+				D.css(ss, {"left": left, "top": top});
+				if(node.anim && node.anim.isRunning()){
+					node.anim.stop();
+				}
+				node.anim = new S.Anim(ss, {"left": 0, "top": 0}, 0.2, "easeIn", function(){});
+				node.anim.run();
 			});
-			E.on(node, 'mouseout', function(e){
+			E.on(node, 'mouseleave', function(e){
 				var dir = _this._getDir(e, data);
+				var left = -data.size.w, top = 0;
 				switch(dir){
-					case "l": D.html(node, "左方移出");break;
-					case "t": D.html(node, "上方移出");break;
-					case "r": D.html(node, "右方移出");break;
-					case "b": D.html(node, "下方移出");break;
+					case "l": 
+						break;
+					case "t": 
+						left = 0;
+						top = -data.size.h;
+						break;
+					case "r": 
+						left = data.size.w;
+						top = 0;
+						break;
+					case "b": 
+						left = 0;
+						top = data.size.h;
+						break;
 					default:
 				}
+
+				if(node.anim && node.anim.isRunning()){
+					node.anim.stop();
+				}
+				node.anim = new S.Anim(ss, {"left": left, "top": top}, 0.2, "easeIn", function(){});
+				node.anim.run();
 			});
 		},
 		init: function(){
