@@ -33,3 +33,5 @@
 16.新增代码高亮DEMO`colorCode`
 
 17.新增KISSY图片裁剪插件`Kcrop`
+
+18.新增KISSY检测鼠标进入方向脚本`getEntryDirection`

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JS获取鼠标进入指定模块的方向</title>
+</head>
+<body>
+<link rel="stylesheet" href="assets/style.css" />
+<div class="main" id="main">
+	<div class="J_getED box1">1</div>
+	<div class="J_getED box2">2</div>
+	<div class="J_getED box3">3</div>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="assets/javascript.js"></script>
+<script>
+KISSY.ready(function(S){
+	S.use('ged', function(S){
+		var ged = new S.GED({
+			eles: "#main .J_getED"
+		});
+	});
+});
+</script>
+</body>
+</html>
