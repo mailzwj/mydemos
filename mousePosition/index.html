@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移动，盒子相对移动</title>
+</head>
+<body>
+<link rel="stylesheet" href="assets/demo.css">
+<div class="fullwidth">
+	<div class="J_bgBlock">
+		<img src="imgs/img_01.jpg" alt="">
+		<div class="J_Tips tips-1">1</div>
+		<div class="J_Tips tips-2">2</div>
+		<div class="J_Tips tips-3">3</div>
+		<div class="J_Tips tips-4">4</div>
+		<div class="J_Tips tips-5">5</div>
+		<div class="J_Tips tips-6">6</div>
+		<div class="J_Tips tips-7">7</div>
+		<div class="J_Tips tips-8">8</div>
+		<div class="J_Tips tips-9">9</div>
+		<div class="J_Tips tips-10">10</div>
+	</div>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="assets/demo.js"></script>
+<script>
+KISSY.ready(function(S){
+	S.use('moveyourmouse,moveeles', function(S){
+		new S.MoveYourMouse({
+			ele: '.J_bgBlock'
+		});
+		new S.MoveEles({
+			box: '.J_bgBlock',
+			eles: '.J_Tips',
+			delta: 0.2
+		});
+	});
+});
+</script>
+</body>
+</html>

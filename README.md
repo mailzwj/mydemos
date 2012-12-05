@@ -35,3 +35,5 @@
 17.新增KISSY图片裁剪插件`Kcrop`
 
 18.新增KISSY检测鼠标进入方向脚本`getEntryDirection`
+
+19.新增盒子根据鼠标位置变化而变化的视差特效`mousePosition`
