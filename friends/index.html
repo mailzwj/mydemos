@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery朋友网右侧栏</title>
+	<link rel="stylesheet" href="assets/jquery.jscrollpane.css">
+	<link rel="stylesheet" href="assets/jquery.friends.css">
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="assets/jquery.mousewheel.js"></script>
+<script src="assets/jquery.jscrollpane.min.js"></script>
+<script src="assets/jquery.friends.js"></script>
+<script>
+$(function(){
+	var F = $.Friends;
+	F.getFrame("data/rightbar.php", {
+		hd: ".Rb-hd",
+		bd: ".Rb-bd",
+		ft: ".Rb-ft",
+		offset: {r: 3, t: 50},
+		dataurl: "data/folddata.php",
+		userinfourl: "data/getuserinfo.php?uid={{userid}}",
+		listTpl: "#Rb-ListTpl",
+		listContainer: ".Rb-list"
+	});
+});
+</script>
+</body>
+</html>
