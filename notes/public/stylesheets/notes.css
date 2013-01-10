@@ -1,0 +1,81 @@
+body, ul, ol, dl, dd, dt, li, p, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 14px Tahoma, '\5fae\8f6f\96c5\9ed1', sans-serif;
+}
+
+ul, dl, ol, li, dd, dt {
+	list-style: none;
+}
+
+a {
+	color: #00B7FF;
+}
+
+.newpost {
+	padding: 10px 0;
+}
+
+.posts .item {
+	margin-top: 15px;
+}
+
+.posts .posttitle {
+	padding-left: 5px;
+	height: 24px;
+	line-height: 24px;
+	border-left: 5px solid #f50;
+}
+
+.posts .postinfo,
+.articleInfo {
+	padding: 5px 0;
+	font-size: 11px;
+}
+
+.posts .postcontent,
+.article {
+	padding-bottom: 15px;
+	line-height: 150%;
+	text-indent: 2em;
+}
+
+.addpost {
+	padding-top: 30px;
+}
+
+.addpost .postcon {
+	width: 400px;
+	height: 100px;
+}
+
+.addpost .postbtn {
+	margin-right: 10px;
+}
+
+.articlehr {
+	margin: 10px 0;
+	border-top-color: #ccc;
+}
+
+.footer {
+	margin-top: 15px;
+	color: #666;
+}
+
+.footer .site {
+	color: #666;
+}
+
+.footer .site:hover {
+	color: #999;
+	text-decoration: none;
+}
+
+.header {
+	margin-bottom: 10px;
+	background-image: url(../images/hdbg.png);
+}

@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h3.articleTitle= data.posttitle
+    hr.articlehr
+    p.articleInfo CreateAt: #{data.posttime}&nbsp;&nbsp;&nbsp;&nbsp;UpdateAt: #{data.uptime}&nbsp;&nbsp;&nbsp;&nbsp;Clicked: #{data.clicknum}
+    div.article= data.postcontent

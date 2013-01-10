@@ -37,3 +37,7 @@
 18.新增KISSY检测鼠标进入方向脚本`getEntryDirection`
 
 19.新增盒子根据鼠标位置变化而变化的视差特效`mousePosition`
+
+20.仿天猫首页快捷搜索功能`shortKey`
+
+21.NodeJS编写入门级记事本案例`notes`
