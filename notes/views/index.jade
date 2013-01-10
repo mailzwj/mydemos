@@ -1,16 +1,17 @@
 extends layout
 
 block content
-    h3= title
-    form.u-login.form-horizontal(action="./login", method="get")
-        div.control-group
-            label.control-label.lgnamelabel(for="lguser") 昵称：
-            input.lgname#lguser(type="text", placeholder="Jhon")
-        div.control-group
-            label.control-label.lgnamelabel(for="lgpwd") 密码：
-            input.lgpass#lgpwd(type="password")
-        div.control-group.submit-group
-            input.btn.btn-primary.btn-login(type="submit", value="登录")
-            input.btn(type="reset", value="重置")
+    div.notebd
+        h3= title
+        form.u-login.form-horizontal(action="/", method="get")
+            div.control-group
+                label.control-label.lgnamelabel(for="lguser") 昵称：
+                input.lgname#lguser(type="text", name="username", placeholder="Jhon")
+            div.control-group
+                label.control-label.lgnamelabel(for="lgpwd") 密码：
+                input.lgpass#lgpwd(type="password", name="userpwd")
+            div.control-group.submit-group
+                input.btn.btn-primary.btn-login(type="submit", value="登录")
+                input.btn(type="reset", value="重置")
 
         
