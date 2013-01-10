@@ -79,3 +79,15 @@ a {
 	margin-bottom: 10px;
 	background-image: url(../images/hdbg.png);
 }
+
+.u-login {
+	margin: 50px 0;
+}
+
+.btn-login {
+	margin-right: 10px;
+}
+
+.submit-group {
+	padding-left: 160px;
+}

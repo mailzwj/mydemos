@@ -7,8 +7,25 @@ var db = require("../config").db;
 var coll = db.collection("posts");
 var df = require("./dateformat").formatDate;
 var style = "yyyy-mm-dd hh:ii:ss";
+
+exports.main = function(req, res){
+	var coll = db.collection("posts");
+	//req.session.nowtime = new Date().getTime(); //Set Session
+	coll.find().sort({"posttime": -1}).limit(20).toArray(function(err, data){
+		if(err){
+			console.log("Err:" + err);
+		}
+		res.render('main', {
+			title: "NodeJS记事本",
+			docTitle: "最近记录的事件列表",
+			data: data
+		});
+	});
+};
+
 exports.show = function(req, res){
 	var id = req.params.id;
+	//var nt = req.session.nowtime; //Get Session
 	coll.update({_id: coll.id(id)}, {$inc:{"clicknum": 1}});
 	coll.findOne({_id: coll.id(id)}, function(err, data){
 		if(err){
