@@ -16,14 +16,52 @@ exports.main = function(req, res){
 			if(err){
 				console.log("Err:" + err);
 			}
-			res.render('main', {
-				title: "NodeJS记事本",
-				docTitle: "最近记录的事件列表",
-				data: data
-			});
+			if(data.length > 0){
+				res.render('main', {
+					title: "NodeJS记事本",
+					docTitle: "最近记录的事件列表",
+					data: data
+				});
+			}else{
+				res.render('main', {
+					title: "NodeJS记事本",
+					docTitle: "最近记录的事件列表",
+					data: data,
+					errinfo: "还有记事记录，赶紧添加记事吧"
+				});
+			}
 		});
 	}else{
 		res.redirect("/");
+	}
+};
+
+exports.reg = function(req, res){
+	var _name = req.body.newuser;
+	var _pwd = req.body.newpwd;
+	var _rpwd = req.body.repwd;
+	console.log(_name);
+	if(_pwd !== _rpwd){
+		res.redirect("/reg");
+	}
+	var users = db.collection("user");
+	if(_pwd){
+		users.findOne({username: _name}, function(err, data){
+			if(data){
+				res.render("reg", {title: "注册新用户", errinfo: "用户名已存在"});
+			}else{
+				users.insert({username: _name, password: _pwd, level: 1}, function(err){
+					if(err){
+						console.log("Err:" + err);
+						res.redirect("/reg");
+					}else{
+						res.redirect("/");
+					}
+				});	
+			}
+		});
+	}else{
+		res.render("reg", {title: "注册新用户"});
 	}
 };
 
@@ -36,10 +74,18 @@ exports.show = function(req, res){
 			if(err){
 				console.log("Err:" + err);
 			}
-			res.render("detail", {
-				title: data.posttitle,
-				data: data
-			});
+			if(data){
+				res.render("detail", {
+					title: data.posttitle,
+					data: data
+				});
+			}else{
+				res.render("detail", {
+					title: "查看详细记事",
+					data: data,
+					errinfo: "该记事不存在"
+				});
+			}
 		});
 	}else{
 		res.redirect("/");
@@ -60,7 +106,7 @@ exports.add = function(req, res){
 				}
 			});
 		}else{
-			res.render("add", {title: "新增记事"});
+			res.render("add", {title: "新增记事", errinfo: "保存失败"});
 		}
 	}else{
 		res.redirect("/");
@@ -86,11 +132,20 @@ exports.edit = function(req, res){
 				if(err){
 					console.log("Err:" + err);
 				}
-				res.render("edit", {
-					title: "编辑 ——> " + data.posttitle,
-					data: data,
-					postId: id
-				});
+				if(data){
+					res.render("edit", {
+						title: "编辑 ——> " + data.posttitle,
+						data: data,
+						postId: id
+					});
+				}else{
+					res.render("edit", {
+						title: "编辑 ——> 记事",
+						errinfo: "未找到该条记事",
+						data: data,
+						postId: ""
+					});
+				}
 			});
 		}
 	}else{

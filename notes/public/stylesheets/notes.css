@@ -85,3 +85,7 @@ a {
     color: #666;
     font-size: 12px;
 }
+
+.btn-reset {
+	margin-right: 10px;
+}

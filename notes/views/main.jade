@@ -5,13 +5,14 @@ block content
     p.newpost
         a(href="./add", target="_self") 新建记事
     ul.posts
-        each p, i in data
-            li.item 
-                h4.posttitle
-                    a(href="./detail/#{data[i]._id}", target="_self") #{data[i].posttitle}
-                p.postinfo CreateAt: #{data[i].posttime}&nbsp;&nbsp;&nbsp;&nbsp;UpdateAt: #{data[i].uptime}&nbsp;&nbsp;&nbsp;&nbsp;Clicked: #{data[i].clicknum}
-                div.postcontent #{data[i].postcontent}
-                div.useraction
-                    a.useredit(href="./edit/#{data[i]._id}", target="_self") 编辑
-                    &nbsp;|&nbsp;
-                    a.userdel(href="./del/#{data[i]._id}", target="_self") 删除
+        - if(data.length > 0)
+            each p, i in data
+                li.item 
+                    h4.posttitle
+                        a(href="./detail/#{data[i]._id}", target="_self") #{data[i].posttitle}
+                    p.postinfo CreateAt: #{data[i].posttime}&nbsp;&nbsp;&nbsp;&nbsp;UpdateAt: #{data[i].uptime}&nbsp;&nbsp;&nbsp;&nbsp;Clicked: #{data[i].clicknum}
+                    div.postcontent #{data[i].postcontent}
+                    div.useraction
+                        a.useredit(href="./edit/#{data[i]._id}", target="_self") 编辑
+                        &nbsp;|&nbsp;
+                        a.userdel(href="./del/#{data[i]._id}", target="_self") 删除
