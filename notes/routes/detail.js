@@ -1,4 +1,4 @@
-
+﻿
 /*
  * GET users listing.
  */
@@ -106,7 +106,7 @@ exports.add = function(req, res){
 				}
 			});
 		}else{
-			res.render("add", {title: "新增记事", errinfo: "保存失败"});
+			res.render("add", {title: "新增记事"});
 		}
 	}else{
 		res.redirect("/");
