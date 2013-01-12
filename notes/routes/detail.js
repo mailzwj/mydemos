@@ -7,6 +7,7 @@ var db = require("../config").db;
 var coll = db.collection("posts");
 var df = require("./dateformat").formatDate;
 var style = "yyyy-mm-dd hh:ii:ss";
+var crypto = require("crypto");
 
 exports.main = function(req, res){
 	if(req.session.username){
@@ -40,17 +41,19 @@ exports.reg = function(req, res){
 	var _name = req.body.newuser;
 	var _pwd = req.body.newpwd;
 	var _rpwd = req.body.repwd;
-	console.log(_name);
+	//console.log(_name);
 	if(_pwd !== _rpwd){
 		res.redirect("/reg");
 	}
 	var users = db.collection("user");
 	if(_pwd){
+		var md5 = crypto.createHash("md5");
+		md5.update(_pwd);
 		users.findOne({username: _name}, function(err, data){
 			if(data){
 				res.render("reg", {title: "注册新用户", errinfo: "用户名已存在"});
 			}else{
-				users.insert({username: _name, password: _pwd, level: 1}, function(err){
+				users.insert({username: _name, password: md5.digest("hex"), level: 1}, function(err){
 					if(err){
 						console.log("Err:" + err);
 						res.redirect("/reg");
