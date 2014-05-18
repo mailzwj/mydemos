@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>仿天猫邮寄地址选择浮层</title>
+    <link rel="stylesheet" href="assets/addr_pop.css">
+    <style>
+    .ys-main {
+        margin: 0 auto;
+        padding-top: 100px;
+        width: 600px;
+    }
+    .select-addr {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        padding: 20px 40px;
+        border: 1px solid #ccc;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .userPop a {
+        font-size: 12px;
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="ys-main">
+        <h2>点击按钮，选择目的地</h2>
+        <span class="J_SelectAddr select-addr">点选目的地</span>
+    </div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="assets/area_array.js"></script>
+<script src="assets/addr_pop.js"></script>
+<script>
+$(function(){
+    var addr = new Detail.AddrPop({
+        trigger: ".J_SelectAddr",
+        offset: {x: 0, y: 65}, // 浮层相对触发器的偏移位置
+        popClass: "userPop", // 用户自定义class选择器，可用于覆盖默认样式
+        subCity: nc_a, // 城市数据数组，nc_a 全局对象，在area_arr.js中提供
+        initSelect: 11, // 默认选中城市id，11为浙江，默认为1
+        closeText: 'X',
+        onSelect: function(data) {
+            alert("您选择了：" + data.addr_name + "，城市ID：" + data.code);
+        }
+    });
+});
+</script>
+<p style="display:none;"><script src="http://s13.cnzz.com/stat.php?id=3730977&web_id=3730977&online=1&show=line" language="JavaScript"></script></p>
+</body>
+</html>
