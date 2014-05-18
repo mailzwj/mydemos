@@ -1,0 +1,1138 @@
+body {
+    margin: 0;
+    color: #666;
+    /*background-color: #ededed;*/
+}
+
+ul, ol, dl, li, dt, dd {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.has-margin {
+    margin-left: 5px;
+}
+
+.user-action .ac-list,
+.user-action .ac-list li,
+.in-out,
+.in-out li,
+.week-day,
+.week-day li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.user-action .ac-list li {
+    float: left;
+    padding: 9px 10px 11px;
+    line-height: 19px;
+}
+
+.user-action .ac-list li a {
+    color: #999;
+    text-decoration: none;
+}
+
+.user-action .ac-list li a:hover {
+    color: #fff;
+}
+
+.container {
+    width: 990px;
+	font-size: 12px;
+}
+
+.cal-body {
+    width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    background-color: #fff;
+}
+
+.cal-right {
+    width: 159px;
+}
+
+.cal-header {
+    padding: 20px 20px 10px;
+}
+
+.date-from-to {
+    padding: 5px 15px;
+    line-height: 20px;
+    color: #666;
+}
+
+.nopad {
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.nopad .nav-header {
+    font-size: 14px;
+}
+
+.nopad li p {
+    color: #999;
+}
+
+.loading {
+    display: none;
+    padding-top: 4px;
+}
+
+.week-day {
+    padding: 0 0 0 82px;
+}
+
+.week-day .pull-left {
+    padding: 4px 0;
+    width: 100px;
+    text-align: center;
+}
+
+.week-box {
+    position: relative;
+}
+
+.week-main {
+    position: relative;
+    height: 420px;
+    border-top: 1px solid #b4b4b4;
+    border-bottom: 1px solid #b4b4b4;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow-y: auto;
+    -moz-user-select: none;/*Firefox下禁止文本选择*/
+}
+
+.col, .col-time {
+    float: left;
+    width: 100px;
+}
+
+.today {
+    background-color: #cfefff;
+}
+
+.time-line {
+    width: 82px;
+}
+
+.col .time,
+.col-time .time{
+    display: block;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    /*font-weight: bold;*/
+    border-bottom: 1px dotted #ccc;
+    /*border-right: 1px solid #efefef;*/
+    border-right: 1px solid #eaeaea;
+    color: #aaa;
+    cursor: pointer;
+    background-color: #f6f6f6;
+}
+
+.col .worktime,
+.col-time .worktime{
+    /*background-color: #e7f7ff;*/
+    background-color: #fff;
+}
+
+.col .time:hover {
+    background-color: #fafafa;
+}
+
+.col .time b,
+.col-time .time b{
+    color: #ccccda;
+}
+
+.time-line .time {
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+
+.col .odd,
+.col-time .odd{
+    border-bottom-style: solid;
+    border-bottom-color: #ccc;
+}
+
+.ecola-foot {
+    padding: 10px;
+}
+
+.uplayer {
+    position: absolute;
+    z-index: 10;
+	padding: 0 5px;
+    border-radius: 4px;
+    background-color: #70c4ee;
+	line-height: 1.4;
+    color: #fff;
+    opacity: 0.7;
+	filter: alpha(opacity=70);
+    overflow: hidden;
+}
+
+.uplayer .log-resize {
+	position: absolute;
+    display: none;
+	left: 50%;
+	bottom: 0;
+	margin-left: -8px;
+	width: 17px;
+	height: 10px;
+	background: url(resize.png) no-repeat center;
+	overflow: hidden;
+	cursor: ns-resize;
+	opacity: 0.5;
+}
+.uplayer:hover .log-resize {
+    display: block;
+}
+
+.fullalpha {
+    opacity: 1;
+    /*cursor: pointer;*/
+	cursor: move;
+    -moz-transition: background-color .2s ease-in;
+    -webkit-transition: background-color .2s ease-in;
+    -o-transition: background-color .2s ease-in;
+    -ms-transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in;
+	background-color: rgba(86, 177, 222, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF56b1de,endColorStr=#FF56b1de);
+}
+
+.meetingClass {
+	background-color: #900;
+}
+
+.otherClass {
+	background-color: #990;
+}
+
+/*.fullalpha:hover {
+    background-color: rgba(112, 196, 238, 1);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#FF70c4ee,endColorStr=#FF70c4ee);
+}*/
+
+.uplayer h5,
+.uplayer .log-text {
+    padding: 1px 0;
+    color: #fff;
+}
+
+.uplayer h5 {
+	margin: 0;
+    font-size: 10px;
+    line-height: 1.2;
+	border-radius: 4px;
+}
+
+.fullalpha h5 {
+    margin: 0;
+}
+
+.uplayer .log-text {
+  /*text-indent: 24px;*/
+    font-size: 12px;
+    line-height: 1.3;
+	color: #fff;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.form-layer {
+    display: none;
+    position: absolute;
+    z-index: 10000;
+    top: 500px;
+    left: 50px;
+    padding: 10px 15px;
+    width: 310px;
+    height: 196px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #ccc;
+    background-color: #fff;
+}
+
+.form-layer .form-arrow,
+.form-layer .form-arrow i {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 20px dashed transparent;
+    border-left: 0;
+	border-right-style: solid;
+	border-right-color: #ccc;
+}
+
+.outOfTheWindow .form-arrow, .outOfTheWindow .form-arrow i {
+    left: auto;
+    right: -20px;
+    border-left: 20px dashed transparent;
+	border-left-style: solid;
+	border-left-color: #ccc;
+    border-right: 0;
+}
+
+.form-layer .form-arrow i {
+    left: 2px;
+    border-right-color: #fff;
+}
+
+.outOfTheWindow .form-arrow i {
+    left: -22px;
+	border-left-style: solid;
+    border-left-color: #fff;
+}
+
+.form-layer .ecola-log {
+	font-size: 12px;
+    width: 300px;
+    height: 70px;
+	resize:none;
+}
+
+.form-layer .control-group {
+    padding-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-layer .control-label {
+    float: left;
+	font-size: 12px;
+    text-align: left;
+    width: auto;
+}
+
+.form-layer .controls {
+    margin-left: auto;
+}
+
+.form-layer .log_types {
+	padding-top: 5px;
+	margin-bottom: 0;
+}
+
+.log_types .inline {
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.form-layer .ecola-cancel {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
+.form-layer .btn {
+	font-size: 12px;
+}
+
+.form-layer .ecola-del {
+    /*line-height: 29px;
+    color: #f00;*/
+    margin-left: 15px;
+}
+
+.nowtimeline {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    height: 2px;
+    line-height: 0;
+    font-size: 0;
+    background-color: #FF7F6E;
+}
+
+
+
+/*----------------团队日志-----------------*/
+.teamlog-list {
+    padding: 0 18px;
+    padding-bottom: 50px;
+}
+
+.teamlog-list .log-row {
+    position: relative;
+    margin-top: 35px;
+    min-height: 40px;
+    _height: 40px;
+    border-top: 1px solid #ccc;
+}
+
+.teamlog-list .head-pic {
+    position: absolute;
+    left: 0;
+    top: -15px;
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.teamlog-list .user-nick {
+    margin: 0;
+    padding:16px 0 4px 70px;
+    line-height: 20px;
+}
+
+.teamlog-list .user-nick a {
+    font-weight: 600;
+}
+
+.teamlog-list .time-count {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 40px;
+    color: #ccc;
+}
+
+.teamlog-list .work-log {
+	position: relative;
+    padding: 15px 100px 0 123px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.teamlog-list .work-log span {
+    display: inline-block;
+    _display: inline;
+    _zoom: 1;
+    margin-right: 10px;
+    vertical-align: top;
+    *vertical-align: middle;
+	color: #08c;
+}
+
+.teamlog-list .work-log .work-time {
+	position: absolute;
+	left: 35px;
+    font-size: 12px;
+    color: #999;
+}
+
+.teamlog-list .work-log .work-percent {
+    position: absolute;
+	left: 63px;
+    margin-top: 3px;
+    width: 48px;
+    height: 12px;
+    border: 1px solid #ccc;
+}
+
+.teamlog-list .work-log .work-percent b {
+    position: absolute;
+    left: 22px;
+    top: 0;
+    height: 12px;
+    width: 5px;
+    background-color: #ccc;
+}
+
+.teamlog-list .work-log a {
+	color: #666;
+}
+
+.teamlog-list .work-log .work-cat {
+    font-size: 12px;
+    color: #999;
+}
+
+.teamer {
+    margin-top: 35px;
+    padding: 0 40px 20px;
+    border-top: 1px dotted #ccc;
+}
+
+.teamer h2 {
+    padding: 15px 0;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #777;
+}
+
+.teamer-other .item {
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.teamer-other .item .head-pic {
+    display: block;
+    padding: 2px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+}
+
+.teamer-other .item .user-nick {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+/*----------------团队设置-----------------*/
+.team-set {
+    padding: 20px;
+}
+
+.team-tab {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.team-tab li {
+    float: left;
+    margin-left: 5px;
+}
+
+.team-tab a {
+    float: left;
+    outline: none;
+    position: relative;
+    bottom: -1px;
+    display: block;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 25px;
+    -moz-box-shadow: inset 0 1px 0 #fff;
+    -webkit-box-shadow: inset 0 1px 0 #fff;
+    box-shadow: inset 0 1px 0 #fff;
+    border: 1px solid #ccc;
+    -moz-border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background: #e9e9e9;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#e9e9e9));
+    background: -webkit-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -moz-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -ms-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: -o-linear-gradient(top, #f6f6f6, #e9e9e9);
+    background: linear-gradient(top, #f6f6f6, #e9e9e9);
+}
+
+.team-tab a:hover {
+    color: #555;
+    background: #f0f0f0;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f9), to(#f0f0f0));
+    background: -webkit-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -moz-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -ms-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: -o-linear-gradient(top, #f9f9f9, #f0f0f0);
+    background: linear-gradient(top, #f9f9f9, #f0f0f0);
+}
+
+.team-tab li.active a,
+.team-tab li.active a:hover {
+    color: #008cd8;
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.team-con li {
+    display: none;
+}
+
+.team-con li.active {
+    display: block;
+}
+
+.teamlist {
+    padding: 10px 15px;
+    line-height: 200%;
+    font-size: 16px;
+}
+
+.teamlist:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.teamlist .team-intro {
+    padding-left: 15px;
+    color: #999;
+}
+
+.team-exit {
+    float: right;
+    margin-bottom: 0;
+    padding-left: 10px;
+    line-height: 100%;
+}
+
+.teamlist .invited:visited {
+    color:#fff;
+}
+
+.addteam {
+    margin-bottom: 0;
+    padding-top: 15px;
+}
+
+.teamlist .user-act {
+    float: right;
+    margin-bottom: 0;
+}
+
+.addteam .control-group {
+    margin-bottom: 0;
+}
+
+.addteam .teambtns {
+    padding-top: 10px;
+}
+
+/*----------------工作日志-----------------*/
+.list-title {
+    padding: 0 30px;
+    margin: 20px 0 10px 0;
+    font-size: 120%;
+}
+
+.per-list {
+    margin: 0 20px;
+}
+
+.per-list .item {
+    padding: 20px;
+    border-top: 1px dashed #ddd;
+}
+
+.per-date {
+    float: left;
+    width: 68px;
+    height: 68px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px #eee;
+}
+
+.per-date p {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.per-date .per-mon {
+    height: 24px;
+    line-height: 24px;
+    color: #fff;
+    background-color: #08c;
+}
+
+.per-date .per-day {
+    padding-top: 2px;
+    line-height: 24px;
+    font-size: 22px;
+    color: #aaa;
+}
+
+.per-date .per-week {
+	font-size: 12px;
+	line-height: 16px;
+	color: #999;
+}
+
+.per-logs {
+    float: left;
+    padding-left: 20px;
+    max-width: 630px;
+    _width: 630px;
+}
+
+.per-logs .per-row {
+	position: relative;
+    padding: 5px 0 5px 43px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+
+.per-logs .per-row a {
+	color: #666;
+}
+
+.per-logs .per-row .per-row-hour {
+	position: absolute;
+	left: 0;
+    font-size: 12px;
+    color: #999;
+}
+
+.per-logs .per-row .per-row-comment {
+    font-size: 12px;
+	color: #08c;
+}
+
+/*----------------成员列表-----------------*/
+.mem-box {
+    padding: 0 20px 20px;
+}
+
+.mem-box .controls {
+    padding-top: 15px;
+    margin-left: 0;
+}
+
+.mem-box .controls img {
+	width: 48px;
+	height: 48px;
+}
+
+.inviting span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.inviting .reciver-text {
+	margin-bottom: 0;
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	width: 100px;
+	height: 18px;
+	overflow: hidden;
+}
+
+.inviting .reciver-text span {
+	display: inline;
+	margin-right: 0;
+}
+
+.mem-header {
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    font-weight: normal;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.mem-box legend {
+    margin-bottom: 0;
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: '微软雅黑';
+    color: #666;
+}
+
+.mem-box .control-group {
+    margin: 0;
+}
+
+.mem-box .form-horizontal {
+    margin-bottom: 0;
+}
+
+.mem-box .form-actions {
+    margin-bottom: 0;
+    padding: 0;
+    border-top: 0;
+    background-color: #fff;
+}
+
+.mem-box .control-label {
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+.radio.inline + .radio.inline, .checkbox.inline + .checkbox.inline {
+    margin-left: 0;
+}
+
+.form-horizontal :first-child.controls {
+	padding-left: 7px;
+}
+
+.mem-box .user-avatar {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin: 0 20px 10px 0;
+	padding: 5px 10px 5px 5px;
+	border-radius: 4px;
+	border: 1px dashed #ccc;
+	width: 152px;
+}
+
+.mem-box .user-avatar .inline {
+	width: 81px;
+	height: 18px;
+	overflow: hidden;
+}
+
+.my-inviting {
+	margin-bottom: 15px;
+	padding: 8px;
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 784px;
+}
+
+.my-inviting form {
+	margin: 0;
+}
+
+.inviting-text {
+	float: left;
+	margin: 0;
+	margin-right: 10px;
+	height: 28px;
+	line-height: 28px;
+	color: #ff0000;
+	font-size: 14px;
+}
+
+.my-inviting .form_access {
+	float: left;
+	margin-right: 10px;
+}
+
+.form_refuse {
+	float: left;
+}
+
+.user-notice {
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #f50;
+	border-radius: 3px;
+	font-size: 14px;
+	color: #39f;
+}
+
+.no-comment {
+    opacity: 0.5;
+}
+
+/*----------------评论页面-----------------*/
+.log-detail .page-header {
+	padding-bottom: 0;
+	padding-left: 15px;
+}
+
+.log-detail .log-text {
+	padding: 20px 15px 0;
+}
+
+.log-detail .log-user, .log-detail .log-content {
+	float: left;
+}
+
+.log-detail .log-user {
+	margin-right: 10px;
+	padding: 2px;
+	width: 48px;
+	height: 48px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.log-detail .log-content {
+	width: 700px;
+}
+
+.log-detail .log-content .log-title {
+	margin-bottom: 5px;
+}
+
+.comment-ls {
+	padding-left: 80px;
+}
+
+.comment-ls .comments {
+	padding-bottom: 15px;
+}
+
+.comment-ls .comment-user, .comment-ls .comment-detail {
+	float: left;
+}
+
+.comment-ls .comment-user {
+	margin-right: 10px;
+	padding: 2px;
+	width: 48px;
+	height: 48px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+.comment-ls .comment-detail {
+	width: 640px;
+}
+
+.comment-ls .comment-detail .comment-title {
+	margin-bottom: 0;
+}
+
+.log-detail .form-horizontal {
+	padding-left: 20px;
+}
+
+.log-detail .comment-area {
+	display: block;
+	margin-bottom: 10px;
+	width: 500px;
+	height: 100px;
+}
+
+.log-detail .comment-label {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.log-detail .log-bd, .log-detail .comment-bd {
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.nav-list > .selected > a, .nav-list > .selected > a:hover {
+	background-color: #e9e9e9;
+}
+
+/*----------------评论页面-----------------*/
+.addlogform {
+	padding: 20px;
+}
+
+.addlogform .page-header {
+	margin-top: 0;
+	padding-bottom: 0;
+}
+
+.addlogform .ecalo-form {
+	padding-top: 10px;
+}
+
+.addlogform .ecola-log {
+	margin-left: 64px;
+	width: 400px;
+	height: 100px;
+	font-size: 12px;
+	resize: none;
+}
+
+.addlogform .control-group {
+	margin-top: 10px;
+	line-height: 28px;
+}
+
+.addlogform .controls {
+	margin-left: 0;
+}
+
+.addlogform .control-label {
+	width: 64px;
+	font-size: 12px;
+}
+
+.addlogform .ac-btn {
+	padding-left: 64px;
+}
+
+.addlogform .ac-btn .btn {
+	font-size: 12px;
+}
+
+.forminner .ecola-teams, .addlogform .ecola-teams {
+	display: none;
+	padding-left: 64px;
+	padding-bottom: 20px;
+	width: 410px;
+}
+
+.addlogform .ecola-teams {
+	display: block;
+}
+
+.form-layer label {
+	/*margin-right: 10px;*/
+	max-width: 92px;
+	font-size: 12px;
+	_width: 92px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.addlogform .checkbox {
+	display: inline-block;
+	font-size: 12px;
+	margin-right: 20px;
+}
+
+.form-layer .ecola-teams {
+	position: absolute;
+	left: 343px;
+	top: 5px;
+	padding-left: 10px;
+	padding-top: 5px;
+	background-color: #FFF;
+	border: 1px solid #ddd;
+	width: 130px;
+	height: 185px;
+}
+
+.form-layer .close-teams {
+	position: absolute;
+	right: 5px;
+	bottom: 0;
+}
+
+.form-layer .ecola-group {
+	position: relative;
+	z-index: 10;
+	padding-top: 0;
+	padding-left: 5px;
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	line-height: 28px;
+	background-color: #FFF;
+}
+
+.form-layer .ecola-group-expand {
+	border-right: 0;
+	margin-right: -19px;
+}
+
+.form-layer .ecola-teams .group-list {
+	height: 180px;
+	overflow-y: auto;
+}
+
+.form-layer .ecola-teams .check-all-cancel {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin-bottom: 0;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	height: 20px;
+	line-height: 20px;
+}
+
+/*面包屑导航*/
+.log-detail .log-text {
+	padding: 0 15px;
+}
+
+.bc-box .divider {
+	font-family: Tahoma;
+	color: #333;
+}
+
+/*查看所有日志页面*/
+.log-view {}
+
+.log-search {
+	float: left;
+	padding-right: 10px;
+	width: 210px;
+}
+
+.log-search .page-header {
+	font-size: 20px;
+	line-height: 24px;
+	padding-bottom: 0;
+	margin: 0 0 15px;
+}
+
+.log-search input.span2 {
+	width: 130px;
+}
+
+.log-search select.span2 {
+	width: 144px;
+}
+
+.log-search .control-group {
+	margin-bottom: 10px;
+}
+
+.log-search .control-label {
+	width: 45px;
+	font-size: 12px;
+}
+
+.log-search .controls {
+	margin-left: 60px;
+}
+
+.log-search :first-child.controls {
+	padding-left: 0;
+}
+
+.log-search input, .log-search select {
+	font-size: 12px;
+}
+
+.log-view-table {
+	float: left;
+	width: 770px;
+	overflow: hidden;
+}
+
+.log-view-table .redWarning {
+	color: #f00;
+}
+
+.log-view-table .diliver {
+	padding: 0;
+	height: 1px;
+	line-height: 0;
+	font-size: 0;
+	background-color: #ddd;
+}
+
+.log-view-table .pagination a, .log-view-table .pagination span {
+	float: left;
+	padding: 0 6px;
+	line-height: 20px;
+}
+
+.log-view-table .pagination span {
+	border-width: 0;
+}
+
+.log-view-table .pagination a {
+	border-left-width: 1px;
+}
+
+.log-view-table .align-right {
+	text-align: right;
+}
+
+.log-view-table .highlight {
+	color: #08c;
+}

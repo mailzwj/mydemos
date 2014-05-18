@@ -1,0 +1,21 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/stylesheets/notes.css')
+  body
+    div.container
+        div.header
+            a.noteslogo(href="/main", target="_self")
+                img(src="/images/sitelogo.png")
+            div.noteinfo
+                测试账号：admin/admin123;&nbsp;&nbsp;test/test123&nbsp;&nbsp;
+                a.notesquit(href="/quit", target="_self") 切换用户
+        - var errinfo = errinfo
+        - if(errinfo)
+            div.alert.alert-error.noteerr #{errinfo}
+        block content
+        div.footer &copy;2013 by Letao 
+            a.site(href="http://www.seejs.com", target="_blank") http://www.seejs.com

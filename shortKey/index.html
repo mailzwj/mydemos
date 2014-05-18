@@ -1,0 +1,28 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>快捷键</title>
+<style>
+	#J_Overlay {
+		display: none;
+	}
+</style>
+</head>
+<body>
+<h2>请按Shift+？</h2>
+<div id="J_Overlay">111111111</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+KISSY.ready(function(S){
+	var D = S.DOM, E = S.Event;
+	var ol = D.get("#J_Overlay");
+	E.on(document, "keyup", function(e){
+		if(e.shiftKey && e.keyCode === 191){
+			D.css(ol, "display", "block");
+		}
+	});
+});
+</script>
+</body>
+</html>

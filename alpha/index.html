@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>兼容IE6-8的半透明背景实现</title>
+<style>
+body {font: 12px/1.5 '宋体';color: #777;}
+.al-bg {
+	position: absolute;
+	left: 8px;
+	top: 58px;
+	padding: 8px;
+	width: 300px;
+	background-color: rgba(51, 153, 255, 0.7);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#b23399ff,endColorStr=#b23399ff);
+	color: #ffffff;
+}
+.al-border {
+	position: absolute;
+	left: 340px;
+	top: 48px;
+	padding: 8px;
+	width: 300px;
+	background-color: rgba(51, 153, 255, 0.7);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#b23399ff,endColorStr=#b23399ff);
+}
+.al-border .text {
+	padding: 5px;
+	background-color: #fff;
+	color: #39f;
+}
+:root .al-bg,:root .al-border {
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#003399ff,endColorStr=#003399ff);
+}
+</style>
+</head>
+<body>
+<h2>资深前端开发工程师</h2>
+从称谓上就可以看出，其相比较"前端开发工程师"而言，更加资深一些，当然其工作的职责也会相应的更加大一些。一般而言，资深 前端开发工程师需要使用JavaScript或者ActionScript来编写和封装具有良好性能的前端交互组件，熟练使用CSS+XHTML完美输出视觉界面。同时还要对Web项目的前端实现方案 提供专业指导和监督并在日常工作之中对新人及相关开发人员进行前端技能的培训和指导。另外，还要跟踪研究前端技术，设计并实施全网前端优化。
+<h2>专业意见和方案</h2>
+资深前端开发工程师都有这样高的职责要求了，前端架构师跟其相比肯定有更高的职责要求，那么前端架构师的职责是什么呢？前端架构师更多意义上说像是 一个管理的岗位，但是其职责要求却不仅只是管理。前端架构师需要带领组员实现全网的前端框架和优化，还要创建前端的相应标准和规范，并通过孜孜不倦的布道 来完善并推广和应用自己的标准和框架。同时，还要站在全局的角色为整个网站的信息架构和技术选型提供专业意见和方案。
+<div class="al-bg">
+	这周真是辛苦的一周，很多事情不得已都拖着，比如现在这篇文章早前几天前就应该完工了。
+</div>
+<div class="al-border">
+	<div class="text">
+		这周真是辛苦的一周，很多事情不得已都拖着，比如现在这篇文章早前几天前就应该完工了。
+	</div>
+</div>
+</body>
+</html>

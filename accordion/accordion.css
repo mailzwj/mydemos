@@ -1,0 +1,38 @@
+#YS-Accordion {
+    margin: 0 auto;
+    position: relative;
+    width: 720px;
+    height: 380px;
+    overflow: hidden;
+}
+
+#YS-Accordion .s-con {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 630px;
+    height: 380px;
+}
+
+#YS-Accordion .s-con-2 {
+    left: 30px;
+}
+
+#YS-Accordion .s-con-3 {
+    left: 60px;
+}
+
+#YS-Accordion .s-con-4 {
+    left: 90px;
+}
+
+#YS-Accordion .s-holder {
+    float: left;
+    width: 29px;
+    height: 100%;
+    /**/
+    text-align: center;
+    line-height: 380px;
+    border-right: 1px solid #fff;
+    background-color: #e9e9e9;
+}

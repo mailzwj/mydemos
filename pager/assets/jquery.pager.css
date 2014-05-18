@@ -1,0 +1,32 @@
+.pagination {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.pagination .page {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin: 0 2px;
+    padding: 10px 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination a.page:hover {
+    background-color: #eaeaea;
+}
+
+.pagination .cur {
+    background-color: #f44;
+    color: #fff;
+}
+
+.pagination .disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: #ccc;
+}

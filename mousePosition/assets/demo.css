@@ -1,0 +1,74 @@
+body {margin: 0;padding: 0;}
+
+.fullwidth {
+	position: relative;
+	overflow: hidden;
+}
+
+.J_bgBlock {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1920px;
+	height: 1440px;
+}
+
+.J_Tips {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+	width: 80px;
+	height: 120px;
+	background-color: #39f;
+}
+
+.tips-1 {
+	left: 707px;
+	top: 610px;
+}
+
+.tips-2 {
+	left: 830px;
+	top: 664px;
+}
+
+.tips-3 {
+	left: 929px;
+	top: 670px;
+}
+
+.tips-4 {
+	left: 1106px;
+	top: 646px;
+}
+
+.tips-5 {
+	left: 877px;
+	top: 730px;
+}
+
+.tips-6 {
+	left: 990px;
+	top: 580px;
+}
+
+.tips-7 {
+	left: 988px;
+	top: 738px;
+}
+
+.tips-8 {
+	left: 933px;
+	top: 847px;
+}
+
+.tips-9 {
+	left: 770px;
+	top: 750px;
+}
+
+.tips-10 {
+	left: 1080px;
+	top: 749px;
+}

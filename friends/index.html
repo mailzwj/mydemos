@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery朋友网右侧栏</title>
+	<link rel="stylesheet" href="assets/jquery.jscrollpane.css">
+	<link rel="stylesheet" href="assets/jquery.friends.css">
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="assets/jquery.mousewheel.js"></script>
+<script src="assets/jquery.jscrollpane.min.js"></script>
+<script src="assets/jquery.friends.js"></script>
+<script>
+$(function(){
+	var F = $.Friends;
+	F.getFrame("data/rightbar.php", {//右侧栏结构模板地址
+		hd: ".Rb-hd",//侧栏标题标识，用于获取标题高度，动态计算主体部分高度
+		bd: ".Rb-bd",//侧栏主体标识，用于设置主题高度，窗体大小改变时
+		ft: ".Rb-ft",//侧栏底部标识，用于获取底部高度，动态计算主体部分高度
+		offset: {r: 3, t: 50},//偏移量，初始化侧栏时的上部(t)和右部(r)偏移量
+		dataurl: "data/folddata.php",//数据接口，获取用户列表
+		userinfourl: "data/getuserinfo.php?uid={{userid}}",//数据接口，获取用户信息，dataurl返回数据替换{{userid}}占位符
+		listTpl: "#Rb-ListTpl",//列表数据【模版】标识，用于获取dataurl返回数据将要嵌入的html字符串
+		listContainer: ".Rb-list"//列表数据【容器】标识，dataurl返回数据将要写入的容器
+	});
+});
+</script>
+</body>
+</html>

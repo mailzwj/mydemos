@@ -1,0 +1,30 @@
+.demo {
+	position: relative;
+	margin: 0 auto;
+	width: 800px;
+	height: 500px;
+	background-color: #000;
+	-moz-user-select: none;
+}
+
+.K_cropArea {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	width: 800px;
+	height: 500px;
+	background-color: rgba(0, 0, 0, 0.5);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=#7f000000,endColorStr=#7f000000);
+}
+
+:root .K_cropArea {
+	filter: none;
+}
+
+.K_cropSquare {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 10;
+}

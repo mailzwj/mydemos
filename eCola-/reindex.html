@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Etao UX团队日志</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/eCola.css">
+</head>
+<body>
+<div class="etao-main">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <h1 class="brand">Etao UX</h1>
+                <div class="user-action pull-right">
+                    <ul class="ac-list">
+                        <li>
+                            <a href="#">Letao的设置</a>
+                        </li>
+                        <li>
+                            <a href="#">团队设置</a>
+                        </li>
+                        <li>
+                            <a href="#">退出</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="divider-vertical"></li>
+                        <li class="team"><a href="#">YS-Letao</a></li>
+                        <li class="divider-vertical"></li>
+                        <li class="source active">
+                            <a href="#">我的日志</a>
+                        </li>
+                        <li class="log">
+                            <a href="#">团队日志</a>
+                        </li>
+                        <li class="stat">
+                            <a href="#">统计</a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-log">
+        <div class="row">
+            <div class="span9 cal-body">
+                <div class="cal-header clearfix">
+                    <button class="btn pull-left" id="today"> 今天 </button>
+                    <div class="btn-group pull-left has-margin">
+                        <button class="btn" id="week-prev"><i class="icon-chevron-left"></i></button>
+                        <button class="btn" id="week-next"><i class="icon-chevron-right"></i></button>
+                    </div>
+                    <div class="pull-left date-from-to" id="date-from-to">
+                        2012年07月02日 ~ 2012年07月08日
+                    </div>
+                    <div class="pull-left loading" id="loading">
+                        <img src="http://img03.taobaocdn.com/tps/i3/T1k4S_XnXsXXXXXXXX-16-16.gif" alt="Loading">
+                    </div>
+                    <div class="pull-right btn-group display">
+                        <a href="javascript:void(0);" class="btn active">周</a>
+                        <a class="btn" href="#">月</a>
+                    </div>
+                </div>
+                <ul class="week-day clearfix">
+                    <li class="pull-left">2 / 7（一）</li>
+                    <li class="pull-left">3 / 7（二）</li>
+                    <li class="pull-left">4 / 7（三）</li>
+                    <li class="pull-left">5 / 7（四）</li>
+                    <li class="pull-left">6 / 7（五）</li>
+                    <li class="pull-left">7 / 7（六）</li>
+                    <li class="pull-left">8 / 7（日）</li>
+                </ul>
+                <div class="week-box">
+                    <div class="week-main">
+                        <!--  ROW DEMO  -->
+                        <!--<div class="col-time time-line">
+                            <span class="time">0<b>am</b></span>
+                            <span class="time odd"></span>
+                        </div>
+                        <div class="col col-0">
+                            <div class="time">0<b>am</b></div>
+                            <div class="time odd"></div>
+                        </div>-->
+                    </div>
+                    <div id="form-layer" class="form-layer">
+                        <b class="form-arrow"><i></i></b>
+                        <form class="form-horizontal ecalo-form" method="post" action="">
+                            <input type="hidden" name="ecola-id" id="ecola-id" value="">
+                            <input type="hidden" name="ecola-date-start" id="ecola-date-start" value="">
+                            <input type="hidden" name="ecola-date-end" id="ecola-date-end" value="">
+                            <textarea rows="6" cols="100" class="input-xlarge ecola-log" name="logarea"></textarea>
+                            <div class="control-group">
+                                <label class="control-label">分类：</label>
+                                <div class="controls">
+                                    <select name="ecolacat" id="ecola-cat" class="span2">
+                                        <option value="0">默认分类</option>
+                                        <option value="1">第一种分类</option>
+                                        <option value="2">第二种分类</option>
+                                        <option value="3">第三种分类</option>
+                                        <option value="4">第四种分类</option>
+                                        <option value="5">第五种分类</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <a class="btn btn-primary ecola-save" href="#">保存</a>
+                                <a href="#" class="btn btn-danger help-inline ecola-del">删除</a>
+                            </div>
+                        </form>
+                        <a href="#" class="ecola-cancel"><i class="icon-remove-circle"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="span3 cal-right">
+                <ul class="nopad nav nav-list">
+                    <li class="nav-header">分类导航</li>
+                    <li>
+                        <a href="#"><i class="icon-list-alt"></i> 我的日志</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-th-list"></i> 团队日志</a>
+                    </li>
+                    <!--<li class="divider"></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="ecola-foot">
+            &copy; Etao UX
+        </div>
+    </div>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="src/js/weekAction.js"></script>
+<script src="src/js/reindex.js"></script>
+</body>
+</html>

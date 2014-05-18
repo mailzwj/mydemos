@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KISSY Accordion</title>
+    <link rel="stylesheet" href="accordion.css">
+</head>
+<body>
+<div id="YS-Accordion">
+    <div class="s-con s-con-1">
+        <a class="s-holder" href="#" target="_blank">X</a>
+        <a class="s-img" href="#" target="_blank">
+            <img src="imgs/img_01.png" alt="">
+        </a>
+    </div>
+    <div class="s-con s-con-2">
+        <a class="s-holder" href="#" target="_blank">X</a>
+        <a class="s-img" href="#" target="_blank">
+            <img src="imgs/img_02.png" alt="">
+        </a>
+    </div>
+    <div class="s-con s-con-3">
+        <a class="s-holder" href="#" target="_blank">X</a>
+        <a class="s-img" href="#" target="_blank">
+            <img src="imgs/img_03.png" alt="">
+        </a>
+    </div>
+    <div class="s-con s-con-4">
+        <a class="s-holder" href="#" target="_blank">X</a>
+        <a class="s-img" href="#" target="_blank">
+            <img src="imgs/img_04.png" alt="">
+        </a>
+    </div>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src="accordion.js"></script>
+<script>
+KISSY.use("accordion", function(S){
+    var ac = new S.Accordion({
+        container: "#YS-Accordion",//外部容器id
+        holder: ".s-holder",//事件绑定节点
+        box: ".s-con",//内部移动容器
+        easing: "easeOut",//缓动方法
+        eventType: "click",//事件类型
+        //index: 2,//默认展开第几个容器
+        moveWidth: 600,//运动宽度
+        duration: 0.3  //动画执行时常
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>KISSY.Blocks</title>
+</head>
+<body>
+<style>
+.bc {
+	float: left;
+	position: relative;
+	background-color: #014051;
+	width: 350px;
+}
+.bc1,.bc2 {
+	margin-left: 40px;
+}
+.blocks {
+	position: absolute;
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+	text-align: center;
+	color: #fff;
+}
+.bc1 .blocks {height: 80px;line-height: 80px;}
+.bc2 .blocks {height: 100px;line-height: 100px;}
+</style>
+<div class="J_Blocks bc" id="J_Blocks"></div>
+<div class="J_Blocks bc bc1" id="J_Blocks1"></div>
+<div class="J_Blocks bc bc2" id="J_Blocks2"></div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+//生成测试块并写入DOM
+KISSY.ready(function(S){
+	var D = S.DOM, E = S.Event;
+	var count = 18,
+		model = [80, 80, 166],
+		pa = S.one("#J_Blocks"),
+		pa1 = S.one("#J_Blocks1"),
+		pa2 = S.one("#J_Blocks2"),
+		node = D.create('<div class="blocks"></div>'),
+		color = ["#298af3","#5634af","#d44928","#6bb71f","#bc1c48","#1f7982","#010103"];
+	
+	for(var i = 0; i < count; i++){
+		var items = D.clone(node);
+		D.css(items, "width", model[Math.floor(Math.random() * model.length)]);
+		D.css(items, "backgroundColor", color[Math.floor(Math.random() * color.length)]);
+		D.html(items, i);
+		D.append(items, pa);
+		var items1 = D.clone(node);
+		D.css(items1, "width", model[Math.floor(Math.random() * model.length)]);
+		D.css(items1, "backgroundColor", color[Math.floor(Math.random() * color.length)]);
+		D.html(items1, i);
+		D.append(items1, pa1);
+		var items2 = D.clone(node);
+		D.css(items2, "width", model[Math.floor(Math.random() * model.length)]);
+		D.css(items2, "backgroundColor", color[Math.floor(Math.random() * color.length)]);
+		D.html(items2, i);
+		D.append(items2, pa2);
+	}
+});
+</script>
+<script>
+KISSY.ready(function(S){
+	KISSY.add("blocks", function(S){
+		var D = S.DOM, E = S.Event;
+		function Blocks(cfg){
+			this.ct = S.one(cfg.container);
+			this.bs = D.query(cfg.blocks, this.ct);
+			this.space = cfg.space;
+			this.rowHeight = cfg.rowHeight;
+			this._row = [0];
+			this._maxTop = 0;
+			this.init();
+		}
+		Blocks.prototype = {
+			setMaxTop: function(){
+				var _this = this;
+				_this._maxTop = _this.space;
+				for(var i = 0; i < _this._row.length; i++){
+					_this._row[i] = _this.space;
+				}
+			},
+			minRow: function(arr){
+				var mix = arr[0], ai = 0, len = arr.length;
+				for(var o = 0; o < len; o++){
+					if(mix > arr[o]){
+						mix = arr[o];
+						ai = o;
+					}
+				}
+				return ai;
+			},
+			getFirstRow: function(arr, w, cw){
+				var leng = arr.length, oj = 0;
+				for(var j = 0; j < leng; j++){
+					if(arr[j] + w <= cw){
+						oj = j;
+						break;
+					}
+				}
+				return oj;
+			},
+			render: function(){
+				var _this = this, cw = D.width(_this.ct), len = _this.bs.length;
+				for(var i = 0; i < len; i++){
+					var mr = _this.minRow(_this._row);
+					if(_this._row[mr] + D.width(_this.bs[i]) + _this.space > cw){
+						var olen = _this._row.length,
+							nt = olen * (_this.rowHeight + _this.space) + D.height(_this.bs[i]) + 2 * _this.space;
+						_this._row.push(_this.space);
+						D.css(_this.bs[i], {"left": _this._row[olen], "top": olen * (_this.rowHeight + _this.space) + _this.space});
+						if(nt > _this._maxTop){
+							_this._maxTop = nt;
+						}
+						_this._row[olen] += D.width(_this.bs[i]) + _this.space;
+					}else{
+						var fi = _this.getFirstRow(_this._row, D.width(_this.bs[i]) + _this.space, cw);
+						D.css(_this.bs[i], {"left": _this._row[fi], "top": fi * (_this.rowHeight + _this.space) + _this.space});
+						_this._row[fi] += D.width(_this.bs[i]) + _this.space;
+					}
+				}
+				D.css(_this.ct, "height", _this._maxTop);
+			},
+			init: function(){
+				var _this = this;
+				_this.setMaxTop();
+				_this.render();
+			}
+		}
+		S.Blocks = Blocks;
+	});
+	KISSY.use("blocks", function(S){
+		var h = [60, 80, 100];
+		S.each(S.all(".J_Blocks"), function(n, i){
+			new S.Blocks({
+				container: n,
+				blocks: ".blocks",
+				space: 6,
+				rowHeight: h[i]
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
+

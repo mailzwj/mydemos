@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>微博发送接口测试</title>
+</head>
+<body>
+<a href="#" id="J_WB" target="_blank">发布微博</a>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script src=" http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3168919025" charset="utf-8"></script>
+<script>
+/*KISSY.ready(function(S){
+	S.IO({
+		url: "https://upload.api.weibo.com/2/statuses/upload.json?status=111&visible=0",
+		type: "POST",
+		dataType: "json",
+		success: function(data){
+			console.log(data);
+		}
+	});
+});*/
+KISSY.ready(function(S){
+	S.one("#J_WB").on("click", function(e){
+		e.preventDefault();
+		WB2.login(function(){
+			alert('login');
+		});
+	});
+});
+</script>
+</body>
+</html>

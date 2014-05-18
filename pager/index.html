@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Pagination</title>
+    <link rel="stylesheet" href="assets/jquery.pager.css">
+    <style>
+    .data-show {
+        margin: 0 auto;
+        width: 990px;
+        line-height: 200%;
+    }
+    .data-show p {
+        margin: 0;
+    }
+    .data-show p:nth-child(2n + 1) {
+        background-color: #eaeaea;
+    }
+    .goToTest {
+        padding: 10px 0;
+        text-align: center;
+    }
+    .goToTest .button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #f44;
+        color: #fff;
+        font-size: 16px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    .goToTest .button:hover {
+        background-color: #e44;
+    }
+    </style>
+</head>
+<body>
+    <div class="J_DataShow data-show"></div>
+    <div class="J_Pager pagination">
+        <a href="" class="page page-prev disabled">&lt;</a>
+        <a href="" class="page page-item">1</a>
+        <a href="" class="page page-item">2</a>
+        <span class="page cur">3</span>
+        <a href="" class="page page-item">4</a>
+        <span class="page page-more">...</span>
+        <a href="" class="page page-item">32</a>
+        <a href="" class="page page-next">&gt;</a>
+    </div>
+    <div class="goToTest">
+        <input type="button" class="J_GoTo button" value="前往第 10 页">
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="assets/jquery.pager.js"></script>
+    <script>
+    $(function(){
+        var pager = new Pager({
+            container: ".J_Pager",
+            showMore: true,
+            dataAddr: "list.php",
+            perPage: 12,
+            pageTo: 1,
+            params: {
+                goods_id: 5638
+            },
+            pageChange: function(data) {
+                var table = $(".J_DataShow");
+                var list = data.result;
+                var html = "";
+                $.each(list, function(index, obj){
+                    html += '<p>' + obj.name + "：" + obj.value + '</p>';
+                });
+                table.html(html);
+            }
+        });
+
+        $(".J_GoTo").on("click", function(e){
+            pager.goTo(10);
+        });
+    });
+    </script>
+<p style="display:none;"><script src="http://s13.cnzz.com/stat.php?id=3730977&web_id=3730977&online=1&show=line" language="JavaScript"></script></p>
+</body>
+</html>

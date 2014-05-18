@@ -1,0 +1,151 @@
+h1, h2, h3, h4, h5, h6, ul, ol, dl, dt, dd, li, p, pre {
+    margin: 0;
+    padding: 0;
+}
+ul, ol, dl {
+    list-style: none;
+}
+body {
+    font: 12px/1.5 Tahoma, Arial, sans-serif;
+    color: #666;
+}
+pre {
+    padding: 5px 8px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+    visibility: hidden;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.page-title {
+    padding: 20px 0 10px;
+}
+.row {
+    margin-bottom: 10px;
+    padding: 5px 0;
+    min-width: 900px;
+    border: 1px solid #999;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #bbb inset;
+    background-color: #f4f4f4;
+}
+.demo {
+    padding: 20px 0;
+    width: 20%;
+    min-width: 180px;
+}
+.css {
+    padding: 10px 0;
+    width: 30%;
+    min-width: 270px;
+}
+.html {
+    padding: 10px 0;
+    width: 50%;
+    min-width: 450px;
+}
+.arrow, .arrow i {
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border: 10px solid #ccc;
+}
+.mark, .mark-left, .mark-right, .mark-right-bottom, .mark-left-bottom {
+    position: relative;
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 70%;
+}
+.mark .content, .mark-left .content, .mark-right .content, .mark-right-bottom .content, .mark-left-bottom .content {
+    padding: 3px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    text-indent: 2em;
+}
+.mark .arrow, .mark .arrow i {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -10px;
+    border-top: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    _border-left-style: dotted;
+    _border-right-style: dotted;
+}
+.mark-left .arrow, .mark-left .arrow i {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-right: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+.mark-right .arrow, .mark-right .arrow i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-color: transparent;
+    border-left: 0;
+    border-bottom-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+
+.mark .arrow i {
+    top: 1px;
+    border-bottom-color: #fff;
+}
+.mark-left .arrow i {
+    left: -9px;
+    top: -8px;
+    border-left-color: #fff;
+    border-bottom: 10px solid #fff;
+}
+.mark-right .arrow i {
+    right: -9px;
+    top: -8px;
+    border-right-color: #fff;
+    border-bottom: 10px solid #fff;
+}
+
+.mark-right-bottom .arrow, .mark-right-bottom .arrow i {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
+
+.mark-left-bottom .arrow, .mark-left-bottom .arrow i {
+    position: absolute;
+    left: 5px;
+    top: 0;
+    border-width: 5px;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    _border-top-style: dotted;
+    _border-bottom-style: dotted;
+}
