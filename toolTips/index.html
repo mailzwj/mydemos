@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>KISSY ToolTips</title>
+		<style type="text/css">
+			h3, p {margin: 0; padding: 0;}
+			h3 {padding: 20px 0 10px;font: 16px/1.5 "微软雅黑";}
+			p.text {font: 12px/1.5 '宋体';text-indent: 2em;line-height: 20px;color: #999;}
+			p.text a {text-decoration: none;color: #39f;}
+			.tips {position: absolute;left: 0;top: 0;padding-bottom: 10px;width: 250px;visibility: hidden;}
+			.tips-bottom {padding-bottom: 0;padding-top: 10px;}
+			.tips .tips-content {padding: 5px 8px;font: 12px/1.5 '宋体';text-indent: 2em;border-radius: 4px;border: 1px solid #ccc;box-shadow: 0 0 5px #ccc;color: #666;background-color: #fff;}
+			.tips .arrow, .tips .arrow i {position: absolute;left: 50%;bottom: 0;margin-left: -10px;width: 0;height: 0;font-size: 0;line-height: 0;border:10px solid #ccc;border-bottom: 0;border-left: 10px solid transparent;_border-left: 10px dotted transparent;border-right: 10px solid transparent;_border-right: 10px dotted transparent;}
+			.tips-bottom .arrow, .tips-bottom .arrow i {bottom: auto;top: 0;border-top: 0;border-bottom: 10px solid #ccc;}
+			.tips .arrow i {bottom: 1px;border-top-color: #fff;}
+			.tips-bottom .arrow i {top: 1px;border-bottom-color: #fff;}
+		</style>
+	</head>
+	<body>
+		<h3>较强的视觉设计</h3>
+		<p class="text">
+		前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+		</p>
+		<h3>Web前端开发的职责是什么</h3>
+		<p class="text">
+		既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+		</p>
+        <hr>
+        <h3>较强的视觉设计</h3>
+        <p class="text">
+            前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+        </p>
+        <h3>Web前端开发的职责是什么</h3>
+        <p class="text">
+            既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+        </p>
+        <hr>
+        <h3>较强的视觉设计</h3>
+        <p class="text">
+            前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+        </p>
+        <h3>Web前端开发的职责是什么</h3>
+        <p class="text">
+            既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+        </p>
+        <hr>
+        <h3>较强的视觉设计</h3>
+        <p class="text">
+            前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+        </p>
+        <h3>Web前端开发的职责是什么</h3>
+        <p class="text">
+            既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+        </p>
+        <hr>
+        <h3>较强的视觉设计</h3>
+        <p class="text">
+            前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+        </p>
+        <h3>Web前端开发的职责是什么</h3>
+        <p class="text">
+            既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+        </p>
+        <hr>
+        <h3>较强的视觉设计</h3>
+        <p class="text">
+            前端技术包括<a href="#" class="Y-tips" tips="JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。" target="_blank">JavaScript</a>、<a href="#" class="Y-tips" tips="ActionScript 动作脚本是遵循 ECMAscript第四版 的 Adobe Flash Player 运行时环境的编程语言。" target="_blank">ActionScript</a>、<a href="#" class="Y-tips" tips="级联样式表（Cascading Style Sheet）简称“CSS”，通常又称为“风格样式表（Style Sheet）”，它是用来进行网页风格设计的。" target="_blank">CSS</a>、<a href="#" class="Y-tips" tips="可扩展超文本置标语言（eXtensible HyperText Markup Language，XHTML），是一种置标语言，表现方式与超文本置标语言（HTML）类似，不过语法上更加严格。" target="_blank">xHTML</a>等“传统”技术与<a href="#" class="Y-tips" tips="AIR是针对网络与桌面应用的结合所开发出来的技术，可以不必经由浏览器而对网络上的云端程式做控制。" target="_blank">Adobe AIR</a>、<a href="#" class="Y-tips" tips="Google Gears会将数据储存在你的硬盘上的一个SQLite数据库里，并且这些数据可以通过SQL命令获得。" target="_blank">Google Gears</a>,以及概念性较强的交互式设计,艺术性较强的视觉设计等等。根据该词可以做这样的理解,用互联网来做比喻,凡是通过浏览器到用户端计算机的统称为前端技术.相反存贮于服务器端的统称为后端技术。
+        </p>
+        <h3>Web前端开发的职责是什么</h3>
+        <p class="text">
+            既然Web前端开发有很多的职位，那么不同的职位其各自的职责又是怎样的呢？我们以“<a href="#" class="Y-tips" tips="前端开发工程师是Web前端开发工程师的简称，是近五年才真正开始受到重视的一个新兴职业。" target="_blank">前端开发工程师</a>”、“<a href="#" class="Y-tips" tips="" target="_blank">资深前端开发工程师</a>”和“<a href="#" class="Y-tips" tips="" target="_blank">前端架构师</a>”这三种职位为例，来分析一下其各自的职责。前端开发工程师（或者说“网页制作”、“网页制作工程师”、“前端制作工程师”、“网站重构工程师”），这样的一个职位的主要职责是与交互设计师、 视觉设计师协作，根据设计图用HTML和CSS完成页面制作。同时，在此基础之上，对完成的页面进行维护和对网站前端性能做相应的优化。另外，一名合格的前端开发工程师，应该具有一定的审美能力和基础的美工操作能力，能很好的与交互及视觉协作。
+        </p>
+		<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+		<script type="text/javascript">
+			KISSY.add("tooltips", function(S){
+				var D = S.DOM, E = S.Event;
+				function ToolTips(config){
+					this.eles = S.query(config.eles);
+					this.init();
+				}
+				ToolTips.prototype = {
+					tips: null,
+					createTips: function(){
+						var _this = this;
+						var node = D.create('<div id="Y-showmessage-tip" class="tips"></div>');
+						D.html(node, '<div class="tips-content">测试提示内容</div><b class="arrow"><i></i></b>');
+						D.append(node, D.get("body"));
+						_this.tips = D.get("#Y-showmessage-tip");
+					},
+					showTips: function(n){
+						var _this = this, node = n;
+						if(!D.attr(node, "tips") || D.attr(node, "tips") == ""){return;}
+						D.html(D.children(_this.tips, ".tips-content"), D.attr(node, "tips"));
+						var nl = D.offset(node).left,
+							nt = D.offset(node).top,
+							nw = D.outerWidth(node),
+							nh = D.outerHeight(node),
+							tw = D.outerWidth(_this.tips),
+							th = D.outerHeight(_this.tips);
+						var tl = nl + (nw - tw) / 2, tt = nt - th - 3;
+						if(D.hasClass(_this.tips, "tips-bottom")){
+							D.removeClass(_this.tips, "tips-bottom");
+						}
+						if(tt < 0){
+							tt = nt + nh + 3;
+							D.addClass(_this.tips, "tips-bottom");
+						}
+						D.css(_this.tips, "left", tl);
+						D.css(_this.tips, "top", tt);
+						D.css(_this.tips, "visibility", "visible");
+					},
+					hideTips: function(){
+						var _this = this;
+						D.css(_this.tips, "visibility", "hidden");
+					},
+					init: function(){
+						//console.log(this.eles);
+						var _this = this;
+						_this.createTips();
+						E.on(_this.eles, "mouseenter", function(){
+							_this.showTips(this);
+						});
+						E.on(_this.eles, "mouseout", function(){
+							_this.hideTips();
+						});
+					}
+				}
+				S.ToolTips = ToolTips;
+			});
+			KISSY.use("tooltips", function(S){
+				new S.ToolTips({
+					eles: ".Y-tips"
+				});
+			});
+		</script>
+	</body>
+</html>

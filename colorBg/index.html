@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KISSY ColorBg</title>
+</head>
+<body>
+<style>
+    ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a {
+        color: #0e3254;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #f3fdff;
+    }
+    .menu {
+        margin: 0 auto;
+        width: 240px;
+        background-color: #f8f9fd;
+        font: 12px/1.5 '微软雅黑';
+    }
+    .menu li a {
+        display: block;
+        padding: 10px;
+    }
+</style>
+<ul class="menu" id="menu">
+    <li><a href="" target="_blank">全部任务</a></li>
+    <li><a href="" target="_blank">已完成</a></li>
+    <li><a href="" target="_blank">即将开始</a></li>
+    <li><a href="" target="_blank">还在规划中尚未确定</a></li>
+    <li><a href="" target="_blank">私人空间</a></li>
+    <li><a href="" target="_blank">垃圾回收站</a></li>
+    <li><a href="" target="_blank">全部任务</a></li>
+    <li><a href="" target="_blank">已完成</a></li>
+    <li><a href="" target="_blank">即将开始</a></li>
+    <li><a href="" target="_blank">还在规划中尚未确定</a></li>
+    <li><a href="" target="_blank">私人空间</a></li>
+    <li><a href="" target="_blank">垃圾回收站</a></li>
+</ul>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+(function(S){
+    var D = S.DOM, E = S.Event, index = -1, as = [];
+
+    S.all("#menu a").on("mouseover", function(){
+		var _this = this;
+		index = S.indexOf(_this, S.all("#menu a"));
+		if(as[index] && as[index].isRunning(_this)){
+			as[index].stop(false);
+		}
+        D.css(_this, "background-color", "#66a7e1");
+    }).on("mouseout", function(){
+        as[index] = new S.Anim(this, {"backgroundColor":"#f8f9fd"}, 0.5, "easeOut", function(){});
+		as[index].run();
+    });
+})(KISSY);
+</script>
+</body>
+</html>

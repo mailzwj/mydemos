@@ -1,0 +1,95 @@
+@defaultColor: #fff;//默认颜色
+
+@html_tagColor: #F92672;//Html标签配色
+@html_propColor: #A6E22E;//标签属性配色
+@html_propValueColor: #E6DB74;//标签属性值配色
+@html_noteColor: #75715E;//Html注释配色
+
+@css_tagColor: #D92731;//CSS标签选择器配色
+@css_selectorColor: #7FE22E;//CSS类，ID选择器配色
+@css_propColor: #66D9EF;//CSS属性配色
+@css_propValueColor: #AE81FF;//CSS属性值配色
+@css_unitColor: #F92672;//CSS属性值单位配色
+@css_stringColor: #3DA3EF;//CSS字符串配色
+@css_noteColor: #75715E;//CSS注释配色
+
+@js_keywordColor: #66d9ef;//JS关键字配色
+@js_internalColor: #d92731;//JS内置保留字配色
+@js_numberColor: #ae81ff;//JS数字、布尔值配色
+@js_stringColor: #c8db74;//JS字符串配色
+@js_noteColor: #75715E;//JS注释配色
+
+/* default style */
+
+h2 {
+	font-weight: normal;
+	font-family: '\5fae\8f6f\96c5\9ed1','microsoft yahei','\5b8b\4f53',sans-serif;
+	font-size: 16px;
+}
+
+pre.colorCode {
+	margin: 0;
+	padding: 8px 10px;
+	line-height: 1.5;
+	font-size: 14px;
+	border-radius: 4px;
+	background-color: #272822;
+	color: @defaultColor;
+}
+
+/* classes for html */
+
+span.html_tag {
+	color: @html_tagColor;
+}
+span.html_prop {
+	color: @html_propColor;
+}
+span.html_propval {
+	color: @html_propValueColor;
+}
+span.html_note {
+	color: @html_noteColor;
+}
+
+/* classes for css */
+
+span.css_tag {
+	color: @css_tagColor;
+}
+span.css_selector {
+	color: @css_selectorColor;
+}
+span.css_prop {
+	color: @css_propColor;
+}
+span.css_propval {
+	color: @css_propValueColor;
+}
+span.css_unit {
+	color: @css_unitColor;
+}
+span.css_string {
+	color: @css_stringColor;
+}
+span.css_note {
+	color: @css_noteColor;
+}
+
+/* classes for js */
+
+span.js_keyword {
+	color: @js_keywordColor;
+}
+span.js_internal {
+	color: @js_internalColor;
+}
+span.js_number {
+	color: @js_numberColor;
+}
+span.js_string {
+	color: @js_stringColor;
+}
+span.js_note {
+	color: @js_noteColor;
+}

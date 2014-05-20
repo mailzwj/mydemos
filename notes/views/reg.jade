@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div.notebd
+        h3 请填写注册信息
+        form.u-login.form-horizontal(action="/reg", method="post")
+            div.control-group
+                label.control-label.lgnamelabel(for="lguser") 昵称：
+                input.lgname#lguser(type="text", name="newuser", placeholder="Jhon")
+            div.control-group
+                label.control-label.lgnamelabel(for="lgpwd") 密码：
+                input.lgpass#lgpwd(type="password", name="newpwd")
+            div.control-group
+                label.control-label.lgnamelabel(for="lgpwd") 密码：
+                input.lgpass#lgpwd(type="password", name="repwd")
+            div.control-group.submit-group
+                input.btn.btn-primary.btn-login(type="submit", value="注册")
+                input.btn.btn-reset(type="reset", value="重置")
+
+        

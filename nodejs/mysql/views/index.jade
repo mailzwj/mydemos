@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	h1= title
+	each item, i in cons
+		div.posts
+			h1(style="color: #f50;") #{item.post_name} 
+			p.dates 发表时间： #{item.post_date}
+			div.content
+				#{item.post_content}
+		hr

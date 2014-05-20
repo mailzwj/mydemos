@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3绘制叮当猫</title>
+<style type="text/css">
+div{position:absolute;}
+.dd_pos{left:50%;top:50%;margin-left:-225px;margin-top:-266px;width:446px;height:532px;background-color:#f3f3f3;border:1px solid #ccc;overflow:hidden;}
+.dd_head{left:50%;top:18px;margin-left:-157px;border:2px solid #193344;width:310px;height:288px;border-radius:144px;background-color:#08bbe4;box-shadow:-8px 10px 14px #999;}
+.dd_face{z-index:10;left:50%;bottom:10px;margin-left:-134px;width:264px;height:200px;border:2px solid #353535;border-radius:100px;background-color:#fff;}
+.dd_eyes{width:76px;height:88px;border:2px solid #353535;border-radius:36px;background-color:#fff;}
+.dd_eyes_one{left:52px;top:-40px;}
+.dd_eyes_two{left:131px;top:-40px;}
+.dd_eye{width:15px;height:15px;border-radius:7px;background-color:#353535;}
+.dd_eye_left{left:48px;top:55px;}
+.dd_eye_right{left:13px;top:55px;}
+
+.dd_nose{left:50%;top:38px;margin-left:-18px;width:36px;height:124px;}
+.dd_nose_top{width:32px;height:32px;border:2px solid #353535;border-radius:17px;background-color:#d03807;}
+.dd_nose_blank{left:16px;top:12px;width:10px;height:10px;background-color:#fffaf4;border-radius:5px;box-shadow:0 0 8px #fff;}
+.dd_nose_bottom{left:50%;top:35px;margin-left:-2px;width:0;height:88px;border:0;border-left:3px solid #353535;}
+
+.dd_mouse{left:50%;top:20px;margin-left:-70px;width:140px;height:140px;border:2px solid #353535;border-radius:80px 80px 54px 54px;border-right:0;border-left:0;border-top:0;}
+
+.dd_beard_left{left:40px;top:60px;width:60px;height:62px;}
+.dd_beard{width:60px;height:0;border-top:2px solid #353535;}
+.dd_beard_one{left:2px;top:8px;-moz-transform:rotate(20deg);-webkit-transform:rotate(20deg);}
+.dd_beard_two{top:50%;margin-top:-1px;}
+.dd_beard_three{left:2px;top:54px;-moz-transform:rotate(-20deg);-webkit-transform:rotate(-20deg);}
+.dd_beard_right{left:160px;top:60px;width:60px;height:62px;}
+.dd_beard_four{left:0;top:8px;-moz-transform:rotate(-20deg);-webkit-transform:rotate(-20deg);}
+.dd_beard_five{left:1px;top:50%;margin-top:-1px;}
+.dd_beard_six{left:0;top:54px;-moz-transform:rotate(20deg);-webkit-transform:rotate(20deg);}
+
+.dd_neck{z-index:11;left:50%;margin-left:-117px;top:282px;width:230px;height:20px;border:2px solid #353535;background-color:#a92300;border-radius:8px;box-shadow:-8px 2px 14px #999;}
+
+.dd_body{left:50%;margin-left:-194px;top:306px;width:388px;}
+.dd_body_bg{left:50%;margin-left:-112px;width:224px;height:158px;background-color:#08bbe4;}
+.dd_cloth{bottom:0;width:220px;height:108px;border:2px solid #353535;border-top:0;border-bottom:0;}
+
+.dd_hand{width:94px;height:50px;background-color:#08bbe4;border:2px solid #353535;}
+.dd_hand_left{top:25px;left:18px;-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);}
+.dd_hand_left .dd_hand_finger{left:-32px;top:-7px;width:60px;height:60px;border:2px solid #353535;border-radius:30px;background-color:#fff;}
+.dd_hand_right{top:25px;right:18px;-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);}
+.dd_hand_right .dd_hand_finger{right:-32px;top:-7px;width:60px;height:60px;border:2px solid #353535;border-radius:30px;background-color:#fff;}
+
+.dd_bag{z-index:9;left:50%;top:-85px;margin-left:-87px;width:170px;height:170px;border:2px solid #353535;border-radius:85px;background-color:#fff;}
+.dd_bag_top{z-index:12;left:50%;top:-16px;margin-left:-22px;width:40px;height:40px;border:2px solid #353535;background-color:#f2e118;border-radius:20px;box-shadow:-2px 1px 2px #999;}
+.dd_bag_rect{top:9px;width:36px;height:2px;border:2px solid #423c00;}
+.dd_bag_circle{left:50%;top:22px;margin-left:-6px;width:8px;height:6px;border:1px solid #423c00;border-radius:5px;background-color:#353535;}
+.dd_bag_blcok{left:50%;top:30px;margin-left:-2px;width:0;height:10px;border:0;border-left:3px solid #423c00;}
+.dd_bag_kd{left:50%;margin-left:-67px;top:85px;width:130px;height:65px;border:2px solid #353535;border-bottom-left-radius:65px;border-bottom-right-radius:65px;}
+
+.dd_foot{left:50%;top:462px;margin-left:-131px;width:262px;height:34px;}
+.dd_foot_left{width:125px;height:30px;border:2px solid #353535;border-radius:22px 15px 15px 8px;background-color:#fff;box-shadow:-4px 2px 4px #999;}
+.dd_foot_right{right:0;width:125px;height:30px;border:2px solid #353535;border-radius:15px 22px 8px 15px;background-color:#fff;box-shadow:-4px 2px 4px #999;}
+.dd_foot_center{left:50%;top:-10px;margin-left:-12px;width:20px;height:10px;border:2px solid #353535;border-bottom:0;border-radius:12px 12px 0 0;background-color:#fbfcfe;}
+</style>
+</head>
+<body>
+<div class="dd_pos">
+	<div class="dd_head">
+		<div class="dd_face">
+			<div class="dd_eyes dd_eyes_one">
+				<div class="dd_eye dd_eye_left"></div>
+			</div>
+			<div class="dd_eyes dd_eyes_two">
+				<div class="dd_eye dd_eye_right"></div>
+			</div>
+			<div class="dd_nose">
+				<div class="dd_nose_top">
+					<div class="dd_nose_blank"></div>
+				</div>
+				<div class="dd_nose_bottom"></div>
+			</div>
+			<div class="dd_mouse"></div>
+			<div class="dd_beard_left">
+				<div class="dd_beard dd_beard_one"></div>
+				<div class="dd_beard dd_beard_two"></div>
+				<div class="dd_beard dd_beard_three"></div>
+			</div>
+			<div class="dd_beard_right">
+				<div class="dd_beard dd_beard_four"></div>
+				<div class="dd_beard dd_beard_five"></div>
+				<div class="dd_beard dd_beard_six"></div>
+			</div>
+		</div>
+	</div>
+	<div class="dd_neck"></div>
+	<div class="dd_body">
+		<div class="dd_hand dd_hand_left">
+			<div class="dd_hand_finger"></div>
+		</div>
+		<div class="dd_hand dd_hand_right">
+			<div class="dd_hand_finger"></div>
+		</div>
+		<div class="dd_body_bg">
+			<div class="dd_cloth">
+				<div class="dd_bag">
+					<div class="dd_bag_kd"></div>
+				</div>
+			</div>
+		</div>
+		<div class="dd_bag_top">
+			<div class="dd_bag_rect"></div>
+			<div class="dd_bag_circle"></div>
+			<div class="dd_bag_blcok"></div>
+		</div>
+	</div>
+	<div class="dd_foot">
+		<div class="dd_foot_left"></div>
+		<div class="dd_foot_right"></div>
+		<div class="dd_foot_center"></div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Media Query响应式设计实例</title>
+</head>
+<body>
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+@media all and (min-width: 1024px) {
+	.demo {
+		color: #000;
+		border: 1px solid #ccc;
+	}
+}
+@media all and (min-width: 800px) and (max-width: 1023px) {
+	.demo {
+		color: #999;
+		border: 2px solid #ccc;
+	}
+}
+@media all and (min-width: 480px) and (max-width: 799px) {
+	.demo {
+		color: #f50;
+		border: 4px solid #ccc;
+	}
+}
+@media all and (min-width: 320px) and (max-width: 479px) {
+	.demo {
+		color: #f00;
+		border: 6px solid #ccc;
+	}
+}
+</style>
+<div class="demo">This is a string.</div>
+</body>
+</html>

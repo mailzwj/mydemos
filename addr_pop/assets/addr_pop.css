@@ -1,0 +1,121 @@
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.addr-pop {
+    /*display: none;*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0 0;
+    width: 350px;
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+}
+
+.addr-pop .addr-pop-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.prov-list {
+    padding: 0 10px;
+}
+
+.prov-list .item {
+    float: left;
+    padding-top: 5px;
+    width: 54px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.prov-list .prov-link {
+    float: left;
+    position: relative;
+    padding: 0 5px;
+    height: 16px;
+    line-height: 16px;
+    color: #a1a1a1;
+}
+
+.prov-list .prov-link .item-mark {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    margin-left: -4px;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    border-bottom: 5px solid #d2d2d2;
+    border-top: 0;
+    border-left: 5px dashed transparent;
+    border-right: 5px dashed transparent;
+}
+
+.prov-list .selected .item-mark {
+    display: block;
+}
+
+.prov-list .prov-link:hover,
+.prov-list .selected {
+    background-color: #ff8e7e;
+    color: #fff;
+    text-decoration: none;
+}
+
+.prov-list .sub-city {
+    display: none;
+    clear: both;
+    margin-left: -10px;
+    margin-right: -10px;
+    border: 1px solid #d2d2d2;
+    border-left: 0;
+    border-right: 0;
+    background-color: #fafafa;
+}
+
+.prov-list .sub-city-show {
+    display: block;
+}
+
+.sub-city-list {
+    padding: 0 10px;
+}
+
+.sub-city-list .sub-item {
+    float: left;
+    padding: 6px 0;
+    width: 54px;
+    overflow: hidden;
+}
+
+.sub-city-list .sub-city-link {
+    float: left;
+    padding: 0 5px;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+    color: #a1a1a1;
+}
+
+.sub-city-list .sub-city-link:hover {
+    background-color: #ff8e7e;
+    color: #fff;
+    text-decoration: none;
+}

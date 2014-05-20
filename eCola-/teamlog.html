@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Etao UX团队日志</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/bs/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="src/css/eCola.css">
+</head>
+<body>
+<div class="etao-main">
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <h1 class="brand">Etao UX</h1>
+                <div class="user-action pull-right">
+                    <ul class="ac-list">
+                        <li>
+                            <a href="#">Letao的设置</a>
+                        </li>
+                        <li>
+                            <a href="#">团队设置</a>
+                        </li>
+                        <li>
+                            <a href="#">退出</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="divider-vertical"></li>
+                        <li class="team"><a href="#">YS-Letao</a></li>
+                        <li class="divider-vertical"></li>
+                        <li class="source active">
+                            <a href="#">我的日志</a>
+                        </li>
+                        <li class="log">
+                            <a href="#">团队日志</a>
+                        </li>
+                        <li class="stat">
+                            <a href="#">统计</a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container main-log">
+        <div class="row">
+            <div class="span9 cal-body">
+                <div class="cal-header clearfix">
+                    <button class="btn pull-left" id="today"> 今天 </button>
+                    <div class="btn-group pull-left has-margin">
+                        <button class="btn" id="week-prev" title="前一天"><i class="icon-chevron-left"></i></button>
+                        <button class="btn" id="week-next" title="后一天"><i class="icon-chevron-right"></i></button>
+                    </div>
+                    <div class="pull-left date-from-to" id="date-from-to">
+                        2012年07月30日&nbsp;&nbsp;星期一
+                    </div>
+                    <div class="pull-left loading" id="loading">
+                        <img src="http://img03.taobaocdn.com/tps/i3/T1k4S_XnXsXXXXXXXX-16-16.gif" alt="Loading">
+                    </div>
+                </div>
+                <!--  XXXXXXX  -->
+                <ul class="teamlog-list">
+                    <li class="log-row">
+                        <a class="head-pic" href="#" target="_blank">
+                            <img src="http://img02.taobaocdn.com/tps/i2/T1_dYuXh8sXXaCG0rh-50-50.png" alt="">
+                        </a>
+                        <p class="user-nick"><a href="#" target="_blank">YS</a></p>
+                        <span class="time-count">5.0</span>
+                        <div class="work-log">
+                            <span class="work-time">2.5</span><span class="work-percent" title="11:30 ~ 14:00"><b></b></span>放大声的发生的&nbsp;&nbsp;<a class="work-cat" href="#" target="_blank">第一种分类</a>
+                        </div>
+                        <div class="work-log">
+                            <span class="work-time">2.5</span><span class="work-percent" title="11:30 ~ 14:00"><b></b></span>放大声的发生的&nbsp;&nbsp;<a class="work-cat" href="#" target="_blank">第一种分类</a>
+                        </div>
+                    </li>
+                    <li class="log-row">
+                        <a class="head-pic" href="#" target="_blank">
+                            <img src="http://img02.taobaocdn.com/tps/i2/T1_dYuXh8sXXaCG0rh-50-50.png" alt="">
+                        </a>
+                        <p class="user-nick"><a href="#" target="_blank">YS</a></p>
+                        <span class="time-count">2.5</span>
+                        <div class="work-log">
+                            <span class="work-time">2.5</span><span class="work-percent" title="11:30 ~ 14:00"><b></b></span>放大声的发生的&nbsp;&nbsp;<a class="work-cat" href="#" target="_blank">第一种分类</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="teamer">
+                    <h2>他们这天没有工作记录</h2>
+                    <ul class="teamer-other clearfix">
+                        <li class="item">
+                            <a class="head-pic" href="#" target="_blank">
+                                <img src="http://img02.taobaocdn.com/tps/i2/T1_dYuXh8sXXaCG0rh-50-50.png" alt="">
+                            </a>
+                            <p class="user-nick">
+                                <a href="#" target="_blank">YS</a>
+                            </p>
+                        </li>
+                        <li class="item">
+                            <a class="head-pic" href="#" target="_blank">
+                                <img src="http://img02.taobaocdn.com/tps/i2/T1_dYuXh8sXXaCG0rh-50-50.png" alt="">
+                            </a>
+                            <p class="user-nick">
+                                <a href="#" target="_blank">YS</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span3 cal-right">
+                <ul class="nopad nav nav-list">
+                    <li class="nav-header">分类导航</li>
+                    <li>
+                        <a href="#"><i class="icon-list-alt"></i> 我的日志</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-th-list"></i> 团队日志</a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+                <ul class="nopad nav nav-list">
+                    <li class="nav-header">我的团队</li>
+                    <li>
+                        <a href="#">Letao</a>
+                    </li>
+                    <li>
+                        <a href="#">UXTeam</a>
+                    </li>
+                    <!--<li class="divider"></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="ecola-foot">
+            &copy; Etao UX
+        </div>
+    </div>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

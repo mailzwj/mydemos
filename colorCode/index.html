@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>JS代码高亮插件</title>
+</head>
+<body>
+<link rel="stylesheet" href="assets/colorCode.css">
+<div class="box">
+  <h2 class="demotitle">1、无格式化显示源代码</h2>
+  <pre class="colorCode">
+    <a href="#" target="_blank">
+        <span><!--这里是HTML注释--><b>这里直接显示源代码</b>
+            <input type="text" name="" value="测试" disaled readonly>
+        </span>  
+    </a>
+    <style>
+    /* css format */ body {margin: 0;padding: 0;}
+    .class, div.class {color: #fff;}
+    #demo-1 {background-color: #f00;}
+    #demo div .demo p div.test {float: left;}
+    </style>
+    <script>
+      /* js format */
+      var note = '字符串混格式化成什么样呢？';
+      var n = 10;
+      new function() {
+          do break; while(typeof delete this); 
+          for(var a;void 0;) continue 
+          if (null) with(0) 
+          try{ 
+              switch(1 in 1 instanceof 1) { 
+                  case false: 
+                  default: throw true 
+              } 
+          }catch(a){}finally{}else return  //console.log("去掉注释可以运行到这里") 
+      };
+    </script>
+  </pre>
+  <h2 class="demotitle">2、格式化html、css、js显示代码</h2>
+	<pre class="colorCode" format="html,css,js" style="margin-top: 10px;">
+    <a href="#" target="_blank">
+        <span><!--这里是HTML注释--><b>这里直接显示源代码</b>
+            <input type="text" name="" value="测试" disaled readonly>
+        </span>  
+    </a>
+    <style>
+    /* css format */
+    body {margin: 0;padding: 0;}
+    .class, div.class {color: #fff;}
+    #demo-1 {
+        background-color: #f00;
+    }
+    #demo div .demo p div.test {
+        float: left;
+    }
+    </style>
+    <script>
+      /* js format */
+      var note = '字符串混格式化成什么样呢？';
+      var n = 10;
+      new function() {
+          do break; while(typeof delete this); 
+          for(var a;void 0;) 
+              continue 
+          if (null) 
+              with(0) 
+          try{ 
+              switch(1 in 1 instanceof 1) { 
+                  case false: 
+                  default: throw true 
+              } 
+          }catch(a){}finally{}else return  //console.log("去掉注释可以运行到这里") 
+      };
+    </script>
+	</pre>
+  <h2 class="demotitle">3、格式化css显示代码</h2>
+  <pre class="colorCode" format="css" style="margin-top: 10px;">
+    /* css format */
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .class, div.class {
+        color: #fff;
+    }
+    #demo-1 {
+        background-color: #f00;
+    }
+    #demo div .demo div.test {
+        float: left;
+    }
+    .a .b .c {
+        font-size: 12px;
+    }
+  </pre>
+  <h2 class="demotitle">4、格式化js显示代码</h2>
+  <pre class="colorCode" format="js" style="margin-top: 10px;">
+    /* js format */
+    var note = '字符串混格式化成什么样呢？';
+    var n = 10;
+    new function() {
+        do break; while(typeof delete this); 
+        for(var a;void 0;) 
+            continue 
+        if (null) 
+            with(0) 
+        try{ 
+            switch(1 in 1 instanceof 1) { 
+                case false: 
+                default: throw true 
+            } 
+        }catch(a){}finally{}else return  //console.log("去掉注释可以运行到这里") 
+    };
+  </pre>
+</div>
+<script src="assets/colorCode.js"></script>
+<script>
+(function(){
+  var cc = new CC.colorCode();
+})();
+</script>
+</body>
+</html>

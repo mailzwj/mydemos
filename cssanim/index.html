@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS3实现方向键控制动画</title>
+</head>
+<body>
+<style>
+    body {
+        overflow: hidden;
+    }
+    .arrow {
+        position: absolute;
+        left: 0;
+        width: 100px;
+        height: 200px;
+        overflow: hidden;
+        -moz-transition: -moz-transform 0.2s ease-in;
+        -webkit-transition: -webkit-transform 0.2s ease-in;
+        -o-transition: -o-transform 0.2s ease-in;
+        -ms-transition: -ms-transform 0.2s ease-in;
+        transition: transform 0.2s ease-in;
+    }
+    .arrow .big {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        font-size: 0;
+        line-height: 0;
+        border: 50px solid #999;
+        border-top: 0;
+        border-bottom-width: 200px;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        _border-left-style: dashed;
+        _border-right-style: dashed;
+    }
+    .arrow .small {
+        position: absolute;
+        left: -50px;
+        bottom: -200px;
+        width: 0;
+        height: 0;
+        font-size: 0;
+        line-height: 0;
+        border: 50px solid #fff;
+        border-top: 0;
+        border-bottom-width: 30px;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        _border-left-style: dashed;
+        _border-right-style: dashed;
+    }
+    .turn-left {
+        -moz-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+    .turn-right {
+        -moz-transform: rotate(90deg);
+        -webkit-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+</style>
+<div class="arrow" id="E-arrow">
+    <span class="big"><b class="small"></b></span>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+(function(S){
+    var D = S.DOM, E = S.Event;
+    var node = D.get("#E-arrow"), step = 5;
+    var reg = /turn\-[a-z]+/g;
+    var bl = /(^\s+)|(\s+$)/g;
+    var initPosition = function(){
+        var dw = D.width(node),
+            dh = D.height(node),
+            ww = D.width(window),
+            wh = D.height(window),
+            dl = (ww - dw) / 2,
+            dt = wh - dh;
+        D.css(node , "left", dl);
+        D.css(node, "top", dt);
+    }
+    initPosition();
+    var moveUp = function(){
+        var cls = D.attr(node, "class");
+        var t = parseInt(D.css(node, "top")) - step;
+        if(reg.test(cls)){
+            cls = cls.replace(reg, "").replace(bl, "");
+            reg.lastIndex = 0;
+        }
+        D.attr(node, "class", cls);
+        if(t <= 0){
+            D.css(node, "top", 0);
+        }else{
+            D.css(node, "top", t);
+        }
+    }
+    var moveDown = function(){
+        var cls = D.attr(node, "class");
+        var t = parseInt(D.css(node, "top")) + step;
+        if(reg.test(cls)){
+            cls = cls.replace(reg, "").replace(bl, "");
+            reg.lastIndex = 0;
+        }
+        D.attr(node, "class", cls);
+        if(t >= D.height(window) - D.height(node)){
+            D.css(node, "top", D.height(window) - D.height(node));
+        }else{
+            D.css(node, "top", t);
+        }
+    }
+    var moveLeft = function(){
+        var cls = D.attr(node, "class");
+        var t = parseInt(D.css(node, "left")) - step;
+        if(reg.test(cls)){
+            cls = cls.replace(reg, "turn-left");
+            reg.lastIndex = 0;
+        }else{
+            cls += " turn-left";
+        }
+        D.attr(node, "class", cls);
+        if(t <= (D.height(node) - D.width(node)) / 2){
+            D.css(node, "left", (D.height(node) - D.width(node)) / 2);
+        }else{
+            D.css(node, "left", t);
+        }
+    }
+    var moveRight = function(){
+        var cls = D.attr(node, "class");
+        var t = parseInt(D.css(node, "left")) + step;
+        if(reg.test(cls)){
+            cls = cls.replace(reg, "turn-right");
+            reg.lastIndex = 0;
+        }else{
+            cls += " turn-right";
+        }
+        D.attr(node, "class", cls);
+        if(t >= D.width(window) - D.height(node) + (D.height(node) - D.width(node)) / 2){
+            D.css(node, "left", D.width(window) - D.height(node) + (D.height(node) - D.width(node)) / 2);
+        }else{
+            D.css(node, "left", t);
+        }
+    }
+    E.on(document, "keydown", function(e){
+        var code = e.keyCode;
+        switch(code){
+            case 38: moveUp();
+                break;
+            case 39: moveRight();
+                break;
+            case 37: moveLeft();
+                break;
+            case 40: moveDown();
+                break;
+        }
+    });
+    E.on(window, "resize", function(){
+        initPosition();
+    });
+})(KISSY);
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>书签栏应用</title>
+</head>
+<body>
+<a href="javascript: function linkstr(arr){ var str='<div id=\'container\' class=\'container\'>';for(var i=0;i<arr.length;i++){str+='<a href=\''+arr[i].src+'\' class=\'lightbox\' style=\'background:url('+arr[i].src+') no-repeat center top;\'></a>';}return str+'</div>';} document.getElementsByTagName('body')[0].innerHTML='<link rel=\'stylesheet\' href=\'http://www.seejs.com/examples/lightbox/assets/lightbox.css\'><style> .container a{ position: static; display: inline-block; margin-top: 1px; width: 96px; height: 96px; border: 1px solid #CCC; } </style><script src=\'http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js\'></script>'+linkstr(document.getElementsByTagName('img'))+'<div id=\'lightbox\' class=\'lightbox\'> <img src=\'http://img02.taobaocdn.com/tps/i2/T1K7DnXfhXXXc6Yc2r-1-1.gif\'> <span class=\'closebtn\'></span> <span class=\'prevbtn\'><i></i></span> <span class=\'nextbtn\'><i></i></span> </div> <script src=\'http://www.seejs.com/examples/lightbox/assets/lightbox.js\'></script>';">获取图片</a>
+</body>
+</html>

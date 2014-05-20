@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KISSY动画导航</title>
+<style>
+    ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .nav {
+        position: relative;
+        margin: 0 auto;
+        width: 990px;
+        _height: 51px;
+        background-color: #000;
+        font: 14px/1.5 '微软雅黑';
+        color: #fff;
+    }
+    .block {
+        position: absolute;
+        z-index: 9;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-radius: 4px;
+        background-color: #f00;
+    }
+    .nav-list {
+        position: relative;
+        _position: absolute;
+        z-index: 10;
+        padding-left: 20px;
+        overflow: hidden;
+    }
+    .nav-list .item {
+        float: left;
+        padding: 15px 20px;
+    }
+    .nav-list .item a {
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+<div id="Y_nav" class="nav">
+    <span id="Y_block" class="block"></span>
+    <ul class="nav-list">
+        <li class="item"><a href="" target="_blank">首页</a></li>
+        <li class="item"><a href="" target="_blank">淘宝网</a></li>
+        <li class="item"><a href="" target="_blank">天猫商城</a></li>
+        <li class="item"><a href="" target="_blank">一淘UX团队PC&广告</a></li>
+        <li class="item"><a href="" target="_blank">京东、当当、卓越亚马逊等等</a></li>
+    </ul>
+</div>
+<script src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script>
+(function(S){
+    var D = S.DOM, E = S.Event;
+    var box = D.get("#Y_nav"), block = D.get("#Y_block"), eles = D.query(".item", "#Y_nav");
+    var cur = 0, cur_w = D.outerWidth(eles[cur]), cur_h = D.outerHeight(eles[cur]) - 8, cur_l = eles[cur].offsetLeft, cur_t = eles[cur].offsetTop + 4;
+    var _t = null;
+    new S.Anim(block, {"left":cur_l,"top":cur_t,"width":cur_w,"height":cur_h}, 0.3, "backOut", function(){}).run();
+    E.on(eles, "mouseenter", function(){
+        var _this = this;
+        if(_t){clearTimeout(_t);}
+        _t = setTimeout(function(){
+            cur = S.indexOf(_this, eles);
+            cur_w = D.outerWidth(eles[cur]), cur_h = D.outerHeight(eles[cur]) - 8, cur_l = eles[cur].offsetLeft, cur_t = eles[cur].offsetTop + 4;
+            new S.Anim(block, {"left":cur_l,"top":cur_t,"width":cur_w,"height":cur_h}, 0.5, "backOut", function(){}).run();
+        }, 200);
+
+    });
+})(KISSY);
+</script>
+</body>
+</html>
