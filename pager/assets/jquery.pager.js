@@ -91,7 +91,7 @@
                     if (p === obj.currentPage) {
                         page = '<span class="page cur">' + p + '</span>';
                     } else {
-                        page = '<a href="' + (_this.config.dataAddr + _this._parseParam(p)) + '" class="page">' + p + '</a>';
+                        page = '<a href="' + (_this.config.dataAddr + _this._parseParam(p)) + '" class="page" data-page="' + p + '">' + p + '</a>';
                     }
                     pArr.push(page);
                 }
