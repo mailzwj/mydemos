@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计算镜头尺寸和位置</title>
+  <!-- <link rel="stylesheet" href="https://gw.alipayobjects.com/os/lib/antd/4.24.13/dist/antd.css"> -->
+  <style>
+    html,body,#root {margin: 0;padding: 0;height: 100%;overflow: hidden;}
+    #root {display: flex;align-items: center;justify-content: center;}
+    .main {position: relative;width: 270px;height: 480px;}
+    .main .mask {position: absolute;top: 0;left: 0;width: 100%;height: 1px;background-color: #ddd;box-shadow: 0 479px 0 0 #ddd;}
+    .main .mask:before {content: '';position: absolute;top: 0;left: 0;width: 1px;height: 480px;background-color: #ddd;box-shadow: 269px 0 0 0 #ddd;}
+    .viewBox {position: absolute;top: 50%;left: 50%;width: 100%;height: 100%;transform: translate3d(-50%, -50%, 0);}
+    .selector {display: flex;align-items: center;justify-content: center;width: 100%;height: 100%;color: #666;cursor: pointer;}
+    .dragItem {position: absolute;width: 100%;height: 100%;}
+    .targetInfo {position: absolute;top: 10px; left: 10px; z-index: 10;}
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://gw.alipayobjects.com/os/lib/react/16.14.0/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://gw.alipayobjects.com/os/lib/react-dom/16.14.0/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="https://gw.alipayobjects.com/os/lib/babel/standalone/7.18.1/babel.min.js" crossorigin="anonymous"></script>
+<!-- <script src="https://gw.alipayobjects.com/os/lib/antd/4.24.13/dist/antd.min.js" crossorigin="anonymous"></script> -->
+<script src="https://gw.alipayobjects.com/os/lib/moveable/0.47.9/dist/moveable.min.js" crossorigin="anonymous"></script>
+<script type="text/babel">
+
+const Layout = () => {
+  const scaleRef = React.useRef(0.25);
+  const numberRef = React.useRef(/([0-9-.]+)/g);
+  const selectorRef = React.useRef();
+  const [videoImage, setVideoImage] = React.useState();
+  const [info, setInfo] = React.useState({});
+
+  const handleFileChange = (ev) => {
+    const { files } = ev.target;
+    if (!files || !files.length) {
+      return;
+    }
+    // console.log('ff', files[0]);
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setVideoImage(ev.target.result);
+      setInfo({
+        x: 0,
+        y: 0,
+        width: 270,
+        height: 480
+      });
+    };
+    reader.readAsDataURL(files[0]);
+    ev.target.value = '';
+  };
+
+  const selectImage = () => {
+    if (!selectorRef.current) {
+      const inp = document.createElement('input');
+      inp.type = 'file';
+      inp.style.cssText = 'position: fixed;top: -9999px;left: -9999px;opacity: 0;';
+      inp.onchange = handleFileChange;
+      selectorRef.current = inp;
+      document.body.appendChild(inp);
+    }
+    selectorRef.current.click();
+  };
+
+  const parseInfo = (target) => {
+    const { style } = target;
+    const { top, left, width, height, transform } = style;
+    const [tx, ty] = transform?.match(numberRef.current) || [0, 0];
+    setInfo({
+      x: parseFloat(left || 0) + parseFloat(tx),
+      y: parseFloat(top || 0) + parseFloat(ty),
+      width: parseFloat(width || target.offsetWidth),
+      height: parseFloat(height || target.offsetHeight)
+    });
+  };
+
+  React.useEffect(() => {
+    if (videoImage) {
+      const moveable = new Moveable(document.querySelector('.main'), {
+        target: document.querySelector('.dragItem'),
+        container: document.querySelector('.main'),
+        draggable: true,
+        resizable: true,
+        keepRatio: true,
+        edge: false,
+        origin: false
+      });
+      moveable.on('drag', (ev) => {
+        ev.target.style.left = `${ev.left}px`;
+        ev.target.style.top = `${ev.top}px`;
+      }).on('dragEnd', (ev) => {
+        parseInfo(ev.target);
+      }).on('resizeStart', (ev) => {
+        ev.setFixedDirection([0, 0]);
+      }).on('resize', (ev) => {
+        if (ev.delta[0]) {
+          ev.target.style.width = `${ev.width}px`;
+        }
+        if (ev.delta[1]) {
+          ev.target.style.height = `${ev.height}px`;
+        }
+        ev.target.style.transform = ev.drag.transform;
+      }).on('resizeEnd', (ev) => {
+        parseInfo(ev.target);
+      });
+    }
+  }, [videoImage])
+
+  return (
+    <>
+      <div className="main">
+        <div className="viewBox">
+          {videoImage ? (
+            <img className="dragItem" src={videoImage} />
+          ) : (
+            <div className="selector" onClick={selectImage}>
+              点击选择镜头预览图(1080x1920)
+            </div>
+          )}
+        </div>
+        <div className="mask" />
+      </div>
+      {!!Object.keys(info).length && (
+        <div className="targetInfo">
+          <div>display x: {info.x}, target x: {info.x / scaleRef.current}</div>
+          <div>display y: {info.y}, target y: {info.y / scaleRef.current}</div>
+          <div>display width: {info.width}, target width: {info.width / scaleRef.current}</div>
+          <div>display height: {info.height}, target height: {info.height / scaleRef.current}</div>
+        </div>
+      )}
+    </>
+  );
+};
+
+(() => {
+  ReactDOM.render(<Layout />, document.querySelector('#root'));
+})();
+</script>
+</body>
+</html>
