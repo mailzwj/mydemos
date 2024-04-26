@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://gw.alipayobjects.com/os/lib/antd/4.24.16/dist/antd.min.css" rel="stylesheet" />
+  <title>图片规范化</title>
+  <style>
+    .row {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+    .row .col-1 {
+      padding-right: 10px;
+      text-align: right;
+    }
+
+    .preview {
+      margin-bottom: 10px;
+      border-radius: 4px;
+      border: 1px dashed #ddd;
+      background-position: center center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .picker,
+    .color {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .picker {
+      margin-right: 10px;
+      border-radius: 3px;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #eee;
+      cursor: pointer;
+    }
+  </style>
+  <script src="https://gw.alipayobjects.com/os/lib/react/16.14.0/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://gw.alipayobjects.com/os/lib/react-dom/16.14.0/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://gw.alipayobjects.com/os/lib/babel/standalone/7.18.1/babel.min.js" crossorigin="anonymous"></script>
+  <script src="https://gw.alipayobjects.com/os/lib/antd/4.24.16/dist/antd.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- <input type="file" webkitdirectory directory multiple accept="image/*" /> -->
+  <div id="root"></div>
+<script type="text/babel">
+  const { Row, Col, Dropdown, Upload, Button, Radio, Space, message } = antd;
+  let tempFiles = [];
+  let uploadTimer = null;
+  let newUpload = true;
+  const cp = typeof EyeDropper !== 'undefined' ? new EyeDropper() : null;
+  const Page = () => {
+
+    const [size, setSize] = React.useState('1920x1080');
+    const [method, setMethod] = React.useState('contain');
+    const [imgs, setImgs] = React.useState([]);
+    // const [newUpload, setNewUpload] = React.useState(true);
+    const [current, setCurrent] = React.useState(0);
+    const [color, setColor] = React.useState('#ffffff');
+    const cvsRef = React.createRef();
+
+    const handleSizeChange = (ev) => {
+      const newSize = ev.target.value;
+      setSize(newSize);
+      // updatePreview()
+    };
+
+    const handleMethodChange = (ev) => {
+      const newMethod = ev.target.value;
+      setMethod(newMethod);
+    };
+
+    const handleFileChange = (info) => {
+      if (newUpload) {
+        tempFiles = [];
+        newUpload = false;
+      }
+      if ((info instanceof File) && ['image/png', 'image/jpeg', 'image/jpg'].includes(info.type)) {
+        tempFiles.push(info);
+      }
+      if (uploadTimer) {
+        clearTimeout(uploadTimer);
+      }
+      uploadTimer = setTimeout(() => {
+        newUpload = true;
+        setImgs([...tempFiles]);
+        tempFiles = [];
+        setCurrent(0);
+      }, 200);
+      return false;
+    };
+
+    const splitSize = (usedSize) => {
+      const [width, height] = usedSize.split('x').map((item) => Number(item) * 0.5);
+      return { width, height };
+    };
+
+    const pick = () => {
+      if (cp) {
+        cp.open().then(c => {
+          // console.log('ccc', c);
+          setColor(c.sRGBHex);
+        });
+      } else {
+        message.error('当前浏览器不支持取色器');
+      }
+    };
+
+    const next = () => {
+      let ni = current + 1;
+      if (ni === imgs.length) {
+        ni = 0;
+      }
+      setCurrent(ni);
+    };
+
+    const clear = () => {
+      setImgs([]);
+      setCurrent(0);
+    };
+
+    const draw = async (img) => {
+      const [width, height] = size.split('x').map(Number);
+      if (!cvsRef.current) {
+        cvsRef.current = new OffscreenCanvas(width, height);
+      }
+      const ctx = cvsRef.current.getContext('2d');
+      if (!ctx) {
+        message.error('获取canvas上下文失败');
+        return;
+      }
+      cvsRef.current.width = width;
+      cvsRef.current.height = height;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = color;
+      ctx.rect(0, 0, width, height);
+      ctx.fill();
+      const imgDom = new Image();
+      const {width: imgWidth, height: imgHeight } = await new Promise((resolve) => {
+        imgDom.src = URL.createObjectURL(img);
+        imgDom.onload = () => {
+          resolve({width: imgDom.width, height: imgDom.height});
+        };
+      });
+      let scale = 1;
+      let dx = 0;
+      let dy = 0;
+      let dWidth = width;
+      let dHeight = height;
+      if (imgWidth / imgHeight > width / height) {
+        if (method === 'cover') {
+          scale = height / imgHeight;
+          dx = (width - imgWidth * scale) / 2;
+          dy = 0;
+          dWidth = imgWidth * scale;
+          dHeight = height;
+        } else {
+          scale = width / imgWidth;
+          dx = 0;
+          dy = (height - imgHeight * scale) / 2;
+          dWidth = width;
+          dHeight = imgHeight * scale;
+        }
+      } else {
+        if (method === 'cover') {
+          scale = width / imgWidth;
+          dx = 0;
+          dy = (height - imgHeight * scale) / 2;
+          dWidth = width;
+          dHeight = imgHeight * scale;
+        } else {
+          scale = height / imgHeight;
+          dx = (width - imgWidth * scale) / 2;
+          dy = 0;
+          dWidth = imgWidth * scale;
+          dHeight = height;
+        }
+      }
+
+      ctx.drawImage(imgDom, 0, 0, imgWidth, imgHeight, dx, dy, dWidth, dHeight);
+      return cvsRef.current.convertToBlob();
+    };
+
+    const download = (blob, name) => {
+      const a = document.createElement('a');
+      a.download = name || 'download';
+      a.href = URL.createObjectURL(blob);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    };
+
+    const drawIndex = (idx) => {
+      if (!imgs[idx]) return;
+      draw(imgs[idx]).then((blob) => {
+        download(blob, `resize_${imgs[idx].name.replace(/\.(.*?)$/, '')}.png`);
+        drawIndex(idx + 1);
+      });
+    };
+
+    const save = (type) => {
+      switch(type) {
+        case 'one':
+          draw(imgs[current]).then((blob) => {
+            // console.log('>>>b', URL.createObjectURL(blob));
+            download(blob, `resize_${imgs[current].name.replace(/\.(.*?)$/, '')}.png`);
+          });
+          break;
+        case 'all':
+          drawIndex(0);
+          break;
+        default:
+      }
+    };
+
+    React.useEffect(() => {
+      setCurrent(0);
+    }, [imgs]);
+
+    return (
+      <div
+        style={{
+          padding: 20
+        }}
+      >
+        <Row className="row">
+          <Col span={3} className="col-1">生成尺寸</Col>
+          <Col span={21}>
+            <Radio.Group value={size} onChange={handleSizeChange}>
+              <Radio value="1920x1080">1920x1080</Radio>
+              <Radio value="1080x1920">1080x1920</Radio>
+            </Radio.Group>
+          </Col>
+        </Row>
+        <Row className="row">
+          <Col span={3} className="col-1">处理方式</Col>
+          <Col span={21}>
+            <Radio.Group value={method} onChange={handleMethodChange}>
+              <Radio value="cover">裁切</Radio>
+              <Radio value="contain">包含</Radio>
+            </Radio.Group>
+          </Col>
+        </Row>
+        <Row className="row">
+          <Col span={3} className="col-1">选择素材</Col>
+          <Col span={21}>
+            <Dropdown.Button type="primary"
+              menus={{items: []}}
+              overlay={(
+                <Button type="primary">
+                  <Upload directory multiple showUploadList={false} beforeUpload={handleFileChange}>
+                    <span style={{color: 'white'}}>选择文件夹</span>
+                  </Upload>
+                </Button>
+              )}
+            >
+              <Upload multiple showUploadList={false} beforeUpload={handleFileChange}>
+                <span style={{color: 'white'}}>选择图片</span>
+              </Upload>
+            </Dropdown.Button>
+          </Col>
+        </Row>
+        <Row className="row">
+          <Col span={3} className="col-1">背景颜色</Col>
+          <Col span={21}>
+            <span className="picker" onClick={pick} style={{backgroundColor: color}} />
+            <span className="color">{color}</span>
+          </Col>
+        </Row>
+        {!!imgs.length && (
+          <Row className="row">
+            <Col span={3}></Col>
+            <Col span={21}>
+              <div
+                className="preview"
+                style={{
+                  ...splitSize(size),
+                  backgroundImage: `url(${URL.createObjectURL(imgs[current])})`,
+                  backgroundSize: method,
+                  backgroundColor: color
+                }}
+              ></div>
+              <Space>
+                <Button type="primary" onClick={() => save('one')}>保存到本地</Button>
+                <Button type="primary" onClick={next}>下一张（{(current + 1)}/{imgs.length}）</Button>
+                <Button type="primary" onClick={() => save('all')}>全部保存</Button>
+                <Button type="primary" danger onClick={clear}>清空</Button>
+              </Space>
+            </Col>
+          </Row>
+        )}
+      </div>
+    );
+  };
+  ReactDOM.render(<Page />, document.getElementById('root'));
+</script>
+</body>
+</html>
